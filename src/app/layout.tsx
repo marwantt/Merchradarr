@@ -1,7 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Geist, Geist_Mono, Fira_Code } from "next/font/google"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -11,6 +11,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+})
+
+const firaCode = Fira_Code({
+  variable: "--font-fira-code",
   subsets: ["latin"],
 })
 
@@ -35,6 +40,7 @@ html {
   font-family: ${geistSans.style.fontFamily};
   --font-sans: ${geistSans.variable};
   --font-mono: ${geistMono.variable};
+  --font-fira-code: ${firaCode.variable};
 }
         `}</style>
       </head>
