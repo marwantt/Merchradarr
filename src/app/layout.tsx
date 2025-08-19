@@ -39,13 +39,13 @@ html {
         `}</style>
       </head>
       <body>
-        <header className="w-full py-6 sm:py-10 mt-8 sm:mt-24 mb-3 flex items-center justify-center px-4">
+        <header className="w-full py-6 sm:py-10 mt-8 sm:mt-24 mb-3 flex items-center justify-center px-4" style={{marginTop: '100px'}}>
           <Link href="/" aria-label="MerchRadar home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
               src="/merchradar2.svg" 
               alt="MerchRadar Logo" 
-              className="h-[100px] sm:h-[150px] lg:h-[200px] w-auto"
+              className="h-[200px] sm:h-[300px] lg:h-[350px] w-auto"
             />
           </Link>
         </header>
