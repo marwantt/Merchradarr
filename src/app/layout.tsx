@@ -45,7 +45,7 @@ html {
             <img 
               src="/merchradar2.svg" 
               alt="MerchRadar Logo" 
-              className="h-[32px] sm:h-[50px] lg:h-[70px] w-auto"
+              className="h-[50px] sm:h-[80px] lg:h-[120px] w-auto"
             />
           </Link>
         </header>
