@@ -46,7 +46,7 @@ html {
         <header className="w-full py-6 sm:py-10 mt-8 sm:mt-24 mb-3 flex items-center justify-center px-4">
           <Link href="/" aria-label="MerchRadar home" className="flex items-center gap-3">
             <Image 
-              src="/merchradar.svg" 
+              src="/merchradar2.svg" 
               alt="MerchRadar Logo" 
               width={60} 
               height={60}
