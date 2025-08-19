@@ -25,6 +25,11 @@ export const metadata: Metadata = {
   title: "MerchRadar",
   description: "Scan. Spot. Sell.",
   generator: "v0.app",
+  icons: {
+    icon: "/fiveicon.png",
+    shortcut: "/fiveicon.png",
+    apple: "/fiveicon.png",
+  },
 }
 
 export default function RootLayout({
