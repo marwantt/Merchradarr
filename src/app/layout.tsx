@@ -1,7 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Geist, Geist_Mono, Audiowide } from "next/font/google"
+import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -14,10 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 })
 
-const audiowide = Audiowide({
-  subsets: ["latin"],
-  weight: "400",
-})
+
 
 export const metadata: Metadata = {
   title: "MerchRadar",
@@ -46,11 +43,9 @@ html {
           <Link href="/" aria-label="MerchRadar home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
-              src="/merchradar.svg" 
+              src="/merchradar2.svg" 
               alt="MerchRadar Logo" 
-              className="h-[32px] sm:h-[50px] lg:h-[70px] w-auto bg-black p-2 rounded"
-              onError={(e) => console.log('Logo load error:', e)}
-              onLoad={() => console.log('Logo loaded successfully')}
+              className="h-[32px] sm:h-[50px] lg:h-[70px] w-auto"
             />
           </Link>
         </header>
