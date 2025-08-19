@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Geist, Geist_Mono, Fira_Code } from "next/font/google"
+import { Analytics } from '@vercel/analytics/react'
 import "./globals.css"
 
 const geistSans = Geist({
@@ -66,6 +67,7 @@ html {
             © 2025 MerchRadar 🌟 Built with love for creators, dreamers, and merch hustlers.
           </p>
         </footer>
+        <Analytics />
       </body>
     </html>
   )
