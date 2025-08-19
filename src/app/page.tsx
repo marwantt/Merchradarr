@@ -94,15 +94,15 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-8">
-      <main className="w-full max-w-2xl flex flex-col gap-6 items-stretch">
-        <h1 className="text-2xl font-semibold text-center">Spot Merch tees instantly.</h1>
+    <div className="min-h-screen flex items-center justify-center p-4 sm:p-8">
+      <main className="w-full max-w-2xl flex flex-col gap-4 sm:gap-6 items-stretch">
+        <h1 className="text-xl sm:text-2xl font-semibold text-center px-2">Spot Merch tees instantly.</h1>
         
         {/* Settings Section */}
         <div className="bg-black/5 dark:bg-white/5 rounded-lg p-4 space-y-4">
           <h2 className="text-sm font-medium text-black/80 dark:text-white/80">Settings</h2>
           
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Marketplace Selector */}
             <div>
               <label className="block text-xs font-medium text-black/70 dark:text-white/70 mb-1">
@@ -160,18 +160,18 @@ export default function Home() {
         </div>
 
         {/* Search Form */}
-        <form onSubmit={handleSubmit} className="flex gap-3">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
           <input
             type="text"
             value={keyword}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setKeyword(e.target.value)}
             placeholder="Enter a theme or keyword (e.g., cat, retro, gaming)"
-            className="flex-1 h-12 px-4 rounded-md border border-black/10 dark:border-white/20 bg-white dark:bg-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-1 h-12 px-4 rounded-md border border-black/10 dark:border-white/20 bg-white dark:bg-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
             autoFocus
           />
           <button
             type="submit"
-            className="h-12 px-5 rounded-md bg-foreground text-background font-medium"
+            className="h-12 px-5 rounded-md bg-foreground text-background font-medium whitespace-nowrap"
           >
             Search
           </button>

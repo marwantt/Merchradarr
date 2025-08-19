@@ -42,9 +42,9 @@ html {
         `}</style>
       </head>
       <body>
-        <header className="w-full py-10 mt-24 mb-3 flex items-center justify-center">
+        <header className="w-full py-6 sm:py-10 mt-8 sm:mt-24 mb-3 flex items-center justify-center px-4">
           <Link href="/" aria-label="MerchRadar home">
-            <h1 className={`${audiowide.className} text-[70px] leading-none font-normal text-center`}>MerchRadar</h1>
+            <h1 className={`${audiowide.className} text-[32px] sm:text-[50px] lg:text-[70px] leading-none font-normal text-center`}>MerchRadar</h1>
           </Link>
         </header>
         {children}
