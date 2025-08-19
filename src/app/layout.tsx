@@ -46,9 +46,9 @@ html {
           <Link href="/" aria-label="MerchRadar home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
-              src="/merchradar2.svg" 
+              src="/merchradar.svg" 
               alt="MerchRadar Logo" 
-              className="h-[32px] sm:h-[50px] lg:h-[70px] w-auto"
+              className="h-[32px] sm:h-[50px] lg:h-[70px] w-auto bg-black p-2 rounded"
               onError={(e) => console.log('Logo load error:', e)}
               onLoad={() => console.log('Logo loaded successfully')}
             />
