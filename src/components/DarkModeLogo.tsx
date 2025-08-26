@@ -24,7 +24,7 @@ export default function DarkModeLogo() {
       <img 
         src="/merchradar2.svg"
         alt="MerchRadar Logo" 
-        className="h-[200px] sm:h-[300px] lg:h-[350px] w-auto"
+        className="h-[120px] sm:h-[180px] lg:h-[220px] w-auto"
       />
     );
   }
@@ -33,7 +33,7 @@ export default function DarkModeLogo() {
     <img 
       src={isDarkMode ? "/merchradar1.svg" : "/merchradar2.svg"}
       alt="MerchRadar Logo" 
-      className="h-[200px] sm:h-[300px] lg:h-[350px] w-auto"
+      className="h-[120px] sm:h-[180px] lg:h-[220px] w-auto"
     />
   );
 }
