@@ -1,11 +1,9 @@
-"use client";
-
 import type React from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Geist, Geist_Mono, Fira_Code } from "next/font/google"
 import { Analytics } from '@vercel/analytics/react'
-import { useEffect, useState } from "react"
+import DarkModeLogo from "../components/DarkModeLogo"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -22,8 +20,6 @@ const firaCode = Fira_Code({
   variable: "--font-fira-code",
   subsets: ["latin"],
 })
-
-
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://merchradar.vercel.app'),
@@ -58,19 +54,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    // Check for dark mode preference
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    setIsDarkMode(mediaQuery.matches);
-
-    const handleChange = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
-    mediaQuery.addEventListener('change', handleChange);
-
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, []);
-
   return (
     <html lang="en">
       <head>
@@ -86,12 +69,7 @@ html {
       <body>
         <header className="w-full py-6 sm:py-10 mt-8 sm:mt-24 mb-3 flex items-center justify-center px-4" style={{marginTop: '100px'}}>
           <Link href="/" aria-label="MerchRadar home">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img 
-              src={isDarkMode ? "/merchradar1.svg" : "/merchradar2.svg"}
-              alt="MerchRadar Logo" 
-              className="h-[200px] sm:h-[300px] lg:h-[350px] w-auto"
-            />
+            <DarkModeLogo />
           </Link>
         </header>
         {children}
