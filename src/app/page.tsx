@@ -190,6 +190,16 @@ export default function Home() {
         <p className="text-sm text-center text-black/60 dark:text-white/60">
           Search {marketplace.name} for Merch by Amazon {productType.name.toLowerCase()} with your keywords.
         </p>
+
+        {/* What is MerchRadar Section */}
+        <section className="bg-black/5 dark:bg-white/5 rounded-lg p-6 space-y-4">
+          <h2 className="text-lg font-semibold text-black/90 dark:text-white/90">What is MerchRadar?</h2>
+          <p className="text-sm text-black/70 dark:text-white/70 leading-relaxed">
+            MerchRadar is a free tool for Merch by Amazon sellers.
+            Instantly search for profitable niches in t-shirts, hoodies,
+            and sweatshirts. Save time, scan trends, and grow your POD business.
+          </p>
+        </section>
       </main>
     </div>
   );
