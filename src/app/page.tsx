@@ -213,6 +213,12 @@ export default function Home() {
             >
               Blog
             </Link>
+            <Link 
+              href="/contact" 
+              className="text-sm font-medium text-black/80 dark:text-white/80 hover:text-black dark:hover:text-white transition-colors"
+            >
+              Contact
+            </Link>
           </div>
         </nav>
 
