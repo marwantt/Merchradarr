@@ -33,9 +33,12 @@ export const metadata: Metadata = {
   description: "Spot profitable Merch by Amazon t-shirt, hoodie, and sweatshirt niches instantly. Scan. Spot. Sell.",
   generator: "v0.app",
   icons: {
-    icon: "/fiveicon.png",
-    shortcut: "/fiveicon.png",
-    apple: "/fiveicon.png",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/merchradar1.svg", type: "image/svg+xml" }
+    ],
+    shortcut: "/merchradar1.svg",
+    apple: "/merchradar1.svg",
   },
   openGraph: {
     title: "MerchRadar – Amazon Merch Research Tool",
