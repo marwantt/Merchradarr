@@ -23,13 +23,30 @@ const firaCode = Fira_Code({
 
 
 export const metadata: Metadata = {
-  title: "MerchRadar",
-  description: "Scan. Spot. Sell.",
+  metadataBase: new URL('https://merchradar.vercel.app'),
+  title: "MerchRadar – Find Winning Merch by Amazon Niches",
+  description: "Spot profitable Merch by Amazon t-shirt, hoodie, and sweatshirt niches instantly. Scan. Spot. Sell.",
   generator: "v0.app",
   icons: {
     icon: "/fiveicon.png",
     shortcut: "/fiveicon.png",
     apple: "/fiveicon.png",
+  },
+  openGraph: {
+    title: "MerchRadar – Amazon Merch Research Tool",
+    description: "Spot profitable Merch by Amazon niches with one click.",
+    url: "https://merchradar.vercel.app",
+    siteName: "MerchRadar",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "MerchRadar app preview",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
   },
 }
 
