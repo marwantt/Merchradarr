@@ -1,7 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Geist, Geist_Mono, Fira_Code } from "next/font/google"
+import { Geist, Geist_Mono, Fira_Code, Passero_One } from "next/font/google"
 import { Analytics } from '@vercel/analytics/react'
 import DarkModeLogo from "../components/DarkModeLogo"
 import "./globals.css"
@@ -19,6 +19,12 @@ const geistMono = Geist_Mono({
 const firaCode = Fira_Code({
   variable: "--font-fira-code",
   subsets: ["latin"],
+})
+
+const passeroOne = Passero_One({
+  variable: "--font-passero-one",
+  subsets: ["latin"],
+  weight: "400",
 })
 
 export const metadata: Metadata = {
@@ -63,6 +69,13 @@ html {
   --font-sans: ${geistSans.variable};
   --font-mono: ${geistMono.variable};
   --font-fira-code: ${firaCode.variable};
+  --font-passero-one: ${passeroOne.variable};
+}
+
+.passero-one-regular {
+  font-family: var(--font-passero-one), "Passero One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
         `}</style>
       </head>

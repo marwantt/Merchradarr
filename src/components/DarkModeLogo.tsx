@@ -21,21 +21,33 @@ export default function DarkModeLogo() {
   // Prevent hydration mismatch by not rendering until mounted
   if (!mounted) {
     return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img 
-        src="/merchradar2.svg"
-        alt="MerchRadar Logo" 
-        className="h-[120px] sm:h-[180px] lg:h-[220px] w-auto"
-      />
+      <div className="text-center">
+        <h1 
+          className="passero-one-regular text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight"
+          style={{
+            color: '#171717',
+            textShadow: '2px 2px 4px rgba(0,0,0,0.1)'
+          }}
+        >
+          MerchRadar
+        </h1>
+      </div>
     );
   }
 
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img 
-      src={isDarkMode ? "/merchradar1.svg" : "/merchradar2.svg"}
-      alt="MerchRadar Logo" 
-      className="h-[120px] sm:h-[180px] lg:h-[220px] w-auto"
-    />
+    <div className="text-center">
+      <h1 
+        className="passero-one-regular text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight"
+        style={{
+          color: isDarkMode ? '#ededed' : '#171717',
+          textShadow: isDarkMode 
+            ? '2px 2px 4px rgba(255,255,255,0.1)' 
+            : '2px 2px 4px rgba(0,0,0,0.1)'
+        }}
+      >
+        MerchRadar
+      </h1>
+    </div>
   );
 }
