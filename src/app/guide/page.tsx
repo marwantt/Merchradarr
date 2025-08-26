@@ -35,7 +35,7 @@ export default function GuidePage() {
       <h3>1. Enter your niche keyword</h3>
       <p>
         Start by typing your keyword into the MerchRadar search box.
-        For example: <em>"funny cat shirt"</em> or <em>"soccer hoodie"</em>.
+        For example: <em>&ldquo;funny cat shirt&rdquo;</em> or <em>&ldquo;soccer hoodie&rdquo;</em>.
       </p>
 
       <h3>2. Choose your marketplace</h3>
@@ -52,7 +52,7 @@ export default function GuidePage() {
         keyword includes the correct product type for accurate results.
       </p>
 
-      <h3>4. Click "Search Merch"</h3>
+      <h3>4. Click &ldquo;Search Merch&rdquo;</h3>
       <p>
         In one click, MerchRadar builds a clean Amazon URL that filters by the{" "}
         <strong>Merch by Amazon seller ID</strong>. The results page shows
@@ -66,7 +66,7 @@ export default function GuidePage() {
       <ul>
         <li>
           Combine your keyword with occasions, e.g.{" "}
-          <em>"Christmas nurse sweatshirt"</em>.
+          <em>&ldquo;Christmas nurse sweatshirt&rdquo;</em>.
         </li>
         <li>
           Test trends in multiple regions – a niche that works in the US may
@@ -74,7 +74,7 @@ export default function GuidePage() {
         </li>
         <li>
           Check <strong>long-tail keywords</strong> like{" "}
-          <em>"retro gaming cat t-shirt"</em> for low-competition niches.
+          <em>&ldquo;retro gaming cat t-shirt&rdquo;</em> for low-competition niches.
         </li>
         <li>
           Use MerchRadar daily to catch <strong>new trends early</strong>.

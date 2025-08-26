@@ -21,6 +21,7 @@ export default function DarkModeLogo() {
   // Prevent hydration mismatch by not rendering until mounted
   if (!mounted) {
     return (
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img 
         src="/merchradar2.svg"
         alt="MerchRadar Logo" 
@@ -30,6 +31,7 @@ export default function DarkModeLogo() {
   }
 
   return (
+    {/* eslint-disable-next-line @next/next/no-img-element */}
     <img 
       src={isDarkMode ? "/merchradar1.svg" : "/merchradar2.svg"}
       alt="MerchRadar Logo" 
