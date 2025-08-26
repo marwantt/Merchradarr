@@ -222,6 +222,16 @@ export default function Home() {
           </div>
         </nav>
 
+        {/* About the Creator Section */}
+        <section className="bg-black/5 dark:bg-white/5 rounded-lg p-6 space-y-4">
+          <h2 className="text-lg font-semibold text-black/90 dark:text-white/90">About the Creator</h2>
+          <p className="text-sm text-black/70 dark:text-white/70 leading-relaxed">
+            Created by a passionate developer with experience in e-commerce and print-on-demand.
+            This tool was built to help Merch by Amazon sellers discover profitable opportunities
+            and streamline their product research process.
+          </p>
+        </section>
+
         {/* What is MerchRadar Section */}
         <section className="bg-black/5 dark:bg-white/5 rounded-lg p-6 space-y-4">
           <h2 className="text-lg font-semibold text-black/90 dark:text-white/90">What is MerchRadar?</h2>
