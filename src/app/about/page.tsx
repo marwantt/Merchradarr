@@ -72,6 +72,21 @@ export default function AboutPage() {
         <li><strong>Entrepreneurs:</strong> Anyone building a Print on Demand business</li>
       </ul>
 
+      <h2>About the Creator</h2>
+      <p>
+        MerchRadar was created by <strong>Marouane</strong>, a passionate 
+        graphic designer and Print on Demand seller with years of experience 
+        in <em>Merch by Amazon</em> and digital design. I built this tool to 
+        help fellow creators and entrepreneurs save time, discover fresh niches, 
+        and grow their Merch businesses with confidence.  
+      </p>
+      <p>
+        My background in design and e-commerce gives me a unique perspective 
+        on what sellers really need: simple, practical tools that make research 
+        faster and easier. MerchRadar is more than just a search tool — it&apos;s 
+        built by a seller, for sellers.  
+      </p>
+
       <h2>Get Started</h2>
       <p>
         Ready to find your next profitable niche? 
