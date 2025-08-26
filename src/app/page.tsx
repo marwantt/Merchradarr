@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Link from "next/link";
 
 interface Marketplace {
   id: string;
@@ -190,6 +191,30 @@ export default function Home() {
         <p className="text-sm text-center text-black/60 dark:text-white/60">
           Search {marketplace.name} for Merch by Amazon {productType.name.toLowerCase()} with your keywords.
         </p>
+
+        {/* Navigation Section */}
+        <nav className="bg-black/5 dark:bg-white/5 rounded-lg p-4">
+          <div className="flex justify-center space-x-8">
+            <Link 
+              href="/guide" 
+              className="text-sm font-medium text-black/80 dark:text-white/80 hover:text-black dark:hover:text-white transition-colors"
+            >
+              Guide
+            </Link>
+            <Link 
+              href="/about" 
+              className="text-sm font-medium text-black/80 dark:text-white/80 hover:text-black dark:hover:text-white transition-colors"
+            >
+              About
+            </Link>
+            <Link 
+              href="/blog" 
+              className="text-sm font-medium text-black/80 dark:text-white/80 hover:text-black dark:hover:text-white transition-colors"
+            >
+              Blog
+            </Link>
+          </div>
+        </nav>
 
         {/* What is MerchRadar Section */}
         <section className="bg-black/5 dark:bg-white/5 rounded-lg p-6 space-y-4">
