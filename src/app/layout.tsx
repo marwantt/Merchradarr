@@ -35,10 +35,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico" },
-      { url: "/merchradar1.svg", type: "image/svg+xml" }
+      { url: "/5IVEICON.svg", type: "image/svg+xml" }
     ],
-    shortcut: "/merchradar1.svg",
-    apple: "/merchradar1.svg",
+    shortcut: "/5IVEICON.svg",
+    apple: "/5IVEICON.svg",
   },
   openGraph: {
     title: "MerchRadar – Amazon Merch Research Tool",
