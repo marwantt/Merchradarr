@@ -51,6 +51,7 @@ export default function Home() {
   const [selectedMarketplace, setSelectedMarketplace] = useState("us");
   const [selectedProductType, setSelectedProductType] = useState("tshirts");
   const [selectedSort, setSelectedSort] = useState("featured");
+  const [isLoading, setIsLoading] = useState(false);
 
   const marketplace = marketplaces.find(m => m.id === selectedMarketplace)!;
   const productType = productTypes.find(p => p.id === selectedProductType)!;
@@ -84,14 +85,22 @@ export default function Home() {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (isLoading) return;
+
+    setIsLoading(true);
+
     const trimmed = keyword.trim();
     const fallbackUrl = "https://www.amazon.com/gp/bestsellers/fashion/9057094011/ref=pd_zg_hrsr_fashion";
-    if (!trimmed) {
-      window.open(fallbackUrl, "_blank", "noopener,noreferrer");
-      return;
-    }
-    if (!previewUrl) return;
-    window.open(previewUrl, "_blank", "noopener,noreferrer");
+
+    // Add a small delay to show loading state
+    setTimeout(() => {
+      if (!trimmed) {
+        window.open(fallbackUrl, "_blank", "noopener,noreferrer");
+      } else if (previewUrl) {
+        window.open(previewUrl, "_blank", "noopener,noreferrer");
+      }
+      setIsLoading(false);
+    }, 300);
   }
 
   return (
@@ -167,14 +176,27 @@ export default function Home() {
             value={keyword}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setKeyword(e.target.value)}
             placeholder="Enter a theme or keyword (e.g., cat, retro, gaming)"
-            className="flex-1 h-12 px-4 rounded-md border border-black/10 dark:border-white/20 bg-white dark:bg-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+            className="flex-1 h-12 px-4 rounded-md border border-black/10 dark:border-white/20 bg-white dark:bg-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm disabled:opacity-50"
+            disabled={isLoading}
             autoFocus
           />
           <button
             type="submit"
-            className="h-12 px-5 rounded-md bg-foreground text-background font-medium whitespace-nowrap"
+            disabled={isLoading}
+            className={`h-12 px-5 rounded-md font-medium whitespace-nowrap transition-all duration-200 ${
+              isLoading
+                ? "bg-black/20 dark:bg-white/20 text-black/50 dark:text-white/50 cursor-not-allowed"
+                : "bg-foreground text-background hover:bg-foreground/90"
+            }`}
           >
-            Search
+            {isLoading ? (
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
+                Searching...
+              </div>
+            ) : (
+              "Search"
+            )}
           </button>
         </form>
 
