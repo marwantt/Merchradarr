@@ -17,7 +17,35 @@ export default function BlogPage() {
         <article className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
           <div className="p-6">
             <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
-              <span>Featured</span>
+              <span className="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 px-2 py-1 rounded-full text-xs font-medium">
+                Policy Guide
+              </span>
+              <span className="mx-2">•</span>
+              <span>January 2025</span>
+            </div>
+            <h2 className="text-xl font-semibold mb-3">
+              <a href="/blog/amazon-restricted-keywords-merch" className="hover:text-blue-600 dark:hover:text-blue-400">
+                Amazon Restricted Keywords: The Ultimate Guide for Merch by Amazon Sellers
+              </a>
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              Learn which restricted keywords Amazon bans in Merch by Amazon listings. Avoid rejections and suspensions
+              with this comprehensive guide to safe alternatives and best practices.
+            </p>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-gray-500 dark:text-gray-400">12 min read</span>
+              <a href="/blog/amazon-restricted-keywords-merch" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 text-sm font-medium">
+                Read more →
+              </a>
+            </div>
+          </div>
+        </article>
+
+        {/* Regular Articles */}
+        <article className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+          <div className="p-6">
+            <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+              <span>Research</span>
               <span className="mx-2">•</span>
               <span>January 2025</span>
             </div>
@@ -27,7 +55,7 @@ export default function BlogPage() {
               </a>
             </h2>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
-              Discover the latest strategies for identifying winning niches in the competitive Amazon Merch marketplace. 
+              Discover the latest strategies for identifying winning niches in the competitive Amazon Merch marketplace.
               Learn how to spot trends early and avoid oversaturated markets.
             </p>
             <div className="flex items-center justify-between">
@@ -39,7 +67,6 @@ export default function BlogPage() {
           </div>
         </article>
 
-        {/* Regular Articles */}
         <article className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
           <div className="p-6">
             <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
@@ -53,7 +80,7 @@ export default function BlogPage() {
               </a>
             </h2>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
-              Master the art of seasonal planning for Amazon Merch. Learn when to design, 
+              Master the art of seasonal planning for Amazon Merch. Learn when to design,
               upload, and promote seasonal designs for maximum sales.
             </p>
             <div className="flex items-center justify-between">
