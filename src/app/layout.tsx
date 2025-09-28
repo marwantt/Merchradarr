@@ -1,7 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Geist, Geist_Mono, Fira_Code, Passero_One } from "next/font/google"
+import { Geist_Mono, Fira_Code, Passero_One } from "next/font/google"
 import { Analytics } from '@vercel/analytics/react'
 import DarkModeLogo from "../components/DarkModeLogo"
 import "./globals.css"
@@ -64,15 +64,29 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+          rel="stylesheet"
+        />
         <style>{`
 html {
-  font-family: ${geistSans.style.fontFamily};
-  --font-sans: ${geistSans.variable};
+  font-family: 'JetBrains Mono', monospace;
+  --font-sans: 'JetBrains Mono', monospace;
   --font-mono: ${geistMono.variable};
   --font-fira-code: ${firaCode.variable};
   --font-passero-one: ${passeroOne.variable};
+  --font-google-sans-code: 'JetBrains Mono', monospace;
+}
+
+.google-sans-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .passero-one-regular {
