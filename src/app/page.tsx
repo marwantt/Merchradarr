@@ -2,6 +2,15 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import { SearchAnalytics } from "../utils/analytics";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { Loader2 } from "lucide-react";
 
 interface Marketplace {
   id: string;
@@ -97,6 +106,14 @@ export default function Home() {
       if (!trimmed) {
         window.open(fallbackUrl, "_blank", "noopener,noreferrer");
       } else if (previewUrl) {
+        // Track the search
+        SearchAnalytics.trackSearch(
+          trimmed,
+          selectedMarketplace,
+          selectedProductType,
+          selectedSort,
+          previewUrl
+        );
         window.open(previewUrl, "_blank", "noopener,noreferrer");
       }
       setIsLoading(false);
@@ -107,152 +124,163 @@ export default function Home() {
     <div className="min-h-screen flex items-center justify-center p-4 sm:p-8">
       <main className="w-full max-w-2xl flex flex-col gap-4 sm:gap-6 items-stretch">
         <h1 className="text-xl sm:text-2xl font-semibold text-center px-2">Spot Merch tees instantly.</h1>
-        
+
         {/* Settings Section */}
-        <div className="bg-black/5 dark:bg-white/5 rounded-lg p-4 space-y-4">
-          <h2 className="text-sm font-medium text-black/80 dark:text-white/80">Settings</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Marketplace Selector */}
-            <div>
-              <label className="block text-xs font-medium text-black/70 dark:text-white/70 mb-1">
-                Marketplace
-              </label>
-              <select
-                value={selectedMarketplace}
-                onChange={(e) => setSelectedMarketplace(e.target.value)}
-                className="w-full h-10 px-3 rounded-md border border-black/10 dark:border-white/20 bg-white dark:bg-black/20 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                {marketplaces.map(marketplace => (
-                  <option key={marketplace.id} value={marketplace.id}>
-                    {marketplace.name}
-                  </option>
-                ))}
-              </select>
-            </div>
+        <Card className="bg-muted/50">
+          <CardHeader className="pb-3">
+            <CardTitle className="text-sm font-medium">Settings</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {/* Marketplace Selector */}
+              <div className="space-y-2">
+                <Label htmlFor="marketplace" className="text-xs font-medium">
+                  Marketplace
+                </Label>
+                <Select value={selectedMarketplace} onValueChange={setSelectedMarketplace}>
+                  <SelectTrigger className="h-10">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {marketplaces.map(marketplace => (
+                      <SelectItem key={marketplace.id} value={marketplace.id}>
+                        {marketplace.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
-            {/* Product Type Selector */}
-            <div>
-              <label className="block text-xs font-medium text-black/70 dark:text-white/70 mb-1">
-                Product Type
-              </label>
-              <select
-                value={selectedProductType}
-                onChange={(e) => setSelectedProductType(e.target.value)}
-                className="w-full h-10 px-3 rounded-md border border-black/10 dark:border-white/20 bg-white dark:bg-black/20 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                {productTypes.map(product => (
-                  <option key={product.id} value={product.id}>
-                    {product.name}
-                  </option>
-                ))}
-              </select>
-            </div>
+              {/* Product Type Selector */}
+              <div className="space-y-2">
+                <Label htmlFor="product-type" className="text-xs font-medium">
+                  Product Type
+                </Label>
+                <Select value={selectedProductType} onValueChange={setSelectedProductType}>
+                  <SelectTrigger className="h-10">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {productTypes.map(product => (
+                      <SelectItem key={product.id} value={product.id}>
+                        {product.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
-            {/* Sort By Selector */}
-            <div>
-              <label className="block text-xs font-medium text-black/70 dark:text-white/70 mb-1">
-                Sort By
-              </label>
-              <select
-                value={selectedSort}
-                onChange={(e) => setSelectedSort(e.target.value)}
-                className="w-full h-10 px-3 rounded-md border border-black/10 dark:border-white/20 bg-white dark:bg-black/20 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                {sortOptions.map(option => (
-                  <option key={option.id} value={option.id}>
-                    {option.name}
-                  </option>
-                ))}
-              </select>
+              {/* Sort By Selector */}
+              <div className="space-y-2">
+                <Label htmlFor="sort-by" className="text-xs font-medium">
+                  Sort By
+                </Label>
+                <Select value={selectedSort} onValueChange={setSelectedSort}>
+                  <SelectTrigger className="h-10">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {sortOptions.map(option => (
+                      <SelectItem key={option.id} value={option.id}>
+                        {option.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
 
         {/* Search Form */}
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-          <input
+          <Input
             type="text"
             value={keyword}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setKeyword(e.target.value)}
             placeholder="Enter a theme or keyword (e.g., cat, retro, gaming)"
-            className="flex-1 h-12 px-4 rounded-md border border-black/10 dark:border-white/20 bg-white dark:bg-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm disabled:opacity-50"
+            className="flex-1 h-12"
             disabled={isLoading}
             autoFocus
           />
-          <button
+          <Button
             type="submit"
             disabled={isLoading}
-            className={`h-12 px-5 rounded-md font-medium whitespace-nowrap transition-all duration-200 ${
-              isLoading
-                ? "bg-black/20 dark:bg-white/20 text-black/50 dark:text-white/50 cursor-not-allowed"
-                : "bg-foreground text-background hover:bg-foreground/90"
-            }`}
+            className="h-12 px-5 whitespace-nowrap"
+            size="lg"
           >
             {isLoading ? (
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 Searching...
-              </div>
+              </>
             ) : (
               "Search"
             )}
-          </button>
+          </Button>
         </form>
 
         {/* Live URL Preview */}
         {previewUrl && (
-          <div className="bg-black/5 dark:bg-white/5 rounded-lg p-3">
-            <div className="text-xs font-medium text-black/70 dark:text-white/70 mb-1">Preview URL:</div>
-            <div className="text-xs text-black/60 dark:text-white/60 break-all font-mono">
-              {previewUrl}
-            </div>
-          </div>
+          <Card className="bg-muted/30">
+            <CardContent className="pt-4">
+              <div className="text-xs font-medium text-muted-foreground mb-2">Preview URL:</div>
+              <div className="text-xs text-muted-foreground break-all font-mono bg-background/50 p-2 rounded border">
+                {previewUrl}
+              </div>
+            </CardContent>
+          </Card>
         )}
 
-        <p className="text-sm text-center text-black/60 dark:text-white/60">
+        <p className="text-sm text-center text-muted-foreground">
           Search {marketplace.name} for Merch by Amazon {productType.name.toLowerCase()} with your keywords.
         </p>
 
         {/* Navigation Section */}
-        <nav className="bg-black/5 dark:bg-white/5 rounded-lg p-4">
-          <div className="flex justify-center space-x-8">
-            <Link 
-              href="/guide" 
-              className="text-sm font-medium text-black/80 dark:text-white/80 hover:text-black dark:hover:text-white transition-colors"
-            >
-              Guide
-            </Link>
-            <Link 
-              href="/about" 
-              className="text-sm font-medium text-black/80 dark:text-white/80 hover:text-black dark:hover:text-white transition-colors"
-            >
-              About
-            </Link>
-            <Link 
-              href="/blog" 
-              className="text-sm font-medium text-black/80 dark:text-white/80 hover:text-black dark:hover:text-white transition-colors"
-            >
-              Blog
-            </Link>
-            <Link 
-              href="/contact" 
-              className="text-sm font-medium text-black/80 dark:text-white/80 hover:text-black dark:hover:text-white transition-colors"
-            >
-              Contact
-            </Link>
-          </div>
-        </nav>
+        <Card className="bg-muted/50">
+          <CardContent className="pt-4">
+            <nav className="flex justify-center space-x-8">
+              <Link
+                href="/guide"
+                className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+              >
+                Guide
+              </Link>
+              <Link
+                href="/about"
+                className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+              >
+                About
+              </Link>
+              <Link
+                href="/blog"
+                className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+              >
+                Blog
+              </Link>
+              <Link
+                href="/contact"
+                className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+              >
+                Contact
+              </Link>
+            </nav>
+          </CardContent>
+        </Card>
 
         {/* What is MerchRadar Section */}
-        <section className="bg-black/5 dark:bg-white/5 rounded-lg p-6 space-y-4">
-          <h2 className="text-lg font-semibold text-black/90 dark:text-white/90">What is MerchRadar?</h2>
-          <p className="text-sm text-black/70 dark:text-white/70 leading-relaxed">
-            MerchRadar is a free tool for Merch by Amazon sellers.
-            Instantly search for profitable niches in t-shirts, hoodies,
-            and sweatshirts. Save time, scan trends, and grow your POD business.
-          </p>
-        </section>
+        <Card className="bg-muted/50">
+          <CardHeader>
+            <CardTitle className="text-lg">What is MerchRadar?</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              MerchRadar is a free tool for Merch by Amazon sellers.
+              Instantly search for profitable niches in t-shirts, hoodies,
+              and sweatshirts. Save time, scan trends, and grow your POD business.
+            </p>
+          </CardContent>
+        </Card>
       </main>
     </div>
   );

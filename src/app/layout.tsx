@@ -89,8 +89,8 @@ html {
           </Link>
         </header>
         {children}
-        <footer className="w-full py-8 mt-16 flex items-center justify-center px-4 border-t border-black/10 dark:border-white/20">
-          <p className="text-sm text-black/60 dark:text-white/60 text-center">
+        <footer className="w-full py-8 mt-16 flex items-center justify-center px-4 border-t border-border">
+          <p className="text-sm text-muted-foreground text-center">
             © 2025 MerchRadar 🌟 Built with love for creators, dreamers, and merch hustlers.
           </p>
         </footer>
