@@ -116,44 +116,61 @@ export default function Home() {
     }, 300);
   }
 
+  function handleTitleClick() {
+    // Clear the search input and refresh the page state
+    setKeyword("");
+    setSelectedMarketplace("us");
+    setSelectedProductType("tshirts");
+    setSelectedSort("featured");
+    setIsLoading(false);
+
+    // Optionally refresh the entire page
+    // window.location.reload();
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <main className="w-full max-w-lg flex flex-col gap-8 items-stretch">
+      <main className="w-full max-w-2xl flex flex-col gap-12 items-stretch">
 
         {/* Minimal Header */}
-        <div className="text-center space-y-1">
-          <h1 className="text-4xl title-font tracking-wide">MERCHRADAR</h1>
-          <p className="text-xs text-muted-foreground uppercase tracking-wider">AMAZON MERCH NICHE FINDER</p>
+        <div className="text-center space-y-3">
+          <h1
+            className="text-6xl title-font tracking-wide cursor-pointer hover:opacity-80 transition-opacity"
+            onClick={handleTitleClick}
+          >
+            Merch Radar
+          </h1>
+          <p className="text-sm text-muted-foreground uppercase tracking-wider">AMAZON MERCH NICHE FINDER</p>
         </div>
 
         {/* First-time user hint */}
         {!keyword && (
-          <div className="text-center py-3 border border-dashed border-border">
-            <p className="text-xs text-muted-foreground uppercase tracking-wide">
+          <div className="text-center py-6 border border-dashed border-border">
+            <p className="text-sm text-muted-foreground uppercase tracking-wide">
               TRY: &ldquo;CAT SHIRTS&rdquo; | &ldquo;RETRO GAMING&rdquo; | &ldquo;MOTIVATIONAL QUOTES&rdquo;
             </p>
           </div>
         )}
 
         {/* Core Search */}
-        <div className="space-y-6">
+        <div className="space-y-8">
           {/* Primary Search Input */}
-          <div className="space-y-2">
+          <div className="space-y-4">
             <Input
               type="text"
               value={keyword}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setKeyword(e.target.value)}
               placeholder="ENTER NICHE OR KEYWORD..."
-              className="h-12 text-center text-sm uppercase tracking-wider font-medium"
+              className="h-16 text-center text-lg uppercase tracking-wider font-medium"
               disabled={isLoading}
               autoFocus
             />
           </div>
 
           {/* Minimal Settings - Horizontal Layout */}
-          <div className="grid grid-cols-3 gap-2 text-xs">
+          <div className="grid grid-cols-3 gap-4 text-sm">
             <Select value={selectedMarketplace} onValueChange={setSelectedMarketplace}>
-              <SelectTrigger className="h-8">
+              <SelectTrigger className="h-12">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -166,7 +183,7 @@ export default function Home() {
             </Select>
 
             <Select value={selectedProductType} onValueChange={setSelectedProductType}>
-              <SelectTrigger className="h-8">
+              <SelectTrigger className="h-12">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -179,7 +196,7 @@ export default function Home() {
             </Select>
 
             <Select value={selectedSort} onValueChange={setSelectedSort}>
-              <SelectTrigger className="h-8">
+              <SelectTrigger className="h-12">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -198,12 +215,12 @@ export default function Home() {
           <Button
             type="submit"
             disabled={isLoading}
-            className="h-12 w-full text-sm uppercase tracking-wider font-medium"
+            className="h-16 w-full text-lg uppercase tracking-wider font-medium"
             variant="default"
           >
             {isLoading ? (
               <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <Loader2 className="mr-2 h-6 w-6 animate-spin" />
                 SEARCHING...
               </>
             ) : (
@@ -214,14 +231,14 @@ export default function Home() {
 
         {/* Live URL Preview - Minimal */}
         {previewUrl && (
-          <div className="text-xs text-muted-foreground break-all border-t pt-4 font-mono">
+          <div className="text-sm text-muted-foreground break-all border-t pt-6 font-mono">
             {previewUrl}
           </div>
         )}
 
         {/* Minimal Footer Links */}
-        <div className="text-center pt-8 border-t">
-          <nav className="flex justify-center gap-8 text-xs text-muted-foreground">
+        <div className="text-center pt-12 border-t">
+          <nav className="flex justify-center gap-12 text-sm text-muted-foreground">
             <Link href="/guide" className="hover:text-foreground uppercase tracking-wider">GUIDE</Link>
             <Link href="/about" className="hover:text-foreground uppercase tracking-wider">ABOUT</Link>
             <Link href="/blog" className="hover:text-foreground uppercase tracking-wider">BLOG</Link>

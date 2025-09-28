@@ -40,12 +40,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-        <link href="https://use.typekit.net/jzo0rpe.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://use.typekit.net/hsv7prw.css" />
         <style>{`
 :root {
   --font-mono: "Google Sans Code", monospace;
