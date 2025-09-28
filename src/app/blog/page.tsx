@@ -1,6 +1,3 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 
 export const metadata = {
@@ -23,74 +20,48 @@ const staticPosts = [
 
 export default function BlogPage() {
   return (
-    <main className="max-w-4xl mx-auto p-6 space-y-8">
+    <main className="max-w-2xl mx-auto p-6 space-y-12">
       <div className="text-center space-y-4">
-        <h1 className="text-3xl font-bold">MerchRadar Blog</h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Tips, strategies, and insights for Amazon Merch sellers and Print on Demand entrepreneurs.
+        <h1 className="text-2xl font-normal">Blog</h1>
+        <p className="text-sm text-muted-foreground">
+          Amazon Merch insights and strategies
         </p>
       </div>
 
-      <Separator />
-
-      <div className="grid gap-6">
+      <div className="space-y-8">
         {/* Featured Articles */}
         {staticPosts.map((post) => (
-          <Card key={post.slug} className={post.featured ? "border-primary/20 bg-gradient-to-br from-background to-muted/30" : ""}>
-            <CardHeader className="pb-3">
-              <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                <Badge variant={post.category.color === "red" ? "destructive" : "secondary"}>
-                  {post.category.title}
-                </Badge>
-                <span>•</span>
+          <article key={post.slug} className="border-b border-border pb-8">
+            <div className="space-y-3">
+              <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                <span>{post.category.title}</span>
                 <span>{post.publishedAt}</span>
-                {post.featured && (
-                  <>
-                    <span>•</span>
-                    <Badge variant="outline">Featured</Badge>
-                  </>
-                )}
+                <span>{post.readingTime} min</span>
               </div>
-              <CardTitle className="text-xl leading-tight">
+              <h2 className="text-lg font-normal">
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-foreground transition-colors"
                 >
                   {post.title}
                 </Link>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4 leading-relaxed">
+              </h2>
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 {post.excerpt}
               </p>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">
-                  {post.readingTime} min read
-                </span>
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="text-primary hover:text-primary/80 text-sm font-medium transition-colors"
-                >
-                  Read more →
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
+            </div>
+          </article>
         ))}
 
         {/* Placeholder for Sanity Posts */}
-        <Card className="border-dashed">
-          <CardContent className="pt-6 text-center">
-            <h3 className="text-lg font-semibold mb-2">Content from Sanity CMS</h3>
-            <p className="text-muted-foreground mb-4">
-              Blog posts you create in Sanity Studio will appear here automatically.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Visit <strong>http://localhost:3333</strong> to create your first blog post!
-            </p>
-          </CardContent>
-        </Card>
+        <div className="border border-dashed border-border p-8 text-center">
+          <p className="text-sm text-muted-foreground">
+            Additional blog posts from Sanity CMS will appear here.
+          </p>
+          <p className="text-xs text-muted-foreground mt-2">
+            Visit localhost:3333 to manage content.
+          </p>
+        </div>
 
       </div>
     </main>

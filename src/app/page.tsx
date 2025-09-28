@@ -5,8 +5,6 @@ import Link from "next/link";
 import { SearchAnalytics } from "../utils/analytics";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Loader2 } from "lucide-react";
 
@@ -119,166 +117,117 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 sm:p-8">
-      <main className="w-full max-w-2xl flex flex-col gap-4 sm:gap-6 items-stretch">
-        <h1 className="text-xl sm:text-2xl font-semibold text-center px-2">Spot Merch tees instantly.</h1>
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <main className="w-full max-w-lg flex flex-col gap-8 items-stretch">
 
-        {/* Settings Section */}
-        <Card className="bg-muted/50">
-          <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium">Settings</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {/* Marketplace Selector */}
-              <div className="space-y-2">
-                <Label htmlFor="marketplace" className="text-xs font-medium">
-                  Marketplace
-                </Label>
-                <Select value={selectedMarketplace} onValueChange={setSelectedMarketplace}>
-                  <SelectTrigger className="h-10">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {marketplaces.map(marketplace => (
-                      <SelectItem key={marketplace.id} value={marketplace.id}>
-                        {marketplace.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+        {/* Minimal Header */}
+        <div className="text-center space-y-1">
+          <h1 className="text-xl font-medium tracking-wide">MERCHRADAR</h1>
+          <p className="text-xs text-muted-foreground uppercase tracking-wider">AMAZON MERCH NICHE FINDER</p>
+        </div>
 
-              {/* Product Type Selector */}
-              <div className="space-y-2">
-                <Label htmlFor="product-type" className="text-xs font-medium">
-                  Product Type
-                </Label>
-                <Select value={selectedProductType} onValueChange={setSelectedProductType}>
-                  <SelectTrigger className="h-10">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {productTypes.map(product => (
-                      <SelectItem key={product.id} value={product.id}>
-                        {product.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+        {/* First-time user hint */}
+        {!keyword && (
+          <div className="text-center py-3 border border-dashed border-border">
+            <p className="text-xs text-muted-foreground uppercase tracking-wide">
+              TRY: &ldquo;CAT SHIRTS&rdquo; | &ldquo;RETRO GAMING&rdquo; | &ldquo;MOTIVATIONAL QUOTES&rdquo;
+            </p>
+          </div>
+        )}
 
-              {/* Sort By Selector */}
-              <div className="space-y-2">
-                <Label htmlFor="sort-by" className="text-xs font-medium">
-                  Sort By
-                </Label>
-                <Select value={selectedSort} onValueChange={setSelectedSort}>
-                  <SelectTrigger className="h-10">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {sortOptions.map(option => (
-                      <SelectItem key={option.id} value={option.id}>
-                        {option.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        {/* Core Search */}
+        <div className="space-y-6">
+          {/* Primary Search Input */}
+          <div className="space-y-2">
+            <Input
+              type="text"
+              value={keyword}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setKeyword(e.target.value)}
+              placeholder="ENTER NICHE OR KEYWORD..."
+              className="h-12 text-center text-sm uppercase tracking-wider font-medium"
+              disabled={isLoading}
+              autoFocus
+            />
+          </div>
 
-        {/* Search Form */}
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-          <Input
-            type="text"
-            value={keyword}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setKeyword(e.target.value)}
-            placeholder="Enter a theme or keyword (e.g., cat, retro, gaming)"
-            className="flex-1 h-12"
-            disabled={isLoading}
-            autoFocus
-          />
+          {/* Minimal Settings - Horizontal Layout */}
+          <div className="grid grid-cols-3 gap-2 text-xs">
+            <Select value={selectedMarketplace} onValueChange={setSelectedMarketplace}>
+              <SelectTrigger className="h-8">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {marketplaces.map(marketplace => (
+                  <SelectItem key={marketplace.id} value={marketplace.id}>
+                    {marketplace.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            <Select value={selectedProductType} onValueChange={setSelectedProductType}>
+              <SelectTrigger className="h-8">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {productTypes.map(product => (
+                  <SelectItem key={product.id} value={product.id}>
+                    {product.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            <Select value={selectedSort} onValueChange={setSelectedSort}>
+              <SelectTrigger className="h-8">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {sortOptions.map(option => (
+                  <SelectItem key={option.id} value={option.id}>
+                    {option.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+
+        {/* Search Button */}
+        <form onSubmit={handleSubmit}>
           <Button
             type="submit"
             disabled={isLoading}
-            className="h-12 px-5 whitespace-nowrap"
-            size="lg"
+            className="h-12 w-full text-sm uppercase tracking-wider font-medium"
+            variant="default"
           >
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Searching...
+                SEARCHING...
               </>
             ) : (
-              "Search"
+              "SEARCH AMAZON"
             )}
           </Button>
         </form>
 
-        {/* Live URL Preview */}
+        {/* Live URL Preview - Minimal */}
         {previewUrl && (
-          <Card className="bg-muted/30">
-            <CardContent className="pt-4">
-              <div className="text-xs font-medium text-muted-foreground mb-2">Preview URL:</div>
-              <div className="text-xs text-muted-foreground break-all font-mono bg-background/50 p-2 rounded border">
-                {previewUrl}
-              </div>
-            </CardContent>
-          </Card>
+          <div className="text-xs text-muted-foreground break-all border-t pt-4 font-mono">
+            {previewUrl}
+          </div>
         )}
 
-        <p className="text-sm text-center text-muted-foreground">
-          Search {marketplace.name} for Merch by Amazon {productType.name.toLowerCase()} with your keywords.
-        </p>
-
-        {/* Navigation Section */}
-        <Card className="bg-muted/50">
-          <CardContent className="pt-4">
-            <nav className="flex justify-center space-x-8">
-              <Link
-                href="/guide"
-                className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
-              >
-                Guide
-              </Link>
-              <Link
-                href="/about"
-                className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
-              >
-                About
-              </Link>
-              <Link
-                href="/blog"
-                className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
-              >
-                Blog
-              </Link>
-              <Link
-                href="/contact"
-                className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
-              >
-                Contact
-              </Link>
-            </nav>
-          </CardContent>
-        </Card>
-
-        {/* What is MerchRadar Section */}
-        <Card className="bg-muted/50">
-          <CardHeader>
-            <CardTitle className="text-lg">What is MerchRadar?</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              MerchRadar is a free tool for Merch by Amazon sellers.
-              Instantly search for profitable niches in t-shirts, hoodies,
-              and sweatshirts. Save time, scan trends, and grow your POD business.
-            </p>
-          </CardContent>
-        </Card>
+        {/* Minimal Footer Links */}
+        <div className="text-center pt-8 border-t">
+          <nav className="flex justify-center gap-8 text-xs text-muted-foreground">
+            <Link href="/guide" className="hover:text-foreground uppercase tracking-wider">GUIDE</Link>
+            <Link href="/about" className="hover:text-foreground uppercase tracking-wider">ABOUT</Link>
+            <Link href="/blog" className="hover:text-foreground uppercase tracking-wider">BLOG</Link>
+            <Link href="/contact" className="hover:text-foreground uppercase tracking-wider">CONTACT</Link>
+          </nav>
+        </div>
       </main>
     </div>
   );

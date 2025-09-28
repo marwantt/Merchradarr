@@ -1,31 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
-import Link from "next/link"
-import { Geist_Mono, Fira_Code, Passero_One } from "next/font/google"
 import { Analytics } from '@vercel/analytics/react'
-import DarkModeLogo from "../components/DarkModeLogo"
 import "./globals.css"
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-})
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-})
-
-const firaCode = Fira_Code({
-  variable: "--font-fira-code",
-  subsets: ["latin"],
-})
-
-const passeroOne = Passero_One({
-  variable: "--font-passero-one",
-  subsets: ["latin"],
-  weight: "400",
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://merchradar.vercel.app'),
@@ -68,46 +44,40 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
-          rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <style>{`
-html {
-  font-family: 'JetBrains Mono', monospace;
-  --font-sans: 'JetBrains Mono', monospace;
-  --font-mono: ${geistMono.variable};
-  --font-fira-code: ${firaCode.variable};
-  --font-passero-one: ${passeroOne.variable};
-  --font-google-sans-code: 'JetBrains Mono', monospace;
+:root {
+  --font-mono: "Google Sans Code", monospace;
 }
 
-.google-sans-code {
-  font-family: 'JetBrains Mono', monospace;
+html {
+  font-family: "Google Sans Code", monospace;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
 
-.passero-one-regular {
-  font-family: var(--font-passero-one), "Passero One", sans-serif;
+body {
+  font-family: "Google Sans Code", monospace;
+  font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+/* Minimal monospace typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Google Sans Code", monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0;
 }
         `}</style>
       </head>
       <body>
-        <header className="w-full py-6 sm:py-10 mt-8 sm:mt-24 mb-3 flex items-center justify-center px-4" style={{marginTop: '100px'}}>
-          <Link href="/" aria-label="MerchRadar home">
-            <DarkModeLogo />
-          </Link>
-        </header>
         {children}
-        <footer className="w-full py-8 mt-16 flex items-center justify-center px-4 border-t border-border">
-          <p className="text-sm text-muted-foreground text-center">
-            © 2025 MerchRadar 🌟 Built with love for creators, dreamers, and merch hustlers.
-          </p>
-        </footer>
         <Analytics />
       </body>
     </html>
