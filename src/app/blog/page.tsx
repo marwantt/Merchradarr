@@ -5,7 +5,6 @@ export const metadata = {
   description: "Get the latest Amazon Merch tips, niche research strategies, and Print on Demand insights from the MerchRadar blog.",
 };
 
-// This would normally fetch from Sanity, but for now showing static content + your existing posts
 const staticPosts = [
   {
     title: "Amazon Restricted Keywords: The Ultimate Guide for Merch by Amazon Sellers",
@@ -29,7 +28,7 @@ export default function BlogPage() {
       </div>
 
       <div className="space-y-8">
-        {/* Featured Articles */}
+        {/* Blog Articles */}
         {staticPosts.map((post) => (
           <article key={post.slug} className="border-b border-border pb-8">
             <div className="space-y-3">
@@ -53,15 +52,6 @@ export default function BlogPage() {
           </article>
         ))}
 
-        {/* Placeholder for Sanity Posts */}
-        <div className="border border-dashed border-border p-8 text-center">
-          <p className="text-sm text-muted-foreground">
-            Additional blog posts from Sanity CMS will appear here.
-          </p>
-          <p className="text-xs text-muted-foreground mt-2">
-            Visit localhost:3333 to manage content.
-          </p>
-        </div>
 
       </div>
     </main>

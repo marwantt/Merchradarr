@@ -45,9 +45,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://use.typekit.net/jzo0rpe.css" rel="stylesheet" />
         <style>{`
 :root {
   --font-mono: "Google Sans Code", monospace;
+  --font-title: "bc-ludva", sans-serif;
 }
 
 html {
@@ -73,6 +75,13 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   font-style: normal;
   letter-spacing: 0;
+}
+
+/* BC Ludva title styling */
+.title-font {
+  font-family: "bc-ludva", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
         `}</style>
       </head>

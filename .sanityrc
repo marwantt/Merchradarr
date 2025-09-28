@@ -1,7 +1,0 @@
-{
-  "vite": {
-    "css": {
-      "postcss": false
-    }
-  }
-}

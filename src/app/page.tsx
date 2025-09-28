@@ -122,7 +122,7 @@ export default function Home() {
 
         {/* Minimal Header */}
         <div className="text-center space-y-1">
-          <h1 className="text-xl font-medium tracking-wide">MERCHRADAR</h1>
+          <h1 className="text-4xl title-font tracking-wide">MERCHRADAR</h1>
           <p className="text-xs text-muted-foreground uppercase tracking-wider">AMAZON MERCH NICHE FINDER</p>
         </div>
 
