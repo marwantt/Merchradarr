@@ -15,7 +15,7 @@ export default function AmazonRestrictedKeywordsPage() {
               Policy Guide
             </span>
             <span className="mx-2">•</span>
-            <span>January 2025</span>
+            <span>December 29, 2024</span>
             <span className="mx-2">•</span>
             <span>12 min read</span>
           </div>
@@ -367,7 +367,7 @@ export default function AmazonRestrictedKeywordsPage() {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-500 dark:text-gray-400">Published on</p>
-              <p className="text-gray-900 dark:text-white font-medium">January 2025</p>
+              <p className="text-gray-900 dark:text-white font-medium">December 29, 2024</p>
             </div>
             <div className="flex gap-4">
               <Link
