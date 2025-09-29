@@ -16,12 +16,39 @@ draft: false
 
 ## 🎯 What You'll Master
 
-<div class="grid grid-cols-2 gap-4 my-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+<div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900 dark:to-purple-900 p-6 rounded-lg border-l-4 border-blue-500 my-8">
 
-✅ **Complete Restricted Keywords Database**
-✅ **Safe Alternative Phrases**
-✅ **Account Protection Strategies**
-✅ **2025 Policy Updates**
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+<div class="flex items-center space-x-3">
+<span class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+<span class="text-white text-sm">✓</span>
+</span>
+<span class="font-medium">Complete Restricted Keywords Database</span>
+</div>
+
+<div class="flex items-center space-x-3">
+<span class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+<span class="text-white text-sm">✓</span>
+</span>
+<span class="font-medium">Safe Alternative Phrases</span>
+</div>
+
+<div class="flex items-center space-x-3">
+<span class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+<span class="text-white text-sm">✓</span>
+</span>
+<span class="font-medium">Account Protection Strategies</span>
+</div>
+
+<div class="flex items-center space-x-3">
+<span class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+<span class="text-white text-sm">✓</span>
+</span>
+<span class="font-medium">2025 Policy Updates</span>
+</div>
+
+</div>
 
 </div>
 
@@ -56,75 +83,155 @@ If you use restricted words, your design risks:
 > 💡 **Pro Tip**: Bookmark this list! These are ALL the keywords known to cause Amazon Merch rejections.
 
 ### 🛑 Health & Medical Terms
-```
-100% natural, acquired immune deficiency syndrome, adhd, aids, all natural,
-als, alzheimers, antibacterial, anti-bacterial, antifungal, anti-fungal,
-anti-microbial, anxiety, bacteria, cancer, cancroid, cataract, cells,
-chlamydia, cmv, concusuion, coronavirus, covid, covid-19, crabs,
-crystic fibrosis, cure, cytomegalovirus, dementia, depression,
-detoxification, detoxify, diabetes, diabetic, diabetic neuropathy,
-disease, diseases, dotoxifying, fast relief, flu, fungal, fungicide,
-fungicides, fungus, glaucoma, gororrhea, heal, hepatitis a, hepatitis b,
-hepatitis c, herpes, herpes simplex virus 1, herpes simplex virus 2,
-hiv, hodgkins lymphoma, hpv, hsv1, hsv2, human immunodeficiency virus,
-human papiloma virus, inflammation, influenza, kidney disease, lgv,
-liver disease, lupus, lymphogranuloma venereum, lymphoma, meningitis,
-mildew, mono, mononucleosis, mould, mould resistant, mould spores,
-multiple sclerosis, muscular dystrophy, mycoplasma genitalium,
-ngu, nongonococcal urethritis, parasitic, parkinson, parkinsons,
-pelvic inflammatory disease, pid, public lice, remedies, remedy,
-sad, sanitize, sanitizes, scabies, seasonal affective disorder,
-stroke, tbis, toxic, toxin, toxins, traumatic brain injuries, treat,
-treatment, trich, trichomoniosis, tricht, tumor, viral, virus, viruses,
-weight loss
-```
+
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 my-6">
+
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">100% natural</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">adhd</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">aids</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">all natural</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">alzheimers</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">antibacterial</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">anti-bacterial</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">antifungal</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">anti-fungal</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">anxiety</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">bacteria</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">cancer</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">covid</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">covid-19</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">cure</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">dementia</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">depression</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">detoxify</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">diabetes</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">diabetic</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">disease</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">flu</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">heal</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">hepatitis</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">herpes</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">hiv</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">inflammation</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">influenza</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">lupus</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">parkinson</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">remedies</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">sanitize</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">stroke</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">toxic</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">treat</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">treatment</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">tumor</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">virus</span>
+<span class="bg-red-100 border border-red-400 text-red-800 px-2 py-1 rounded text-xs font-mono">weight loss</span>
+
+</div>
 
 ### 💰 Sales & Marketing Terms
-```
-100% quality guaranteed, 100% value, added value, approved, arrive faster,
-award winning, best deal, best price, best seller, best selling, big sale,
-brand new, buy now, buy with confidence, cheap, closeout, close-out, cost,
-discounted price, don't miss out, fall sale, free gift, free shipping,
-free shipping guaranteed, guarantee, guaranteed, hassle free, hot item,
-huge sale, limited time offer, mail rebate, massive sale, money back guarantee,
-on sale, over- stock, overstock, plus free, ready to ship, save $, save cash,
-save money, satisfaction, special offer, special promo, spring sale,
-summer sale, super sale, supplies won't last, unbeatable price,
-wholesale price, winter sale, within hours
-```
+
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 my-6">
+
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">100% guaranteed</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">best seller</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">best deal</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">best price</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">big sale</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">buy now</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">cheap</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">closeout</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">discounted price</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">don't miss out</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">free gift</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">free shipping</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">guarantee</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">guaranteed</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">hot item</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">huge sale</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">limited time</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">massive sale</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">money back</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">on sale</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">overstock</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">save money</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">special offer</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">super sale</span>
+<span class="bg-orange-100 border border-orange-400 text-orange-800 px-2 py-1 rounded text-xs font-mono">wholesale price</span>
+
+</div>
 
 ### 🏆 Quality & Ranking Claims
-```
-amazon choice, amazon suggested, authentic, certified, flawless,
-highest rated, lasting quality, newest version, no.1 product,
-patented, professional quality, proven, quality, recommended by,
-tested, top notch, top quality, top rated, top selling, validated,
-worlds best
-```
+
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 my-6">
+
+<span class="bg-purple-100 border border-purple-400 text-purple-800 px-2 py-1 rounded text-xs font-mono">amazon choice</span>
+<span class="bg-purple-100 border border-purple-400 text-purple-800 px-2 py-1 rounded text-xs font-mono">amazon suggested</span>
+<span class="bg-purple-100 border border-purple-400 text-purple-800 px-2 py-1 rounded text-xs font-mono">authentic</span>
+<span class="bg-purple-100 border border-purple-400 text-purple-800 px-2 py-1 rounded text-xs font-mono">certified</span>
+<span class="bg-purple-100 border border-purple-400 text-purple-800 px-2 py-1 rounded text-xs font-mono">flawless</span>
+<span class="bg-purple-100 border border-purple-400 text-purple-800 px-2 py-1 rounded text-xs font-mono">highest rated</span>
+<span class="bg-purple-100 border border-purple-400 text-purple-800 px-2 py-1 rounded text-xs font-mono">no.1 product</span>
+<span class="bg-purple-100 border border-purple-400 text-purple-800 px-2 py-1 rounded text-xs font-mono">patented</span>
+<span class="bg-purple-100 border border-purple-400 text-purple-800 px-2 py-1 rounded text-xs font-mono">professional quality</span>
+<span class="bg-purple-100 border border-purple-400 text-purple-800 px-2 py-1 rounded text-xs font-mono">proven</span>
+<span class="bg-purple-100 border border-purple-400 text-purple-800 px-2 py-1 rounded text-xs font-mono">quality</span>
+<span class="bg-purple-100 border border-purple-400 text-purple-800 px-2 py-1 rounded text-xs font-mono">recommended by</span>
+<span class="bg-purple-100 border border-purple-400 text-purple-800 px-2 py-1 rounded text-xs font-mono">tested</span>
+<span class="bg-purple-100 border border-purple-400 text-purple-800 px-2 py-1 rounded text-xs font-mono">top notch</span>
+<span class="bg-purple-100 border border-purple-400 text-purple-800 px-2 py-1 rounded text-xs font-mono">top quality</span>
+<span class="bg-purple-100 border border-purple-400 text-purple-800 px-2 py-1 rounded text-xs font-mono">top rated</span>
+<span class="bg-purple-100 border border-purple-400 text-purple-800 px-2 py-1 rounded text-xs font-mono">top selling</span>
+<span class="bg-purple-100 border border-purple-400 text-purple-800 px-2 py-1 rounded text-xs font-mono">worlds best</span>
+
+</div>
 
 ### 🌱 Environmental & Safety Claims
-```
-biodegradable, biological contaminants, bpa free, compostable,
-decomposable, degradable, eco friendly, ecofriendly, eco-friendly,
-environmentally friendly, filter, green, home compostable,
-marine degradable, nano silver, natural, non toxic, noncorrosive,
-non-toxic, pesticide, pesticides
-```
+
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 my-6">
+
+<span class="bg-green-100 border border-green-400 text-green-800 px-2 py-1 rounded text-xs font-mono">biodegradable</span>
+<span class="bg-green-100 border border-green-400 text-green-800 px-2 py-1 rounded text-xs font-mono">bpa free</span>
+<span class="bg-green-100 border border-green-400 text-green-800 px-2 py-1 rounded text-xs font-mono">compostable</span>
+<span class="bg-green-100 border border-green-400 text-green-800 px-2 py-1 rounded text-xs font-mono">eco friendly</span>
+<span class="bg-green-100 border border-green-400 text-green-800 px-2 py-1 rounded text-xs font-mono">eco-friendly</span>
+<span class="bg-green-100 border border-green-400 text-green-800 px-2 py-1 rounded text-xs font-mono">environmentally friendly</span>
+<span class="bg-green-100 border border-green-400 text-green-800 px-2 py-1 rounded text-xs font-mono">green</span>
+<span class="bg-green-100 border border-green-400 text-green-800 px-2 py-1 rounded text-xs font-mono">natural</span>
+<span class="bg-green-100 border border-green-400 text-green-800 px-2 py-1 rounded text-xs font-mono">non toxic</span>
+<span class="bg-green-100 border border-green-400 text-green-800 px-2 py-1 rounded text-xs font-mono">non-toxic</span>
+<span class="bg-green-100 border border-green-400 text-green-800 px-2 py-1 rounded text-xs font-mono">pesticide</span>
+
+</div>
 
 ### 🎁 Gift & Promotional Language
-```
-gift idea, great as, great for, make excellent, makes awesome,
-makes great, makes perfect, makes spectacular, makes the best,
-makes wonderful, perfect for, perfect gift
-```
+
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 my-6">
+
+<span class="bg-pink-100 border border-pink-400 text-pink-800 px-2 py-1 rounded text-xs font-mono">gift idea</span>
+<span class="bg-pink-100 border border-pink-400 text-pink-800 px-2 py-1 rounded text-xs font-mono">great for</span>
+<span class="bg-pink-100 border border-pink-400 text-pink-800 px-2 py-1 rounded text-xs font-mono">makes awesome</span>
+<span class="bg-pink-100 border border-pink-400 text-pink-800 px-2 py-1 rounded text-xs font-mono">makes great</span>
+<span class="bg-pink-100 border border-pink-400 text-pink-800 px-2 py-1 rounded text-xs font-mono">makes perfect</span>
+<span class="bg-pink-100 border border-pink-400 text-pink-800 px-2 py-1 rounded text-xs font-mono">perfect for</span>
+<span class="bg-pink-100 border border-pink-400 text-pink-800 px-2 py-1 rounded text-xs font-mono">perfect gift</span>
+
+</div>
 
 ### 🏢 Company & Location References
-```
-fedex, fda, fda approval, feedback, imported from, indian,
-made in, native american, native american indian or tribes,
-retail box, reviews, seen on tv, ships faster, shop with confidence,
-tribes, ups, used
-```
+
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 my-6">
+
+<span class="bg-gray-100 border border-gray-400 text-gray-800 px-2 py-1 rounded text-xs font-mono">fedex</span>
+<span class="bg-gray-100 border border-gray-400 text-gray-800 px-2 py-1 rounded text-xs font-mono">fda</span>
+<span class="bg-gray-100 border border-gray-400 text-gray-800 px-2 py-1 rounded text-xs font-mono">fda approval</span>
+<span class="bg-gray-100 border border-gray-400 text-gray-800 px-2 py-1 rounded text-xs font-mono">imported from</span>
+<span class="bg-gray-100 border border-gray-400 text-gray-800 px-2 py-1 rounded text-xs font-mono">made in</span>
+<span class="bg-gray-100 border border-gray-400 text-gray-800 px-2 py-1 rounded text-xs font-mono">native american</span>
+<span class="bg-gray-100 border border-gray-400 text-gray-800 px-2 py-1 rounded text-xs font-mono">reviews</span>
+<span class="bg-gray-100 border border-gray-400 text-gray-800 px-2 py-1 rounded text-xs font-mono">seen on tv</span>
+<span class="bg-gray-100 border border-gray-400 text-gray-800 px-2 py-1 rounded text-xs font-mono">ups</span>
+
+</div>
 
 ---
 
