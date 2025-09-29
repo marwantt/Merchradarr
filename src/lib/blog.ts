@@ -120,7 +120,7 @@ export async function getAllPosts(): Promise<BlogPostPreview[]> {
 
   // Filter out null posts and sort by date (newest first)
   return posts
-    .filter((post): post is BlogPostPreview => post !== null)
+    .filter((post) => post !== null)
     .sort((a, b) => {
       const dateA = new Date(a.publishedAt);
       const dateB = new Date(b.publishedAt);

@@ -370,12 +370,12 @@ export default function AmazonRestrictedKeywordsPage() {
               <p className="text-gray-900 dark:text-white font-medium">January 2025</p>
             </div>
             <div className="flex gap-4">
-              <a
+              <Link
                 href="/blog"
                 className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 text-sm font-medium"
               >
                 ← Back to Blog
-              </a>
+              </Link>
               <Link
                 href="/"
                 className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 text-sm font-medium"
