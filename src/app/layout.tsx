@@ -18,10 +18,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico" },
-      { url: "/five5.png", type: "image/png" }
+      { url: "/fiveicon.png", type: "image/png" }
     ],
-    shortcut: "/five5.png",
-    apple: "/five5.png",
+    shortcut: "/fiveicon.png",
+    apple: "/fiveicon.png",
   },
   openGraph: {
     title: "MerchRadar – Find Winning Amazon Merch Niches | Free Keyword Tool",
