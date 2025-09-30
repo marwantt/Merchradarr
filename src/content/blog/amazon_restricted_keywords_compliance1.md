@@ -35,7 +35,9 @@ If you use these words, your design risks:
 
 ## 📋 Comprehensive Restricted Keyword List
 
-Amazon’s restricted keyword list is long and constantly monitored. Here are the most common triggers:
+Amazon's restricted keyword list is long and constantly monitored. Here are the most common triggers:
+
+![Amazon Restricted Keywords Visual Guide](/images/blog/amazon-restricted-keywords.png)
 
 ```text
 gift
