@@ -47,47 +47,66 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <main className="max-w-3xl mx-auto p-6 space-y-8">
-      {/* Back to blog */}
-      <Link
-        href="/blog"
-        className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
-      >
-        ← Back to Blog
-      </Link>
-
-      {/* Article header */}
-      <header className="space-y-4">
-        <div className="flex items-center gap-4 text-xs text-muted-foreground">
-          <span className="px-2 py-1 border border-border">{post.category.title}</span>
-          <span>{post.publishedAt}</span>
-          <span>{post.readingTime} min read</span>
+    <main className="min-h-screen bg-background">
+      {/* Header Navigation */}
+      <div className="border-b border-border bg-muted/30">
+        <div className="max-w-4xl mx-auto px-6 py-6">
+          <Link
+            href="/blog"
+            className="inline-flex items-center text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors"
+          >
+            ← Back to Learning Center
+          </Link>
         </div>
+      </div>
 
-        <h1 className="text-3xl font-normal leading-tight">{post.title}</h1>
+      {/* Article Container */}
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        {/* Article Header */}
+        <header className="space-y-6 pb-12 border-b border-border mb-12">
+          <div className="flex items-center gap-4 text-xs uppercase tracking-wider text-muted-foreground">
+            <span className="px-3 py-1 border border-border bg-muted/50">
+              {post.category.title}
+            </span>
+            <span>{post.publishedAt}</span>
+            <span>{post.readingTime} min read</span>
+          </div>
 
-        {post.excerpt && (
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            {post.excerpt}
-          </p>
-        )}
-      </header>
+          <h1 className="text-4xl md:text-5xl font-medium leading-tight tracking-tight">
+            {post.title}
+          </h1>
 
-      {/* Article content */}
-      <article
-        className="prose prose-neutral dark:prose-invert max-w-none prose-headings:font-normal prose-headings:tracking-tight prose-p:leading-relaxed prose-code:font-mono prose-pre:bg-muted prose-pre:border prose-pre:border-border"
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
+          {post.excerpt && (
+            <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl">
+              {post.excerpt}
+            </p>
+          )}
+        </header>
 
-      {/* Footer */}
-      <footer className="pt-8 border-t border-border">
-        <Link
-          href="/blog"
-          className="inline-flex items-center text-sm hover:text-foreground transition-colors"
-        >
-          ← Back to all posts
-        </Link>
-      </footer>
+        {/* Article Content */}
+        <article
+          className="blog-content"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
+
+        {/* Footer Navigation */}
+        <footer className="pt-12 mt-12 border-t border-border">
+          <div className="flex items-center justify-between">
+            <Link
+              href="/blog"
+              className="inline-flex items-center text-sm uppercase tracking-wider hover:text-foreground/70 transition-colors"
+            >
+              ← All Articles
+            </Link>
+            <Link
+              href="/"
+              className="inline-flex items-center text-sm uppercase tracking-wider hover:text-foreground/70 transition-colors"
+            >
+              Home →
+            </Link>
+          </div>
+        </footer>
+      </div>
     </main>
   );
 }

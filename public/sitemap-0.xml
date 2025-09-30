@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://merchradarr.vercel.app/blog/amazon-restricted-keywords-merch/</loc><lastmod>2025-09-28T23:22:35.035Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://merchradarr.vercel.app/amazon/</loc><lastmod>2025-09-28T23:22:35.035Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://merchradarr.vercel.app/blog/</loc><lastmod>2025-09-28T23:22:35.035Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://merchradarr.vercel.app/analytics/</loc><lastmod>2025-09-28T23:22:35.035Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://merchradarr.vercel.app/guide/</loc><lastmod>2025-09-28T23:22:35.035Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://merchradarr.vercel.app/contact/</loc><lastmod>2025-09-28T23:22:35.036Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://merchradarr.vercel.app/</loc><lastmod>2025-09-28T23:22:35.036Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://merchradarr.vercel.app/blog/Best Ways to Learn Merch by Amazon Design 27c48390c1cd80fb9d9ac4678deaad14/</loc><lastmod>2025-09-28T23:22:35.036Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://merchradarr.vercel.app/blog/amazon-merch-trends-2024/</loc><lastmod>2025-09-28T23:22:35.036Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://merchradarr.vercel.app/blog/keyword-research-guide/</loc><lastmod>2025-09-28T23:22:35.036Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://merchradarr.vercel.app/about/</loc><lastmod>2025-09-28T23:22:35.036Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://merchradarr.vercel.app/about/</loc><lastmod>2025-09-30T18:56:25.582Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://merchradarr.vercel.app/contact/</loc><lastmod>2025-09-30T18:56:25.582Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://merchradarr.vercel.app/guide/</loc><lastmod>2025-09-30T18:56:25.582Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://merchradarr.vercel.app/amazon/</loc><lastmod>2025-09-30T18:56:25.582Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://merchradarr.vercel.app/analytics/</loc><lastmod>2025-09-30T18:56:25.582Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://merchradarr.vercel.app/blog/amazon-restricted-keywords-merch/</loc><lastmod>2025-09-30T18:56:25.582Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://merchradarr.vercel.app/</loc><lastmod>2025-09-30T18:56:25.582Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://merchradarr.vercel.app/blog/Best Ways to Learn Merch by Amazon Design 27c48390c1cd80fb9d9ac4678deaad14/</loc><lastmod>2025-09-30T18:56:25.582Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://merchradarr.vercel.app/blog/amazon-merch-trends-2024/</loc><lastmod>2025-09-30T18:56:25.582Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://merchradarr.vercel.app/blog/amazon_restricted_keywords_compliance1/</loc><lastmod>2025-09-30T18:56:25.582Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://merchradarr.vercel.app/blog/keyword-research-guide/</loc><lastmod>2025-09-30T18:56:25.582Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://merchradarr.vercel.app/blog/</loc><lastmod>2025-09-30T18:56:25.582Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
