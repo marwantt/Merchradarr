@@ -38,7 +38,19 @@ export default async function BlogPage() {
                 <div className="space-y-4">
                   {/* Meta Info */}
                   <div className="flex items-center gap-4 text-xs uppercase tracking-wider text-muted-foreground">
-                    <span className="px-3 py-1 border border-border bg-muted/50">
+                    <span
+                      className={`px-3 py-1 border font-medium ${
+                        post.category.title === 'Strategy'
+                          ? 'bg-green-50 dark:bg-green-950 border-green-200 dark:border-green-800 text-green-700 dark:text-green-300'
+                          : post.category.title === 'Compliance'
+                          ? 'bg-red-50 dark:bg-red-950 border-red-200 dark:border-red-800 text-red-700 dark:text-red-300'
+                          : post.category.title === 'Trends'
+                          ? 'bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300'
+                          : post.category.title === 'Tutorial'
+                          ? 'bg-purple-50 dark:bg-purple-950 border-purple-200 dark:border-purple-800 text-purple-700 dark:text-purple-300'
+                          : 'bg-muted/50 border-border'
+                      }`}
+                    >
                       {post.category.title}
                     </span>
                     <span>{post.publishedAt}</span>
