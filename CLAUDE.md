@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**MerchRadar** is a Next.js web application that helps Amazon Merch by Amazon sellers find profitable niches for t-shirts, hoodies, and sweatshirts. The app is deployed at https://merchradarr.vercel.app.
+**MerchRadar** is a Next.js web application that helps Amazon Merch by Amazon sellers find profitable niches for t-shirts, hoodies, and sweatshirts. The app is deployed at https://www.merchradar.app.
 
 ## Technology Stack
 

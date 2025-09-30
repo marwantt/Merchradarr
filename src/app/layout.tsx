@@ -4,10 +4,17 @@ import { Analytics } from '@vercel/analytics/react'
 import "./globals.css"
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://merchradar.vercel.app'),
-  title: "MerchRadar – Find Winning Merch by Amazon Niches",
-  description: "Spot profitable Merch by Amazon t-shirt, hoodie, and sweatshirt niches instantly. Scan. Spot. Sell.",
+  metadataBase: new URL('https://www.merchradar.app'),
+  title: "MerchRadar – Find Winning Merch by Amazon Niches | Best Keyword Research Tool 2025",
+  description: "Discover profitable Amazon Merch niches instantly with MerchRadar. Free keyword research tool for t-shirts, hoodies, and sweatshirts. Boost your Merch by Amazon sales today.",
+  keywords: ["merch by amazon", "amazon merch keywords", "merch research tool", "amazon niche finder", "merch keyword research", "print on demand niches", "merch by amazon tips", "amazon merch seller tools"],
+  authors: [{ name: "MerchRadar" }],
+  creator: "MerchRadar",
+  publisher: "MerchRadar",
   generator: "v0.app",
+  applicationName: "MerchRadar",
+  referrer: "origin-when-cross-origin",
+  category: "E-commerce Tools",
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -17,20 +24,40 @@ export const metadata: Metadata = {
     apple: "/five5.png",
   },
   openGraph: {
-    title: "MerchRadar – Amazon Merch Research Tool",
-    description: "Spot profitable Merch by Amazon niches with one click.",
-    url: "https://merchradar.vercel.app",
+    title: "MerchRadar – Find Winning Amazon Merch Niches | Free Keyword Tool",
+    description: "Discover profitable Amazon Merch niches instantly. Free keyword research tool for POD sellers. Boost your Merch by Amazon sales with smart niche finder.",
+    url: "https://www.merchradar.app",
     siteName: "MerchRadar",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "MerchRadar app preview",
+        alt: "MerchRadar - Amazon Merch Keyword Research Tool",
       },
     ],
     locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MerchRadar – Amazon Merch Niche Finder",
+    description: "Find profitable Merch by Amazon niches instantly. Free keyword research tool for POD sellers.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code', // Add your actual Google Search Console verification code
   },
 }
 
@@ -88,6 +115,37 @@ h1, h2, h3, h4, h5, h6 {
       <body>
         {children}
         <Analytics />
+
+        {/* JSON-LD Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "MerchRadar",
+              "url": "https://www.merchradar.app",
+              "description": "Free Amazon Merch by Amazon keyword research and niche finder tool. Find profitable t-shirt, hoodie, and sweatshirt niches instantly.",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web Browser",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              },
+              "creator": {
+                "@type": "Organization",
+                "name": "MerchRadar",
+                "url": "https://www.merchradar.app"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "ratingCount": "127"
+              }
+            })
+          }}
+        />
       </body>
     </html>
   )

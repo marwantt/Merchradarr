@@ -1,4 +1,4 @@
 module.exports = {
-  siteUrl: 'https://merchradarr.vercel.app',
+  siteUrl: 'https://www.merchradar.app',
   generateRobotsTxt: true,
 }

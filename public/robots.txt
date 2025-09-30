@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://merchradarr.vercel.app
+Host: https://www.merchradar.app
 
 # Sitemaps
-Sitemap: https://merchradarr.vercel.app/sitemap.xml
+Sitemap: https://www.merchradar.app/sitemap.xml
