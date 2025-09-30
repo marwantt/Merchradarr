@@ -6,7 +6,7 @@ import { SearchAnalytics } from "../utils/analytics";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Loader2 } from "lucide-react";
+import { Loader2, RotateCw } from "lucide-react";
 
 interface Marketplace {
   id: string;
@@ -117,15 +117,13 @@ export default function Home() {
   }
 
   function handleTitleClick() {
-    // Clear the search input and refresh the page state
-    setKeyword("");
-    setSelectedMarketplace("us");
-    setSelectedProductType("tshirts");
-    setSelectedSort("featured");
-    setIsLoading(false);
+    // Refresh the entire page
+    window.location.reload();
+  }
 
-    // Optionally refresh the entire page
-    // window.location.reload();
+  function handleRefresh() {
+    // Refresh the entire page
+    window.location.reload();
   }
 
   return (
@@ -134,12 +132,22 @@ export default function Home() {
 
         {/* Minimal Header */}
         <div className="text-center space-y-3">
-          <h1
-            className="text-6xl title-font tracking-wide cursor-pointer hover:opacity-80 transition-opacity"
-            onClick={handleTitleClick}
-          >
-            Merch Radar
-          </h1>
+          <div className="flex items-center justify-center gap-4">
+            <h1
+              className="text-6xl title-font tracking-wide cursor-pointer hover:opacity-80 transition-opacity"
+              onClick={handleTitleClick}
+            >
+              Merch Radar
+            </h1>
+            <button
+              onClick={handleRefresh}
+              className="p-2 hover:bg-muted rounded transition-colors"
+              aria-label="Refresh page"
+              title="Refresh page"
+            >
+              <RotateCw className="w-6 h-6" />
+            </button>
+          </div>
           <p className="text-sm text-muted-foreground uppercase tracking-wider">AMAZON MERCH NICHE FINDER</p>
         </div>
 
