@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { SearchAnalytics } from "../utils/analytics";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Loader2, RotateCw } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 interface Marketplace {
   id: string;
@@ -61,6 +61,11 @@ export default function Home() {
   const marketplace = marketplaces.find(m => m.id === selectedMarketplace)!;
   const productType = productTypes.find(p => p.id === selectedProductType)!;
   const sortOption = sortOptions.find(s => s.id === selectedSort)!;
+
+  // Scroll to top when page loads/refreshes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const previewUrl = useMemo(() => {
     if (!keyword.trim()) return "";
@@ -117,19 +122,12 @@ export default function Home() {
   }
 
   function handleTitleClick() {
-    // Scroll to top then refresh
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setTimeout(() => {
-      window.location.reload();
-    }, 300);
-  }
-
-  function handleRefresh() {
-    // Scroll to top then refresh
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setTimeout(() => {
-      window.location.reload();
-    }, 300);
+    // Clear the search input and refresh the page state
+    setKeyword("");
+    setSelectedMarketplace("us");
+    setSelectedProductType("tshirts");
+    setSelectedSort("featured");
+    setIsLoading(false);
   }
 
   return (
@@ -138,22 +136,12 @@ export default function Home() {
 
         {/* Minimal Header */}
         <div className="text-center space-y-3">
-          <div className="flex items-center justify-center gap-4">
-            <h1
-              className="text-6xl title-font tracking-wide cursor-pointer hover:opacity-80 transition-opacity"
-              onClick={handleTitleClick}
-            >
-              Merch Radar
-            </h1>
-            <button
-              onClick={handleRefresh}
-              className="p-2 hover:bg-muted rounded transition-colors"
-              aria-label="Refresh page"
-              title="Refresh page"
-            >
-              <RotateCw className="w-6 h-6" />
-            </button>
-          </div>
+          <h1
+            className="text-6xl title-font tracking-wide cursor-pointer hover:opacity-80 transition-opacity"
+            onClick={handleTitleClick}
+          >
+            Merch Radar
+          </h1>
           <p className="text-sm text-muted-foreground uppercase tracking-wider">AMAZON MERCH NICHE FINDER</p>
         </div>
 
