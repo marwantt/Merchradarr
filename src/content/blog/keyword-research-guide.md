@@ -45,10 +45,18 @@ Example: Cat niche
 - **Google Keyword Planner** - Free with Google Ads account
 - **Ubersuggest** - Limited free searches
 
+<!-- Example: Add an image showing Amazon's search suggestions
+![Amazon Search Suggestions Example](/images/blog/amazon-search-suggestions.png)
+-->
+
 ### Paid Tools:
 - **Merch Informer** - $9.99/month
 - **Helium 10** - $37/month
 - **Jungle Scout** - $29/month
+
+<!-- Example: Add a comparison screenshot
+<img src="/images/blog/keyword-tools-comparison.jpg" alt="Keyword Research Tools Comparison" width="800" />
+-->
 
 ## Step 3: Analyze Competition
 

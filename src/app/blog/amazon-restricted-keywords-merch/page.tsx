@@ -65,6 +65,14 @@ export default function AmazonRestrictedKeywordsPage() {
           Below is the list of keywords extracted from compliance references that are known to cause listing rejections on Amazon. This list combines promotional terms, banned claims, and subjective words flagged in Merch policies:
         </p>
 
+        <div className="mb-8">
+          <img
+            src="/images/blog/amazon-restricted-keywords.png"
+            alt="Amazon Restricted Keywords Visual Guide"
+            className="w-full border border-gray-200 dark:border-gray-700"
+          />
+        </div>
+
         <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-6 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
             <div className="space-y-1">
