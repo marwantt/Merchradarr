@@ -117,13 +117,19 @@ export default function Home() {
   }
 
   function handleTitleClick() {
-    // Refresh the entire page
-    window.location.reload();
+    // Scroll to top then refresh
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
   }
 
   function handleRefresh() {
-    // Refresh the entire page
-    window.location.reload();
+    // Scroll to top then refresh
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
   }
 
   return (
