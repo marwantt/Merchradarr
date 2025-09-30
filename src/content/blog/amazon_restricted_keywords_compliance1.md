@@ -12,7 +12,9 @@ draft: false
 
 # Amazon Restricted Keywords: The Ultimate Guide for Merch by Amazon Sellers
 
-If you’re selling on **Merch by Amazon**, your success doesn’t just depend on great designs — it also depends on **compliant listings**. Many sellers face frustrating rejections because of restricted keywords. These rules apply across **all niches**, whether you’re designing for fishing, gaming, AI, sports, or any other theme.
+![Amazon Restricted Keywords Visual Guide](/images/blog/amazon-restricted-keywords.png)
+
+If you're selling on **Merch by Amazon**, your success doesn't just depend on great designs — it also depends on **compliant listings**. Many sellers face frustrating rejections because of restricted keywords. These rules apply across **all niches**, whether you're designing for fishing, gaming, AI, sports, or any other theme.
 
 ---
 
@@ -36,8 +38,6 @@ If you use these words, your design risks:
 ## 📋 Comprehensive Restricted Keyword List
 
 Amazon's restricted keyword list is long and constantly monitored. Here are the most common triggers:
-
-![Amazon Restricted Keywords Visual Guide](/images/blog/amazon-restricted-keywords.png)
 
 ```text
 gift
