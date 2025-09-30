@@ -12,6 +12,8 @@ draft: false
 
 # Amazon Pays Historic $2.5 Billion FTC Settlement: What Merch Sellers Need to Know
 
+![Amazon Headquarters Spheres in Seattle](/images/blog/amazon-headquarters-spheres.jpg)
+
 **Breaking:** Amazon has agreed to pay a record-breaking **$2.5 billion settlement** with the Federal Trade Commission (FTC), marking the largest consumer protection settlement in FTC history. Here's what Amazon sellers and Merch by Amazon creators need to understand about this landmark decision.
 
 ---
