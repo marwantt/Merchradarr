@@ -99,33 +99,38 @@ export async function getAllPosts(): Promise<BlogPostPreview[]> {
 
   const slugs = getAllPostSlugs();
   const posts = await Promise.all(
-    slugs.map(async (slug) => {
+    slugs.map(async (slug): Promise<BlogPostPreview | null> => {
       const post = await getPostBySlug(slug);
       if (!post || (post.draft && process.env.NODE_ENV === 'production')) {
         return null;
       }
 
-      // Return preview without content
-      return {
+      const preview: BlogPostPreview = {
         slug: post.slug,
         title: post.title,
         excerpt: post.excerpt,
         publishedAt: post.publishedAt,
         readingTime: post.readingTime,
         category: post.category,
-        featured: post.featured,
       };
+
+      if (typeof post.featured !== 'undefined') {
+        preview.featured = post.featured;
+      }
+
+      return preview;
     })
   );
 
   // Filter out null posts and sort by date (newest first)
+  const toTimestamp = (value: string) => {
+    const parsed = Date.parse(value);
+    return Number.isFinite(parsed) ? parsed : 0;
+  };
+
   return posts
-    .filter((post) => post !== null)
-    .sort((a, b) => {
-      const dateA = new Date(a.publishedAt);
-      const dateB = new Date(b.publishedAt);
-      return dateB.getTime() - dateA.getTime();
-    });
+    .filter((post): post is BlogPostPreview => post !== null)
+    .sort((a, b) => toTimestamp(b.publishedAt) - toTimestamp(a.publishedAt));
 }
 
 export function calculateReadingTime(content: string): number {

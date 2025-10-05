@@ -12,14 +12,19 @@ interface Marketplace {
   id: string;
   name: string;
   domain: string;
+  sellerId: string;
+}
+
+interface ProductFilters {
+  category?: string;
+  node?: string;
 }
 
 interface ProductType {
   id: string;
   name: string;
   keyword: string;
-  category?: string;
-  node?: string;
+  filters?: Record<string, ProductFilters>;
 }
 
 interface SortOption {
@@ -29,17 +34,45 @@ interface SortOption {
 }
 
 const marketplaces: Marketplace[] = [
-  { id: "us", name: "Amazon US", domain: "amazon.com" },
-  { id: "uk", name: "Amazon UK", domain: "amazon.co.uk" },
-  { id: "de", name: "Amazon DE", domain: "amazon.de" },
-  { id: "fr", name: "Amazon FR", domain: "amazon.fr" },
+  { id: "us", name: "Amazon US", domain: "amazon.com", sellerId: "ATVPDKIKX0DER" },
+  { id: "uk", name: "Amazon UK", domain: "amazon.co.uk", sellerId: "A1F83G8C2ARO7P" },
+  { id: "de", name: "Amazon DE", domain: "amazon.de", sellerId: "A1PA6795UKMFR9" },
+  { id: "fr", name: "Amazon FR", domain: "amazon.fr", sellerId: "A13V1IB3VIYZZH" },
 ];
 
 const productTypes: ProductType[] = [
-  { id: "tshirts", name: "T-shirts", keyword: "t-shirt", category: "fashion-novelty", node: "12035955011" },
-  { id: "sweatshirts", name: "Sweatshirts", keyword: "sweatshirt", category: "fashion-novelty", node: "12035955011" },
-  { id: "hoodies", name: "Hoodies", keyword: "hoodie", category: "fashion-novelty", node: "12035955011" },
-  { id: "mugs", name: "Mugs", keyword: "mug", category: "kitchen", node: "284507" },
+  {
+    id: "tshirts",
+    name: "T-shirts",
+    keyword: "t-shirt",
+    filters: {
+      us: { category: "fashion-novelty", node: "12035955011" },
+    },
+  },
+  {
+    id: "sweatshirts",
+    name: "Sweatshirts",
+    keyword: "sweatshirt",
+    filters: {
+      us: { category: "fashion-novelty", node: "12035955011" },
+    },
+  },
+  {
+    id: "hoodies",
+    name: "Hoodies",
+    keyword: "hoodie",
+    filters: {
+      us: { category: "fashion-novelty", node: "12035955011" },
+    },
+  },
+  {
+    id: "mugs",
+    name: "Mugs",
+    keyword: "mug",
+    filters: {
+      us: { category: "kitchen", node: "284507" },
+    },
+  },
 ];
 
 const sortOptions: SortOption[] = [
@@ -76,13 +109,25 @@ export default function Home() {
     
     // Start with primary search param `k`
     let url = `https://www.${marketplace.domain}/s?k=${encodeURIComponent(searchQuery)}`;
-    
-    // Add category and node parameters if available
-    if (productType.category && productType.node) {
-      url += `&i=${productType.category}&rh=n:${productType.node},p_6:ATVPDKIKX0DER`;
-    } else {
-      // Fallback for products without specific category
-      url += `&rh=p_6:ATVPDKIKX0DER`;
+
+    const marketplaceFilters = productType.filters?.[marketplace.id];
+    const sellerFilter = marketplace.sellerId ? `p_6:${marketplace.sellerId}` : "";
+    const rhFilters: string[] = [];
+
+    if (marketplaceFilters?.node) {
+      rhFilters.push(`n:${marketplaceFilters.node}`);
+    }
+
+    if (sellerFilter) {
+      rhFilters.push(sellerFilter);
+    }
+
+    if (marketplaceFilters?.category) {
+      url += `&i=${marketplaceFilters.category}`;
+    }
+
+    if (rhFilters.length > 0) {
+      url += `&rh=${rhFilters.join(",")}`;
     }
     
     // Add sort parameter if not featured (default)
