@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = {
   title: "Amazon Restricted Keywords: Guide for Merch by Amazon Sellers (2025) | MerchRadar",
@@ -66,10 +67,14 @@ export default function AmazonRestrictedKeywordsPage() {
         </p>
 
         <div className="mb-8">
-          <img
+          <Image
             src="/images/blog/amazon-restricted-keywords.png"
             alt="Amazon Restricted Keywords Visual Guide"
-            className="w-full border border-gray-200 dark:border-gray-700"
+            width={1536}
+            height={1024}
+            sizes="(min-width: 1024px) 800px, 100vw"
+            className="w-full border border-gray-200 dark:border-gray-700 h-auto"
+            priority
           />
         </div>
 

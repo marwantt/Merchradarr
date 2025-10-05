@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { titleFont } from "@/app/fonts";
 
 export default function DarkModeLogo() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -23,7 +24,7 @@ export default function DarkModeLogo() {
     return (
       <div className="text-center">
         <h1 
-          className="passero-one-regular text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight"
+          className={`${titleFont.className} text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight`}
           style={{
             color: '#171717',
             textShadow: '2px 2px 4px rgba(0,0,0,0.1)'
@@ -38,7 +39,7 @@ export default function DarkModeLogo() {
   return (
     <div className="text-center">
       <h1 
-        className="passero-one-regular text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight"
+        className={`${titleFont.className} text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight`}
         style={{
           color: isDarkMode ? '#ededed' : '#171717',
           textShadow: isDarkMode 

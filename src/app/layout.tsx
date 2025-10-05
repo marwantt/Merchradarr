@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Analytics } from '@vercel/analytics/react'
+import { monoFont, titleFont } from "./fonts"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -67,27 +68,18 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${monoFont.variable} ${titleFont.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="https://use.typekit.net/hsv7prw.css" />
         <style>{`
-:root {
-  --font-mono: "Google Sans Code", monospace;
-  --font-title: "bc-ludva", sans-serif;
-}
-
 html {
-  font-family: "Google Sans Code", monospace;
+  font-family: var(--font-mono), monospace;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
 
 body {
-  font-family: "Google Sans Code", monospace;
+  font-family: var(--font-mono), monospace;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -97,22 +89,22 @@ body {
 
 /* Minimal monospace typography */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Google Sans Code", monospace;
+  font-family: var(--font-mono), monospace;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
   letter-spacing: 0;
 }
 
-/* BC Ludva title styling */
+/* Title styling */
 .title-font {
-  font-family: "bc-ludva", sans-serif;
+  font-family: var(--font-title), sans-serif;
   font-weight: 700;
   font-style: normal;
 }
         `}</style>
       </head>
-      <body>
+      <body className={monoFont.className}>
         {children}
         <Analytics />
 
