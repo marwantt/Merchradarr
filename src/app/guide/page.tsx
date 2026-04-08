@@ -52,7 +52,7 @@ export default function GuidePage() {
         keyword includes the correct product type for accurate results.
       </p>
 
-      <h3>4. Click &ldquo;Search Merch&rdquo;</h3>
+      <h3>4. Click &ldquo;Search Amazon&rdquo;</h3>
       <p>
         In one click, MerchRadar builds a clean Amazon URL that filters by the{" "}
         <strong>Merch by Amazon seller ID</strong>. The results page shows
