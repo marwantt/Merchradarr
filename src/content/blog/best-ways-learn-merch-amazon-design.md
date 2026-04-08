@@ -8,7 +8,7 @@ category:
   color: "#8b5cf6"
 featured: false
 draft: false
-coverImage: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&q=80&auto=format&fit=crop"
+coverImage: "/blog/best-ways-learn-merch-amazon-design.jpg"
 ---
 
 # Best Ways to Learn Merch by Amazon Design

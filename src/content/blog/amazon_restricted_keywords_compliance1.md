@@ -8,7 +8,7 @@ category:
   color: "#ef4444"
 featured: false
 draft: false
-coverImage: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80&auto=format&fit=crop"
+coverImage: "/blog/amazon_restricted_keywords_compliance1.jpg"
 ---
 
 # Amazon Restricted Keywords: The Ultimate Guide for Merch by Amazon Sellers

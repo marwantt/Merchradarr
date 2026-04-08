@@ -7,7 +7,7 @@ category:
 publishedAt: "2024-12-15"
 readingTime: 8
 featured: true
-coverImage: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80&auto=format&fit=crop"
+coverImage: "/blog/amazon-merch-trends-2024.jpg"
 ---
 
 # Top 10 Amazon Merch Trends for 2024

@@ -8,7 +8,7 @@ category:
   color: "#3b82f6"
 featured: true
 draft: false
-coverImage: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80&auto=format&fit=crop"
+coverImage: "/blog/amazon-ftc-settlement-2025.jpg"
 ---
 
 # Amazon Pays Historic $2.5 Billion FTC Settlement: What Merch Sellers Need to Know
