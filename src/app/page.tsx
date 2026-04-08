@@ -6,6 +6,9 @@ import { getChannelVideos } from "@/lib/youtube";
 const YOUTUBE_CHANNELS = [
   "@RyanHoguePassiveIncome",
   "@PhilipAnders",
+  "@brenondopp",
+  "@wtfamievendoing",
+  "@jayswayworks",
 ];
 
 export default async function Home() {
