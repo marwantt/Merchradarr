@@ -7,82 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Loader2 } from "lucide-react";
-
-interface Marketplace {
-  id: string;
-  name: string;
-  domain: string;
-  sellerId: string;
-}
-
-interface ProductFilters {
-  category?: string;
-  node?: string;
-}
-
-interface ProductType {
-  id: string;
-  name: string;
-  keyword: string;
-  filters?: Record<string, ProductFilters>;
-}
-
-interface SortOption {
-  id: string;
-  name: string;
-  value: string;
-}
-
-const marketplaces: Marketplace[] = [
-  { id: "us", name: "Amazon US", domain: "amazon.com", sellerId: "ATVPDKIKX0DER" },
-  { id: "uk", name: "Amazon UK", domain: "amazon.co.uk", sellerId: "A1F83G8C2ARO7P" },
-  { id: "de", name: "Amazon DE", domain: "amazon.de", sellerId: "A1PA6795UKMFR9" },
-  { id: "fr", name: "Amazon FR", domain: "amazon.fr", sellerId: "A13V1IB3VIYZZH" },
-];
-
-const productTypes: ProductType[] = [
-  {
-    id: "tshirts",
-    name: "T-shirts",
-    keyword: "t-shirt",
-    filters: {
-      us: { category: "fashion-novelty", node: "12035955011" },
-    },
-  },
-  {
-    id: "sweatshirts",
-    name: "Sweatshirts",
-    keyword: "sweatshirt",
-    filters: {
-      us: { category: "fashion-novelty", node: "12035955011" },
-    },
-  },
-  {
-    id: "hoodies",
-    name: "Hoodies",
-    keyword: "hoodie",
-    filters: {
-      us: { category: "fashion-novelty", node: "12035955011" },
-    },
-  },
-  {
-    id: "mugs",
-    name: "Mugs",
-    keyword: "mug",
-    filters: {
-      us: { category: "kitchen", node: "284507" },
-    },
-  },
-];
-
-const sortOptions: SortOption[] = [
-  { id: "featured", name: "Featured", value: "relevanceblender" },
-  { id: "price-low", name: "Price: Low to High", value: "price-asc-rank" },
-  { id: "price-high", name: "Price: High to Low", value: "price-desc-rank" },
-  { id: "review", name: "Avg. Customer Review", value: "review-rank" },
-  { id: "newest", name: "Newest Arrivals", value: "date-desc-rank" },
-  { id: "bestsellers", name: "Best Sellers", value: "salesrank" },
-];
+import { marketplaces, productTypes, sortOptions } from "@/lib/constants";
 
 export default function Home() {
   const [keyword, setKeyword] = useState("");
@@ -91,9 +16,10 @@ export default function Home() {
   const [selectedSort, setSelectedSort] = useState("featured");
   const [isLoading, setIsLoading] = useState(false);
 
-  const marketplace = marketplaces.find(m => m.id === selectedMarketplace)!;
-  const productType = productTypes.find(p => p.id === selectedProductType)!;
-  const sortOption = sortOptions.find(s => s.id === selectedSort)!;
+  // Safety: Fallback to first item if ID is invalid (prevents crashes from stale state)
+  const marketplace = marketplaces.find(m => m.id === selectedMarketplace) || marketplaces[0];
+  const productType = productTypes.find(p => p.id === selectedProductType) || productTypes[0];
+  const sortOption = sortOptions.find(s => s.id === selectedSort) || sortOptions[0];
 
   // Scroll to top when page loads/refreshes
   useEffect(() => {
@@ -102,11 +28,11 @@ export default function Home() {
 
   const previewUrl = useMemo(() => {
     if (!keyword.trim()) return "";
-    
+
     const trimmed = keyword.trim();
     // Build visible search query so it shows in Amazon's search bar
     const searchQuery = `${productType.keyword} ${trimmed}`;
-    
+
     // Start with primary search param `k`
     let url = `https://www.${marketplace.domain}/s?k=${encodeURIComponent(searchQuery)}`;
 
@@ -129,12 +55,12 @@ export default function Home() {
     if (rhFilters.length > 0) {
       url += `&rh=${rhFilters.join(",")}`;
     }
-    
+
     // Add sort parameter if not featured (default)
     if (selectedSort !== "featured") {
       url += `&s=${sortOption.value}`;
     }
-    
+
     return url;
   }, [keyword, marketplace, selectedSort, sortOption, productType]);
 
@@ -175,49 +101,58 @@ export default function Home() {
     setIsLoading(false);
   }
 
-  return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <main className="w-full max-w-2xl flex flex-col gap-12 items-stretch">
+  const [copied, setCopied] = useState(false);
 
-        {/* Minimal Header */}
-        <div className="text-center space-y-3">
-          <h1
-            className="text-6xl title-font tracking-wide cursor-pointer hover:opacity-80 transition-opacity"
+  function handleCopy() {
+    if (!previewUrl) return;
+    navigator.clipboard.writeText(previewUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  }
+
+  return (
+    <div className="min-h-screen flex items-center justify-center p-4 py-16">
+      <main className="w-full max-w-xl flex flex-col gap-10 items-stretch">
+
+        {/* Header */}
+        <div className="text-center space-y-2">
+          <button
             onClick={handleTitleClick}
+            className="hover:opacity-70 transition-opacity focus:outline-none"
+            type="button"
+            aria-label="Reset search"
           >
-            Merch Radar
-          </h1>
-          <p className="text-sm text-muted-foreground uppercase tracking-wider">AMAZON MERCH NICHE FINDER</p>
+            <h1 className="text-6xl title-font tracking-wide">
+              Merch Radar
+            </h1>
+          </button>
+          <p className="text-xs text-muted-foreground uppercase tracking-[0.2em]">Amazon Merch Niche Finder</p>
         </div>
 
-        {/* First-time user hint */}
+        {/* Hint */}
         {!keyword && (
-          <div className="text-center py-6 border border-dashed border-border">
-            <p className="text-sm text-muted-foreground uppercase tracking-wide">
-              TRY: &ldquo;CAT SHIRTS&rdquo; | &ldquo;RETRO GAMING&rdquo; | &ldquo;MOTIVATIONAL QUOTES&rdquo;
+          <div className="text-center py-5 border-l-2 border-primary bg-accent px-6">
+            <p className="text-xs text-accent-foreground uppercase tracking-widest font-medium">
+              Try: &ldquo;Cat Shirts&rdquo; &nbsp;·&nbsp; &ldquo;Retro Gaming&rdquo; &nbsp;·&nbsp; &ldquo;Motivational Quotes&rdquo;
             </p>
           </div>
         )}
 
-        {/* Core Search */}
-        <div className="space-y-8">
-          {/* Primary Search Input */}
-          <div className="space-y-4">
-            <Input
-              type="text"
-              value={keyword}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setKeyword(e.target.value)}
-              placeholder="ENTER NICHE OR KEYWORD..."
-              className="h-16 text-center text-lg uppercase tracking-wider font-medium"
-              disabled={isLoading}
-              autoFocus
-            />
-          </div>
+        {/* Search */}
+        <div className="space-y-4">
+          <Input
+            type="text"
+            value={keyword}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setKeyword(e.target.value)}
+            placeholder="Enter niche or keyword..."
+            className="h-14 text-center text-base tracking-wider font-medium border-border focus-visible:border-primary"
+            disabled={isLoading}
+            autoFocus
+          />
 
-          {/* Minimal Settings - Horizontal Layout */}
-          <div className="grid grid-cols-3 gap-4 text-sm">
+          <div className="grid grid-cols-3 gap-3 text-sm">
             <Select value={selectedMarketplace} onValueChange={setSelectedMarketplace}>
-              <SelectTrigger className="h-12">
+              <SelectTrigger className="h-11">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -230,7 +165,7 @@ export default function Home() {
             </Select>
 
             <Select value={selectedProductType} onValueChange={setSelectedProductType}>
-              <SelectTrigger className="h-12">
+              <SelectTrigger className="h-11">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -243,7 +178,7 @@ export default function Home() {
             </Select>
 
             <Select value={selectedSort} onValueChange={setSelectedSort}>
-              <SelectTrigger className="h-12">
+              <SelectTrigger className="h-11">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -262,34 +197,45 @@ export default function Home() {
           <Button
             type="submit"
             disabled={isLoading}
-            className="h-16 w-full text-lg uppercase tracking-wider font-medium"
+            className="h-14 w-full text-sm uppercase tracking-[0.15em] font-semibold"
             variant="default"
           >
             {isLoading ? (
               <>
-                <Loader2 className="mr-2 h-6 w-6 animate-spin" />
-                SEARCHING...
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Searching...
               </>
             ) : (
-              "SEARCH AMAZON"
+              "Search Amazon"
             )}
           </Button>
         </form>
 
-        {/* Live URL Preview - Minimal */}
+        {/* URL Preview */}
         {previewUrl && (
-          <div className="text-sm text-muted-foreground break-all border-t pt-6 font-mono">
-            {previewUrl}
+          <div className="border-t pt-5 space-y-2">
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-xs text-muted-foreground uppercase tracking-widest">Preview URL</p>
+              <button
+                onClick={handleCopy}
+                className="text-xs uppercase tracking-widest text-primary hover:opacity-70 transition-opacity font-medium"
+              >
+                {copied ? "Copied!" : "Copy"}
+              </button>
+            </div>
+            <p className="text-xs text-muted-foreground break-all font-mono leading-relaxed">
+              {previewUrl}
+            </p>
           </div>
         )}
 
-        {/* Minimal Footer Links */}
-        <div className="text-center pt-12 border-t">
-          <nav className="flex justify-center gap-12 text-sm text-muted-foreground">
-            <Link href="/guide" className="hover:text-foreground uppercase tracking-wider">GUIDE</Link>
-            <Link href="/about" className="hover:text-foreground uppercase tracking-wider">ABOUT</Link>
-            <Link href="/blog" className="hover:text-foreground uppercase tracking-wider">BLOG</Link>
-            <Link href="/contact" className="hover:text-foreground uppercase tracking-wider">CONTACT</Link>
+        {/* Footer */}
+        <div className="text-center pt-6 border-t">
+          <nav className="flex justify-center gap-10 text-xs text-muted-foreground uppercase tracking-widest">
+            <Link href="/guide" className="hover:text-foreground transition-colors">Guide</Link>
+            <Link href="/about" className="hover:text-foreground transition-colors">About</Link>
+            <Link href="/blog" className="hover:text-foreground transition-colors">Blog</Link>
+            <Link href="/contact" className="hover:text-foreground transition-colors">Contact</Link>
           </nav>
         </div>
       </main>
