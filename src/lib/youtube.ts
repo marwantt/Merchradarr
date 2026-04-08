@@ -7,52 +7,61 @@ export interface YouTubeVideo {
   thumbnail: string;
 }
 
-function decodeXml(str: string): string {
-  return str
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'");
-}
+const API_KEY = process.env.YOUTUBE_API_KEY;
+const BASE = "https://www.googleapis.com/youtube/v3";
 
-async function resolveChannelId(handle: string): Promise<string | null> {
+async function getChannelId(handle: string): Promise<string | null> {
+  if (!API_KEY) return null;
   try {
-    const res = await fetch(`https://www.youtube.com/${handle}`, {
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-      },
-    });
-    const html = await res.text();
-    const match = html.match(/"channelId":"(UC[a-zA-Z0-9_-]+)"/);
-    return match ? match[1] : null;
+    const res = await fetch(
+      `${BASE}/channels?part=id&forHandle=${handle}&key=${API_KEY}`
+    );
+    const data = await res.json();
+    return data.items?.[0]?.id ?? null;
   } catch {
     return null;
   }
 }
 
-async function fetchVideos(channelId: string, limit = 4): Promise<YouTubeVideo[]> {
+async function getUploadsPlaylistId(channelId: string): Promise<string | null> {
+  if (!API_KEY) return null;
   try {
     const res = await fetch(
-      `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
+      `${BASE}/channels?part=contentDetails&id=${channelId}&key=${API_KEY}`
     );
-    const xml = await res.text();
-    const entries = xml.match(/<entry>([\s\S]*?)<\/entry>/g) || [];
+    const data = await res.json();
+    return data.items?.[0]?.contentDetails?.relatedPlaylists?.uploads ?? null;
+  } catch {
+    return null;
+  }
+}
 
-    return entries.slice(0, limit).map((entry) => {
-      const videoId = (entry.match(/<yt:videoId>([^<]+)<\/yt:videoId>/) || [])[1] || "";
-      const title = (entry.match(/<title>([^<]+)<\/title>/) || [])[1] || "";
-      const published = (entry.match(/<published>([^<]+)<\/published>/) || [])[1] || "";
-      const channelName = (entry.match(/<name>([^<]+)<\/name>/) || [])[1] || "";
+async function getPlaylistVideos(playlistId: string, limit: number): Promise<YouTubeVideo[]> {
+  if (!API_KEY) return [];
+  try {
+    const res = await fetch(
+      `${BASE}/playlistItems?part=snippet&playlistId=${playlistId}&maxResults=${limit}&key=${API_KEY}`
+    );
+    const data = await res.json();
+    if (!data.items) return [];
 
+    return data.items.map((item: {
+      snippet: {
+        resourceId: { videoId: string };
+        title: string;
+        channelTitle: string;
+        publishedAt: string;
+        thumbnails: { medium?: { url: string }; default?: { url: string } };
+      };
+    }) => {
+      const videoId = item.snippet.resourceId.videoId;
       return {
         id: videoId,
-        title: decodeXml(title),
+        title: item.snippet.title,
         url: `https://www.youtube.com/watch?v=${videoId}`,
-        channelName: decodeXml(channelName),
-        publishedAt: published.split("T")[0],
-        thumbnail: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
+        channelName: item.snippet.channelTitle,
+        publishedAt: item.snippet.publishedAt.split("T")[0],
+        thumbnail: item.snippet.thumbnails.medium?.url ?? item.snippet.thumbnails.default?.url ?? "",
       };
     });
   } catch {
@@ -61,7 +70,13 @@ async function fetchVideos(channelId: string, limit = 4): Promise<YouTubeVideo[]
 }
 
 export async function getChannelVideos(handle: string, limit = 4): Promise<YouTubeVideo[]> {
-  const channelId = await resolveChannelId(handle);
+  if (!API_KEY) {
+    console.warn("YOUTUBE_API_KEY not set — skipping YouTube fetch");
+    return [];
+  }
+  const channelId = await getChannelId(handle);
   if (!channelId) return [];
-  return fetchVideos(channelId, limit);
+  const playlistId = await getUploadsPlaylistId(channelId);
+  if (!playlistId) return [];
+  return getPlaylistVideos(playlistId, limit);
 }
