@@ -232,9 +232,10 @@ export default function Home() {
         {/* Footer */}
         <div className="text-center pt-6 border-t">
           <nav className="flex justify-center gap-10 text-xs text-muted-foreground uppercase tracking-widest">
+            <Link href="/academy" className="hover:text-foreground transition-colors">Academy</Link>
             <Link href="/guide" className="hover:text-foreground transition-colors">Guide</Link>
-            <Link href="/about" className="hover:text-foreground transition-colors">About</Link>
             <Link href="/blog" className="hover:text-foreground transition-colors">Blog</Link>
+            <Link href="/about" className="hover:text-foreground transition-colors">About</Link>
             <Link href="/contact" className="hover:text-foreground transition-colors">Contact</Link>
           </nav>
         </div>
