@@ -14,6 +14,42 @@ export interface Update {
 // Add new items to the TOP — newest first
 export const updates: Update[] = [
   {
+    id: "amazon-merch-comfort-colors-eu-2026",
+    type: "product",
+    title: "Comfort Colors & Premium T-shirts now in DE, FR, IT, ES",
+    description: "Heavyweight and premium tees available in European markets for qualifying accounts. Check the Create page when your account is enabled.",
+    url: "https://merch.amazon.com/resource/policy/royalties",
+    date: "2026-04-02",
+    external: true,
+  },
+  {
+    id: "amazon-merch-sun-visor-comfort-colors-us-2026",
+    type: "product",
+    title: "Sport Sun Visors + new Comfort Colors colors now in US",
+    description: "Sport sun visors and new Comfort Colors heavyweight tee and long sleeve colors available for qualifying US accounts. Download updated templates from Merch Resources.",
+    url: "https://merch.amazon.com/resource/policy/royalties",
+    date: "2026-03-23",
+    external: true,
+  },
+  {
+    id: "amazon-merch-tumblers-uk-2026",
+    type: "product",
+    title: "Tumblers & Water Bottles now available in UK",
+    description: "Available for qualifying UK accounts now, with EU marketplace expansion coming soon. Download updated product templates for artwork placement.",
+    url: "https://merch.amazon.com/resource/policy/royalties",
+    date: "2026-02-11",
+    external: true,
+  },
+  {
+    id: "amazon-merch-hats-us-2026",
+    type: "product",
+    title: "Printed Baseball & Trucker Hats now in US",
+    description: "New hat products available for qualifying US accounts on the Create page. Download updated templates for artwork placement.",
+    url: "https://merch.amazon.com/resource/policy/royalties",
+    date: "2026-01-13",
+    external: true,
+  },
+  {
     id: "marketplace-it-es-2026",
     type: "product",
     title: "Italy & Spain marketplaces now available",
