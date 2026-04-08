@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Loader2 } from "lucide-react";
 import { marketplaces, productTypes, sortOptions } from "@/lib/constants";
+import WhatsNew from "@/components/WhatsNew";
 
 export default function Home() {
   const [keyword, setKeyword] = useState("");
@@ -228,6 +229,9 @@ export default function Home() {
             </p>
           </div>
         )}
+
+        {/* What's New */}
+        <WhatsNew />
 
         {/* Academy Section */}
         <div className="border border-border mt-4">
