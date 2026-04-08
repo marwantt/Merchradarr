@@ -32,6 +32,23 @@ export const marketplaces: Marketplace[] = [
     { id: "es", name: "Amazon ES", domain: "amazon.es", sellerId: "A1RKKUPIHCS9HS" },
 ];
 
+export interface MarketplaceLocation {
+  postalCode: string;
+  city: string;
+  flag: string;
+  steps: string;
+}
+
+// Suggested postal codes for non-US marketplaces
+// Needed so Amazon shows correct Merch results for that region
+export const marketplaceLocations: Record<string, MarketplaceLocation> = {
+  uk: { postalCode: "W1A 0AX", city: "London", flag: "🇬🇧", steps: "amazon.co.uk → Hello, Sign in → Deliver to → Enter postcode" },
+  de: { postalCode: "10115", city: "Berlin", flag: "🇩🇪", steps: "amazon.de → Hallo → Lieferadresse → PLZ eingeben" },
+  fr: { postalCode: "75001", city: "Paris", flag: "🇫🇷", steps: "amazon.fr → Bonjour → Livrer à → Entrer code postal" },
+  it: { postalCode: "00118", city: "Rome", flag: "🇮🇹", steps: "amazon.it → Ciao → Consegna a → Inserisci CAP" },
+  es: { postalCode: "28001", city: "Madrid", flag: "🇪🇸", steps: "amazon.es → Hola → Dirección de entrega → Introduce CP" },
+};
+
 export const productTypes: ProductType[] = [
     {
         id: "tshirts",
