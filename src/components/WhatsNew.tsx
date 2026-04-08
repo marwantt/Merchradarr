@@ -105,16 +105,17 @@ export default function WhatsNew({ youtubeVideos = [] }: Props) {
 
   return (
     <>
-      {/* Bell toggle — always visible */}
+      {/* Bell / X toggle button */}
       <div className="fixed top-4 right-4 z-50">
         <button
           onClick={() => setOpen((v) => !v)}
           type="button"
-          aria-label="Notifications"
+          aria-label={open ? "Close notifications" : "Open notifications"}
           className="relative flex items-center justify-center w-10 h-10 bg-background border border-border hover:bg-accent transition-colors"
+          style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.10)" }}
         >
-          <Bell className="w-4 h-4" />
-          {mounted && unreadCount > 0 && (
+          {open ? <X className="w-4 h-4" /> : <Bell className="w-4 h-4" />}
+          {mounted && unreadCount > 0 && !open && (
             <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center min-w-[18px] h-[18px] px-1 bg-primary text-primary-foreground text-[10px] font-bold">
               {unreadCount > 99 ? "99+" : unreadCount}
             </span>
@@ -122,12 +123,18 @@ export default function WhatsNew({ youtubeVideos = [] }: Props) {
         </button>
       </div>
 
-      {/* Side panel */}
+      {/* Floating panel */}
       <div
-        className={`fixed top-0 right-0 z-40 h-full flex flex-col bg-background border-l border-border transition-transform duration-300 ease-in-out ${
-          open ? "translate-x-0" : "translate-x-full"
+        className={`fixed z-40 flex flex-col bg-background border border-border transition-all duration-300 ease-in-out ${
+          open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
-        style={{ width: "340px", boxShadow: open ? "-8px 0 32px rgba(0,0,0,0.08)" : "none" }}
+        style={{
+          top: "60px",
+          right: "16px",
+          width: "340px",
+          maxHeight: "calc(100vh - 80px)",
+          boxShadow: "0 8px 40px rgba(0,0,0,0.14)",
+        }}
       >
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-border shrink-0">
@@ -224,7 +231,7 @@ export default function WhatsNew({ youtubeVideos = [] }: Props) {
       {/* Backdrop on mobile */}
       {open && (
         <div
-          className="fixed inset-0 z-30 bg-black/20 sm:hidden"
+          className="fixed inset-0 z-30 sm:hidden"
           onClick={() => setOpen(false)}
         />
       )}
