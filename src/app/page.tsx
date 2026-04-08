@@ -284,10 +284,10 @@ export default function Home() {
           </div>
           <div className="divide-y divide-border">
             {[
-              { badge: "New", name: "Ideogram", desc: "AI image generation with text — perfect for quote tees", href: "https://ideogram.ai" },
-              { badge: "New", name: "Claude", desc: "AI assistant for niche research and listing copy", href: "https://claude.ai" },
-              { badge: "Popular", name: "Kittl", desc: "POD-focused design platform with AI features", href: "https://kittl.com" },
-              { badge: "New", name: "Perplexity", desc: "Real-time AI search for trending niche discovery", href: "https://perplexity.ai" },
+              { badge: "New", name: "Ideogram", desc: "AI image generation with text — perfect for quote tees", href: "https://ideogram.ai", domain: "ideogram.ai" },
+              { badge: "New", name: "Claude", desc: "AI assistant for niche research and listing copy", href: "https://claude.ai", domain: "claude.ai" },
+              { badge: "Popular", name: "Kittl", desc: "POD-focused design platform with AI features", href: "https://kittl.com", domain: "kittl.com" },
+              { badge: "New", name: "Perplexity", desc: "Real-time AI search for trending niche discovery", href: "https://perplexity.ai", domain: "perplexity.ai" },
             ].map((tool) => (
               <a
                 key={tool.name}
@@ -296,12 +296,23 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-between px-6 py-4 hover:bg-accent group transition-colors"
               >
-                <div className="flex items-center gap-4">
-                  <span className={`text-xs px-2 py-0.5 font-medium shrink-0 ${
-                    tool.badge === "New" ? "bg-primary text-primary-foreground" : "border border-border text-muted-foreground"
-                  }`}>{tool.badge}</span>
+                <div className="flex items-center gap-3">
+                  <div className="w-7 h-7 border border-border flex items-center justify-center shrink-0 bg-muted overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`https://www.google.com/s2/favicons?domain=${tool.domain}&sz=32`}
+                      alt={tool.name}
+                      width={20}
+                      height={20}
+                    />
+                  </div>
                   <div>
-                    <p className="text-sm font-medium group-hover:text-primary transition-colors">{tool.name}</p>
+                    <div className="flex items-center gap-2">
+                      <p className="text-sm font-medium group-hover:text-primary transition-colors">{tool.name}</p>
+                      <span className={`text-xs px-1.5 py-0.5 font-medium ${
+                        tool.badge === "New" ? "bg-primary text-primary-foreground" : "border border-border text-muted-foreground"
+                      }`}>{tool.badge}</span>
+                    </div>
                     <p className="text-xs text-muted-foreground">{tool.desc}</p>
                   </div>
                 </div>

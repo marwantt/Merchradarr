@@ -14,6 +14,7 @@ const tools = [
         name: "Ideogram",
         description: "AI image generator that excels at text inside designs — perfect for quote tees and typography-based merch.",
         url: "https://ideogram.ai",
+        domain: "ideogram.ai",
         badge: "New",
         free: true,
       },
@@ -21,6 +22,7 @@ const tools = [
         name: "Kittl",
         description: "Design platform built for POD creators. Templates, fonts, and AI generation tailored for t-shirts and merch.",
         url: "https://kittl.com",
+        domain: "kittl.com",
         badge: "Popular",
         free: true,
       },
@@ -28,6 +30,7 @@ const tools = [
         name: "Leonardo.ai",
         description: "High-quality AI art generation with fine-tuned models. Great for detailed, print-ready artwork.",
         url: "https://leonardo.ai",
+        domain: "leonardo.ai",
         badge: "New",
         free: true,
       },
@@ -35,6 +38,7 @@ const tools = [
         name: "Adobe Firefly",
         description: "Adobe's AI image and text effect generator. Commercially safe — trained on licensed content.",
         url: "https://firefly.adobe.com",
+        domain: "firefly.adobe.com",
         badge: null,
         free: true,
       },
@@ -42,6 +46,7 @@ const tools = [
         name: "Midjourney",
         description: "Industry-leading AI art generation. Produces high-quality, artistic images for premium merch designs.",
         url: "https://midjourney.com",
+        domain: "midjourney.com",
         badge: null,
         free: false,
       },
@@ -54,6 +59,7 @@ const tools = [
         name: "ChatGPT",
         description: "Use GPT-4 to brainstorm niche ideas, write bullet points, generate listing titles, and explore sub-niches fast.",
         url: "https://chat.openai.com",
+        domain: "openai.com",
         badge: null,
         free: true,
       },
@@ -61,6 +67,7 @@ const tools = [
         name: "Claude",
         description: "Anthropic's AI assistant. Excellent for long-form niche research, content strategy, and writing product descriptions.",
         url: "https://claude.ai",
+        domain: "claude.ai",
         badge: "New",
         free: true,
       },
@@ -68,6 +75,7 @@ const tools = [
         name: "Perplexity",
         description: "AI search engine that pulls real-time data. Use it to discover trending topics and seasonal niche opportunities.",
         url: "https://perplexity.ai",
+        domain: "perplexity.ai",
         badge: "New",
         free: true,
       },
@@ -80,6 +88,7 @@ const tools = [
         name: "Canva",
         description: "Beginner-friendly design tool with a large template library and AI-powered Magic Studio features.",
         url: "https://canva.com",
+        domain: "canva.com",
         badge: null,
         free: true,
       },
@@ -87,6 +96,7 @@ const tools = [
         name: "Adobe Illustrator",
         description: "Industry standard for vector design. Essential for creating scalable, print-quality artwork.",
         url: "https://adobe.com/illustrator",
+        domain: "adobe.com",
         badge: null,
         free: false,
       },
@@ -94,6 +104,7 @@ const tools = [
         name: "Affinity Designer",
         description: "Professional vector design software. One-time purchase — a popular alternative to Illustrator.",
         url: "https://affinity.serif.com",
+        domain: "affinity.serif.com",
         badge: null,
         free: false,
       },
@@ -106,6 +117,7 @@ const tools = [
         name: "MerchRadar",
         description: "Find profitable Merch by Amazon niches instantly across 6 marketplaces — US, UK, DE, FR, IT, ES.",
         url: "/",
+        domain: "merchradar.app",
         badge: "Free",
         free: true,
       },
@@ -113,6 +125,7 @@ const tools = [
         name: "Merch Informer",
         description: "Dedicated Merch by Amazon research tool. BSR tracking, competition analysis, and keyword data.",
         url: "https://merchinformer.com",
+        domain: "merchinformer.com",
         badge: null,
         free: false,
       },
@@ -120,6 +133,7 @@ const tools = [
         name: "Helium 10",
         description: "Comprehensive Amazon seller toolkit. Keyword research and trend data useful for Merch niche validation.",
         url: "https://helium10.com",
+        domain: "helium10.com",
         badge: null,
         free: false,
       },
@@ -129,9 +143,26 @@ const tools = [
 
 const badgeStyles: Record<string, string> = {
   New: "bg-primary text-primary-foreground",
-  Popular: "bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800",
-  Free: "bg-green-100 dark:bg-green-950 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800",
+  Popular: "border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300",
+  Free: "border border-green-200 dark:border-green-800 text-green-700 dark:text-green-300",
 };
+
+function ToolIcon({ domain, name }: { domain: string; name: string }) {
+  return (
+    <div className="w-9 h-9 border border-border flex items-center justify-center shrink-0 bg-muted overflow-hidden">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
+        alt={`${name} logo`}
+        width={28}
+        height={28}
+        onError={(e) => {
+          (e.target as HTMLImageElement).style.display = "none";
+        }}
+      />
+    </div>
+  );
+}
 
 export default function ToolsPage() {
   return (
@@ -180,26 +211,28 @@ export default function ToolsPage() {
                   href={tool.url}
                   target={tool.url.startsWith("http") ? "_blank" : undefined}
                   rel={tool.url.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="group flex items-start justify-between gap-4 p-5 border border-border hover:border-primary transition-colors"
+                  className="group flex items-center justify-between gap-4 p-5 border border-border hover:border-primary transition-colors"
                 >
-                  <div className="space-y-1.5 flex-1">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-sm font-semibold group-hover:text-primary transition-colors">{tool.name}</span>
-                      {tool.badge && (
-                        <span className={`text-xs px-2 py-0.5 font-medium ${badgeStyles[tool.badge]}`}>
-                          {tool.badge}
-                        </span>
-                      )}
-                      {tool.free && !tool.badge && (
-                        <span className="text-xs text-muted-foreground uppercase tracking-widest">Free</span>
-                      )}
-                      {!tool.free && (
-                        <span className="text-xs text-muted-foreground uppercase tracking-widest">Paid</span>
-                      )}
+                  <div className="flex items-center gap-4 flex-1 min-w-0">
+                    <ToolIcon domain={tool.domain} name={tool.name} />
+                    <div className="space-y-1 min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="text-sm font-semibold group-hover:text-primary transition-colors">{tool.name}</span>
+                        {tool.badge && (
+                          <span className={`text-xs px-2 py-0.5 font-medium ${badgeStyles[tool.badge]}`}>
+                            {tool.badge}
+                          </span>
+                        )}
+                        {!tool.badge && (
+                          <span className="text-xs text-muted-foreground uppercase tracking-widest">
+                            {tool.free ? "Free" : "Paid"}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-muted-foreground leading-relaxed">{tool.description}</p>
                     </div>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{tool.description}</p>
                   </div>
-                  <span className="text-xs text-primary opacity-0 group-hover:opacity-100 transition-opacity shrink-0 pt-0.5">→</span>
+                  <span className="text-xs text-primary opacity-0 group-hover:opacity-100 transition-opacity shrink-0">→</span>
                 </a>
               ))}
             </div>
