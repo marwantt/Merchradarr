@@ -70,6 +70,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${monoFont.variable} ${titleFont.variable}`}>
       <head>
+        <meta name="google-adsense-account" content="ca-pub-9018209717885254" />
         <style>{`
 html {
   font-family: var(--font-mono), monospace;
