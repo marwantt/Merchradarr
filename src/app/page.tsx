@@ -16,13 +16,14 @@ export default async function Home() {
   const youtubeVideos = videoResults.flatMap(r => r.status === "fulfilled" ? r.value : []);
 
   return (
+    <>
+      {/* Fixed top-right notification bell */}
+      <WhatsNew youtubeVideos={youtubeVideos} />
+
     <div className="min-h-screen flex items-center justify-center p-4 py-16">
       <main className="w-full max-w-xl flex flex-col gap-10 items-stretch">
 
         <SearchTool />
-
-        {/* What's New */}
-        <WhatsNew youtubeVideos={youtubeVideos} />
 
         {/* Academy Section */}
         <div className="border border-border">
@@ -119,5 +120,6 @@ export default async function Home() {
 
       </main>
     </div>
+    </>
   );
 }

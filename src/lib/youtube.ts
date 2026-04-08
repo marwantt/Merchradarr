@@ -4,6 +4,7 @@ export interface YouTubeVideo {
   url: string;
   channelName: string;
   publishedAt: string;
+  thumbnail: string;
 }
 
 function decodeXml(str: string): string {
@@ -51,6 +52,7 @@ async function fetchVideos(channelId: string, limit = 4): Promise<YouTubeVideo[]
         url: `https://www.youtube.com/watch?v=${videoId}`,
         channelName: decodeXml(channelName),
         publishedAt: published.split("T")[0],
+        thumbnail: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
       };
     });
   } catch {

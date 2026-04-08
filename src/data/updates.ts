@@ -8,6 +8,7 @@ export interface Update {
   url: string;
   date: string;
   external?: boolean;
+  thumbnail?: string;
 }
 
 // Add new items to the TOP — newest first

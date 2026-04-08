@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { Bell } from "lucide-react";
 import { updates, type Update, type UpdateType } from "@/data/updates";
 import type { YouTubeVideo } from "@/lib/youtube";
 
@@ -17,8 +18,7 @@ const typeConfig: Record<UpdateType, { label: string; className: string }> = {
 };
 
 function formatDate(dateStr: string) {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  return new Date(dateStr).toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
 function youtubeToUpdate(video: YouTubeVideo): Update {
@@ -26,10 +26,11 @@ function youtubeToUpdate(video: YouTubeVideo): Update {
     id: `yt-${video.id}`,
     type: "video",
     title: video.title,
-    description: `New video by ${video.channelName}`,
+    description: video.channelName,
     url: video.url,
     date: video.publishedAt,
     external: true,
+    thumbnail: video.thumbnail,
   };
 }
 
@@ -41,8 +42,8 @@ export default function WhatsNew({ youtubeVideos = [] }: Props) {
   const [seenIds, setSeenIds] = useState<Set<string>>(new Set());
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Merge YouTube videos into the feed and sort by date
   const allItems: Update[] = [
     ...updates,
     ...youtubeVideos.map(youtubeToUpdate),
@@ -56,102 +57,136 @@ export default function WhatsNew({ youtubeVideos = [] }: Props) {
     } catch {}
   }, []);
 
-  const unreadCount = mounted ? allItems.filter((u) => !seenIds.has(u.id)).length : 0;
+  // Close on outside click
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    if (open) document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [open]);
 
-  function markAllSeen() {
-    const allIds = allItems.map((u) => u.id);
-    const next = new Set(allIds);
-    setSeenIds(next);
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(allIds));
-    } catch {}
-  }
+  const unreadCount = mounted ? allItems.filter((u) => !seenIds.has(u.id)).length : 0;
 
   function handleOpen() {
     setOpen((v) => !v);
-    if (!open) markAllSeen();
+    if (!open) {
+      // Mark all seen when opening
+      const allIds = allItems.map((u) => u.id);
+      const next = new Set(allIds);
+      setSeenIds(next);
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(allIds)); } catch {}
+    }
   }
 
   function handleItemClick(id: string) {
     const next = new Set([...seenIds, id]);
     setSeenIds(next);
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify([...next]));
-    } catch {}
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify([...next])); } catch {}
+    setOpen(false);
   }
 
   return (
-    <div className="border border-border">
-      {/* Header */}
+    <div ref={containerRef} className="fixed top-4 right-4 z-50">
+
+      {/* Bell button */}
       <button
         onClick={handleOpen}
-        className="w-full flex items-center justify-between px-6 py-4 hover:bg-accent transition-colors"
         type="button"
+        className="relative flex items-center justify-center w-10 h-10 border border-border bg-background hover:bg-accent transition-colors"
+        aria-label="What's New"
       >
-        <div className="flex items-center gap-3">
-          <span className="text-xs uppercase tracking-[0.2em] font-semibold">What&apos;s New</span>
-          {mounted && unreadCount > 0 && (
-            <span className="flex items-center justify-center w-5 h-5 bg-primary text-primary-foreground text-xs font-bold">
-              {unreadCount}
-            </span>
-          )}
-        </div>
-        <span className="text-xs text-muted-foreground uppercase tracking-widest">
-          {open ? "Close ↑" : "Show ↓"}
-        </span>
+        <Bell className="w-4 h-4" />
+        {mounted && unreadCount > 0 && (
+          <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center w-4 h-4 bg-primary text-primary-foreground text-[10px] font-bold">
+            {unreadCount > 9 ? "9+" : unreadCount}
+          </span>
+        )}
       </button>
 
-      {/* Feed */}
+      {/* Dropdown */}
       {open && (
-        <div className="divide-y divide-border border-t border-border">
-          {allItems.map((item) => {
-            const isNew = mounted && !seenIds.has(item.id);
-            const cfg = typeConfig[item.type];
-            const sharedClass = "flex items-start justify-between gap-4 px-6 py-4 hover:bg-accent group transition-colors";
+        <div className="absolute right-0 top-12 w-80 sm:w-96 max-h-[80vh] overflow-y-auto border border-border bg-background flex flex-col">
 
-            const inner = (
-              <>
-                <div className="flex items-start gap-3 flex-1 min-w-0">
-                  <div className="mt-1.5 shrink-0">
-                    {isNew ? <div className="w-1.5 h-1.5 bg-primary" /> : <div className="w-1.5 h-1.5" />}
+          {/* Header */}
+          <div className="flex items-center justify-between px-4 py-3 border-b border-border sticky top-0 bg-background z-10">
+            <span className="text-xs uppercase tracking-[0.2em] font-semibold">What&apos;s New</span>
+            <span className="text-xs text-muted-foreground">{allItems.length} updates</span>
+          </div>
+
+          {/* Feed */}
+          <div className="divide-y divide-border">
+            {allItems.map((item) => {
+              const isNew = !seenIds.has(item.id);
+              const cfg = typeConfig[item.type];
+              const isVideo = item.type === "video";
+              const sharedClass = `block hover:bg-accent transition-colors ${isNew ? "bg-accent/40" : ""}`;
+
+              const content = isVideo && item.thumbnail ? (
+                /* Video card with thumbnail */
+                <div className="p-3 space-y-2">
+                  <div className="flex items-center gap-2">
+                    {isNew && <div className="w-1.5 h-1.5 bg-primary shrink-0" />}
+                    <span className={`text-xs px-1.5 py-0.5 border font-medium ${cfg.className}`}>{cfg.label}</span>
+                    <span className="text-xs text-muted-foreground">{formatDate(item.date)}</span>
                   </div>
-                  <div className="space-y-1 min-w-0">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className={`text-xs px-1.5 py-0.5 border font-medium ${cfg.className}`}>{cfg.label}</span>
-                      <span className="text-xs text-muted-foreground">{formatDate(item.date)}</span>
+                  {/* Thumbnail */}
+                  <div className="relative w-full aspect-video bg-muted overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={item.thumbnail}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-10 h-10 bg-black/70 flex items-center justify-center">
+                        <div className="w-0 h-0 border-t-[7px] border-t-transparent border-l-[14px] border-l-white border-b-[7px] border-b-transparent ml-1" />
+                      </div>
                     </div>
-                    <p className={`text-sm font-medium group-hover:text-primary transition-colors ${isNew ? "" : "text-foreground/70"}`}>
-                      {item.title}
-                    </p>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium leading-snug line-clamp-2">{item.title}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{item.description}</p>
                   </div>
                 </div>
-                <span className="text-xs text-primary opacity-0 group-hover:opacity-100 transition-opacity shrink-0 mt-1">→</span>
-              </>
-            );
+              ) : (
+                /* Regular item */
+                <div className="px-4 py-3 space-y-1">
+                  <div className="flex items-center gap-2">
+                    {isNew && <div className="w-1.5 h-1.5 bg-primary shrink-0" />}
+                    <span className={`text-xs px-1.5 py-0.5 border font-medium ${cfg.className}`}>{cfg.label}</span>
+                    <span className="text-xs text-muted-foreground">{formatDate(item.date)}</span>
+                  </div>
+                  <p className="text-sm font-medium leading-snug">{item.title}</p>
+                  <p className="text-xs text-muted-foreground">{item.description}</p>
+                </div>
+              );
 
-            return item.external ? (
-              <a
-                key={item.id}
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => handleItemClick(item.id)}
-                className={sharedClass}
-              >
-                {inner}
-              </a>
-            ) : (
-              <Link
-                key={item.id}
-                href={item.url}
-                onClick={() => handleItemClick(item.id)}
-                className={sharedClass}
-              >
-                {inner}
-              </Link>
-            );
-          })}
+              return item.external ? (
+                <a
+                  key={item.id}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleItemClick(item.id)}
+                  className={sharedClass}
+                >
+                  {content}
+                </a>
+              ) : (
+                <Link
+                  key={item.id}
+                  href={item.url}
+                  onClick={() => handleItemClick(item.id)}
+                  className={sharedClass}
+                >
+                  {content}
+                </Link>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>
