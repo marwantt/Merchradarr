@@ -14,6 +14,22 @@ export interface Update {
 // Add new items to the TOP — newest first
 export const updates: Update[] = [
   {
+    id: "blog-summer-niches-2026",
+    type: "blog",
+    title: "Best Merch by Amazon Niches for Summer 2026",
+    description: "From beach themes to patriotic designs — the niches selling right now and how to get ahead before the peak.",
+    url: "/blog/best-merch-niches-summer-2026",
+    date: "2026-04-08",
+  },
+  {
+    id: "blog-comfort-colors-guide-2026",
+    type: "blog",
+    title: "Comfort Colors on Amazon Merch: Everything You Need to Know",
+    description: "Colors, royalties, niche strategy and design tips for the new Comfort Colors heavyweight tee line.",
+    url: "/blog/amazon-merch-comfort-colors-guide",
+    date: "2026-04-05",
+  },
+  {
     id: "amazon-merch-comfort-colors-eu-2026",
     type: "product",
     title: "Comfort Colors & Premium T-shirts now in DE, FR, IT, ES",

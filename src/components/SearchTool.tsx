@@ -5,7 +5,7 @@ import { SearchAnalytics } from "@/utils/analytics";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Loader2 } from "lucide-react";
+import { Loader2, Share2 } from "lucide-react";
 import { marketplaces, productTypes, sortOptions } from "@/lib/constants";
 
 export default function SearchTool() {
@@ -15,6 +15,8 @@ export default function SearchTool() {
   const [selectedSort, setSelectedSort] = useState("featured");
   const [isLoading, setIsLoading] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [shared, setShared] = useState(false);
+  const [recentSearches, setRecentSearches] = useState<string[]>([]);
 
   const marketplace = marketplaces.find(m => m.id === selectedMarketplace) || marketplaces[0];
   const productType = productTypes.find(p => p.id === selectedProductType) || productTypes[0];
@@ -22,6 +24,18 @@ export default function SearchTool() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    // Load recent unique keywords from analytics
+    const history = SearchAnalytics.getSearchHistory(20);
+    const seen = new Set<string>();
+    const unique: string[] = [];
+    for (const r of history) {
+      if (!seen.has(r.keyword)) {
+        seen.add(r.keyword);
+        unique.push(r.keyword);
+        if (unique.length === 5) break;
+      }
+    }
+    setRecentSearches(unique);
   }, []);
 
   const previewUrl = useMemo(() => {
@@ -51,6 +65,11 @@ export default function SearchTool() {
         window.open(fallbackUrl, "_blank", "noopener,noreferrer");
       } else if (previewUrl) {
         SearchAnalytics.trackSearch(trimmed, selectedMarketplace, selectedProductType, selectedSort, previewUrl);
+        // Update recent searches
+        setRecentSearches(prev => {
+          const next = [trimmed, ...prev.filter(k => k !== trimmed)].slice(0, 5);
+          return next;
+        });
         window.open(previewUrl, "_blank", "noopener,noreferrer");
       }
       setIsLoading(false);
@@ -72,6 +91,24 @@ export default function SearchTool() {
     setTimeout(() => setCopied(false), 1500);
   }
 
+  async function handleShare() {
+    if (!previewUrl) return;
+    const shareData = {
+      title: `MerchRadar — ${keyword}`,
+      text: `Check out this Amazon Merch niche: "${keyword}"`,
+      url: previewUrl,
+    };
+    try {
+      if (navigator.share && navigator.canShare?.(shareData)) {
+        await navigator.share(shareData);
+      } else {
+        await navigator.clipboard.writeText(previewUrl);
+        setShared(true);
+        setTimeout(() => setShared(false), 1500);
+      }
+    } catch {}
+  }
+
   return (
     <>
       {/* Header */}
@@ -87,13 +124,30 @@ export default function SearchTool() {
         <p className="text-xs text-muted-foreground uppercase tracking-[0.2em]">Amazon Merch Niche Finder</p>
       </div>
 
-      {/* Hint */}
+      {/* Hint or Recent Searches */}
       {!keyword && (
-        <div className="text-center py-5 border-l-2 border-primary bg-accent px-6">
-          <p className="text-xs text-accent-foreground uppercase tracking-widest font-medium">
-            Try: &ldquo;Cat Shirts&rdquo; &nbsp;·&nbsp; &ldquo;Retro Gaming&rdquo; &nbsp;·&nbsp; &ldquo;Motivational Quotes&rdquo;
-          </p>
-        </div>
+        recentSearches.length > 0 ? (
+          <div className="space-y-3">
+            <p className="text-xs text-muted-foreground uppercase tracking-widest text-center">Recent Searches</p>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {recentSearches.map((k) => (
+                <button
+                  key={k}
+                  onClick={() => setKeyword(k)}
+                  className="px-3 py-1.5 border border-border text-xs uppercase tracking-wider hover:border-primary hover:text-primary transition-colors font-medium"
+                >
+                  {k}
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="text-center py-5 border-l-2 border-primary bg-accent px-6">
+            <p className="text-xs text-accent-foreground uppercase tracking-widest font-medium">
+              Try: &ldquo;Cat Shirts&rdquo; &nbsp;·&nbsp; &ldquo;Retro Gaming&rdquo; &nbsp;·&nbsp; &ldquo;Motivational Quotes&rdquo;
+            </p>
+          </div>
+        )
       )}
 
       {/* Search */}
@@ -111,25 +165,19 @@ export default function SearchTool() {
           <Select value={selectedMarketplace} onValueChange={setSelectedMarketplace}>
             <SelectTrigger className="h-11"><SelectValue /></SelectTrigger>
             <SelectContent>
-              {marketplaces.map(m => (
-                <SelectItem key={m.id} value={m.id}>{m.name}</SelectItem>
-              ))}
+              {marketplaces.map(m => <SelectItem key={m.id} value={m.id}>{m.name}</SelectItem>)}
             </SelectContent>
           </Select>
           <Select value={selectedProductType} onValueChange={setSelectedProductType}>
             <SelectTrigger className="h-11"><SelectValue /></SelectTrigger>
             <SelectContent>
-              {productTypes.map(p => (
-                <SelectItem key={p.id} value={p.id}>{p.name}</SelectItem>
-              ))}
+              {productTypes.map(p => <SelectItem key={p.id} value={p.id}>{p.name}</SelectItem>)}
             </SelectContent>
           </Select>
           <Select value={selectedSort} onValueChange={setSelectedSort}>
             <SelectTrigger className="h-11"><SelectValue /></SelectTrigger>
             <SelectContent>
-              {sortOptions.map(o => (
-                <SelectItem key={o.id} value={o.id}>{o.name}</SelectItem>
-              ))}
+              {sortOptions.map(o => <SelectItem key={o.id} value={o.id}>{o.name}</SelectItem>)}
             </SelectContent>
           </Select>
         </div>
@@ -156,12 +204,21 @@ export default function SearchTool() {
         <div className="border-t pt-5 space-y-2">
           <div className="flex items-center justify-between gap-3">
             <p className="text-xs text-muted-foreground uppercase tracking-widest">Preview URL</p>
-            <button
-              onClick={handleCopy}
-              className="text-xs uppercase tracking-widest text-primary hover:opacity-70 transition-opacity font-medium"
-            >
-              {copied ? "Copied!" : "Copy"}
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={handleShare}
+                className="flex items-center gap-1.5 text-xs uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors font-medium"
+              >
+                <Share2 className="w-3 h-3" />
+                {shared ? "Copied!" : "Share"}
+              </button>
+              <button
+                onClick={handleCopy}
+                className="text-xs uppercase tracking-widest text-primary hover:opacity-70 transition-opacity font-medium"
+              >
+                {copied ? "Copied!" : "Copy"}
+              </button>
+            </div>
           </div>
           <p className="text-xs text-muted-foreground break-all font-mono leading-relaxed">{previewUrl}</p>
         </div>
