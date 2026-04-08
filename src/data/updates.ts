@@ -1,4 +1,4 @@
-export type UpdateType = "blog" | "tool" | "tutorial" | "news" | "product";
+export type UpdateType = "blog" | "tool" | "tutorial" | "news" | "product" | "video";
 
 export interface Update {
   id: string;

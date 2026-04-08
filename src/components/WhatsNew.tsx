@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { updates, type UpdateType } from "@/data/updates";
+import { updates, type Update, type UpdateType } from "@/data/updates";
+import type { YouTubeVideo } from "@/lib/youtube";
 
 const STORAGE_KEY = "merchradar_seen_updates";
 
@@ -12,6 +13,7 @@ const typeConfig: Record<UpdateType, { label: string; className: string }> = {
   tutorial: { label: "Tutorial", className: "text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800" },
   news:     { label: "News",     className: "text-red-700 dark:text-red-300 border-red-200 dark:border-red-800" },
   product:  { label: "Product",  className: "text-green-700 dark:text-green-300 border-green-200 dark:border-green-800" },
+  video:    { label: "Video",    className: "text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800" },
 };
 
 function formatDate(dateStr: string) {
@@ -19,10 +21,32 @@ function formatDate(dateStr: string) {
   return date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
-export default function WhatsNew() {
+function youtubeToUpdate(video: YouTubeVideo): Update {
+  return {
+    id: `yt-${video.id}`,
+    type: "video",
+    title: video.title,
+    description: `New video by ${video.channelName}`,
+    url: video.url,
+    date: video.publishedAt,
+    external: true,
+  };
+}
+
+interface Props {
+  youtubeVideos?: YouTubeVideo[];
+}
+
+export default function WhatsNew({ youtubeVideos = [] }: Props) {
   const [seenIds, setSeenIds] = useState<Set<string>>(new Set());
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+
+  // Merge YouTube videos into the feed and sort by date
+  const allItems: Update[] = [
+    ...updates,
+    ...youtubeVideos.map(youtubeToUpdate),
+  ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   useEffect(() => {
     setMounted(true);
@@ -32,12 +56,10 @@ export default function WhatsNew() {
     } catch {}
   }, []);
 
-  const unreadCount = mounted
-    ? updates.filter((u) => !seenIds.has(u.id)).length
-    : 0;
+  const unreadCount = mounted ? allItems.filter((u) => !seenIds.has(u.id)).length : 0;
 
   function markAllSeen() {
-    const allIds = updates.map((u) => u.id);
+    const allIds = allItems.map((u) => u.id);
     const next = new Set(allIds);
     setSeenIds(next);
     try {
@@ -82,36 +104,20 @@ export default function WhatsNew() {
       {/* Feed */}
       {open && (
         <div className="divide-y divide-border border-t border-border">
-          {updates.map((item) => {
+          {allItems.map((item) => {
             const isNew = mounted && !seenIds.has(item.id);
             const cfg = typeConfig[item.type];
-            const isExternal = item.external;
-            const Comp = isExternal ? "a" : Link;
-            const linkProps = isExternal
-              ? { href: item.url, target: "_blank", rel: "noopener noreferrer" }
-              : { href: item.url };
+            const sharedClass = "flex items-start justify-between gap-4 px-6 py-4 hover:bg-accent group transition-colors";
 
-            return (
-              <Comp
-                key={item.id}
-                {...(linkProps as any)}
-                onClick={() => handleItemClick(item.id)}
-                className="flex items-start justify-between gap-4 px-6 py-4 hover:bg-accent group transition-colors"
-              >
+            const inner = (
+              <>
                 <div className="flex items-start gap-3 flex-1 min-w-0">
-                  {/* Unread dot */}
                   <div className="mt-1.5 shrink-0">
-                    {isNew ? (
-                      <div className="w-1.5 h-1.5 bg-primary" />
-                    ) : (
-                      <div className="w-1.5 h-1.5" />
-                    )}
+                    {isNew ? <div className="w-1.5 h-1.5 bg-primary" /> : <div className="w-1.5 h-1.5" />}
                   </div>
                   <div className="space-y-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className={`text-xs px-1.5 py-0.5 border font-medium ${cfg.className}`}>
-                        {cfg.label}
-                      </span>
+                      <span className={`text-xs px-1.5 py-0.5 border font-medium ${cfg.className}`}>{cfg.label}</span>
                       <span className="text-xs text-muted-foreground">{formatDate(item.date)}</span>
                     </div>
                     <p className={`text-sm font-medium group-hover:text-primary transition-colors ${isNew ? "" : "text-foreground/70"}`}>
@@ -121,7 +127,29 @@ export default function WhatsNew() {
                   </div>
                 </div>
                 <span className="text-xs text-primary opacity-0 group-hover:opacity-100 transition-opacity shrink-0 mt-1">→</span>
-              </Comp>
+              </>
+            );
+
+            return item.external ? (
+              <a
+                key={item.id}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => handleItemClick(item.id)}
+                className={sharedClass}
+              >
+                {inner}
+              </a>
+            ) : (
+              <Link
+                key={item.id}
+                href={item.url}
+                onClick={() => handleItemClick(item.id)}
+                className={sharedClass}
+              >
+                {inner}
+              </Link>
             );
           })}
         </div>
