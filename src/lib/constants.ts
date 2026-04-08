@@ -32,21 +32,90 @@ export const marketplaces: Marketplace[] = [
     { id: "es", name: "Amazon ES", domain: "amazon.es", sellerId: "A1RKKUPIHCS9HS" },
 ];
 
-export interface MarketplaceLocation {
-  postalCode: string;
+export interface PostalCode {
+  code: string;
   city: string;
-  flag: string;
-  steps: string;
 }
 
-// Suggested postal codes for non-US marketplaces
+export interface MarketplaceLocation {
+  flag: string;
+  steps: string;
+  codes: PostalCode[];
+}
+
+// Verified real postal codes for each marketplace
 // Needed so Amazon shows correct Merch results for that region
 export const marketplaceLocations: Record<string, MarketplaceLocation> = {
-  uk: { postalCode: "W1A 0AX", city: "London", flag: "🇬🇧", steps: "amazon.co.uk → Hello, Sign in → Deliver to → Enter postcode" },
-  de: { postalCode: "10115", city: "Berlin", flag: "🇩🇪", steps: "amazon.de → Hallo → Lieferadresse → PLZ eingeben" },
-  fr: { postalCode: "75001", city: "Paris", flag: "🇫🇷", steps: "amazon.fr → Bonjour → Livrer à → Entrer code postal" },
-  it: { postalCode: "00118", city: "Rome", flag: "🇮🇹", steps: "amazon.it → Ciao → Consegna a → Inserisci CAP" },
-  es: { postalCode: "28001", city: "Madrid", flag: "🇪🇸", steps: "amazon.es → Hola → Dirección de entrega → Introduce CP" },
+  uk: {
+    flag: "🇬🇧",
+    steps: "amazon.co.uk → Hello → Account → Deliver to → Enter postcode",
+    codes: [
+      { code: "W1A 0AX", city: "London (West End)" },
+      { code: "EC1A 1BB", city: "London (City)" },
+      { code: "M1 1AE",  city: "Manchester" },
+      { code: "B1 1BB",  city: "Birmingham" },
+      { code: "EH1 1YZ", city: "Edinburgh" },
+      { code: "BS1 4DJ", city: "Bristol" },
+      { code: "LS1 1BA", city: "Leeds" },
+      { code: "G1 1XW",  city: "Glasgow" },
+    ],
+  },
+  de: {
+    flag: "🇩🇪",
+    steps: "amazon.de → Hallo → Konto → Lieferadresse → PLZ eingeben",
+    codes: [
+      { code: "10115", city: "Berlin (Mitte)" },
+      { code: "80331", city: "München" },
+      { code: "20095", city: "Hamburg" },
+      { code: "60311", city: "Frankfurt" },
+      { code: "50667", city: "Köln" },
+      { code: "70173", city: "Stuttgart" },
+      { code: "40213", city: "Düsseldorf" },
+      { code: "90402", city: "Nürnberg" },
+    ],
+  },
+  fr: {
+    flag: "🇫🇷",
+    steps: "amazon.fr → Bonjour → Compte → Livrer à → Code postal",
+    codes: [
+      { code: "75001", city: "Paris (1er)" },
+      { code: "75008", city: "Paris (8e)" },
+      { code: "69001", city: "Lyon" },
+      { code: "13001", city: "Marseille" },
+      { code: "31000", city: "Toulouse" },
+      { code: "33000", city: "Bordeaux" },
+      { code: "67000", city: "Strasbourg" },
+      { code: "06000", city: "Nice" },
+    ],
+  },
+  it: {
+    flag: "🇮🇹",
+    steps: "amazon.it → Ciao → Account → Consegna a → Inserisci CAP",
+    codes: [
+      { code: "00118", city: "Roma (Centro)" },
+      { code: "20121", city: "Milano" },
+      { code: "80121", city: "Napoli" },
+      { code: "10121", city: "Torino" },
+      { code: "50123", city: "Firenze" },
+      { code: "40121", city: "Bologna" },
+      { code: "16121", city: "Genova" },
+      { code: "90133", city: "Palermo" },
+    ],
+  },
+  es: {
+    flag: "🇪🇸",
+    steps: "amazon.es → Hola → Cuenta → Dirección de entrega → Código postal",
+    codes: [
+      { code: "28001", city: "Madrid (Centro)" },
+      { code: "08001", city: "Barcelona" },
+      { code: "41001", city: "Sevilla" },
+      { code: "46001", city: "Valencia" },
+      { code: "48001", city: "Bilbao" },
+      { code: "29001", city: "Málaga" },
+      { code: "50001", city: "Zaragoza" },
+      { code: "15001", city: "A Coruña" },
+    ],
+  },
 };
 
 export const productTypes: ProductType[] = [

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Loader2, Share2 } from "lucide-react";
-import { marketplaces, productTypes, sortOptions, marketplaceLocations } from "@/lib/constants";
+import { marketplaces, productTypes, sortOptions, marketplaceLocations, type PostalCode } from "@/lib/constants";
 
 export default function SearchTool() {
   const [keyword, setKeyword] = useState("");
@@ -17,6 +17,7 @@ export default function SearchTool() {
   const [copied, setCopied] = useState(false);
   const [shared, setShared] = useState(false);
   const [copiedPostal, setCopiedPostal] = useState(false);
+  const [selectedPostal, setSelectedPostal] = useState<PostalCode | null>(null);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
 
   const marketplace = marketplaces.find(m => m.id === selectedMarketplace) || marketplaces[0];
@@ -193,36 +194,53 @@ export default function SearchTool() {
       {/* Location tip for non-US marketplaces */}
       {marketplaceLocations[selectedMarketplace] && (() => {
         const loc = marketplaceLocations[selectedMarketplace];
+        const active = selectedPostal ?? loc.codes[0];
         return (
-          <div className="border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950 px-4 py-3 space-y-2">
-            <div className="flex items-start justify-between gap-3">
-              <div className="space-y-1 flex-1">
-                <p className="text-xs font-semibold text-amber-800 dark:text-amber-200 uppercase tracking-wider">
-                  {loc.flag} Set your Amazon location for accurate results
-                </p>
-                <p className="text-xs text-amber-700 dark:text-amber-300 leading-relaxed">
-                  Without a {loc.city} address, Amazon may show wrong or empty results.
-                  Use this postal code on {marketplace.domain}:
-                </p>
-              </div>
+          <div className="border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950 px-4 py-3 space-y-3">
+            <p className="text-xs font-semibold text-amber-800 dark:text-amber-200 uppercase tracking-wider">
+              {loc.flag} Set your Amazon location for accurate results
+            </p>
+            <p className="text-xs text-amber-700 dark:text-amber-300 leading-relaxed">
+              Without a local address, Amazon may show wrong results on {marketplace.domain}.
+              Pick a city and copy the postal code:
+            </p>
+
+            {/* City selector */}
+            <div className="grid grid-cols-2 gap-1.5">
+              {loc.codes.map((pc) => (
+                <button
+                  key={pc.code}
+                  type="button"
+                  onClick={() => setSelectedPostal(pc)}
+                  className={`text-left px-2.5 py-1.5 text-xs border transition-colors ${
+                    active.code === pc.code
+                      ? "border-amber-500 bg-amber-500 text-white font-semibold"
+                      : "border-amber-200 dark:border-amber-700 text-amber-700 dark:text-amber-300 hover:border-amber-400"
+                  }`}
+                >
+                  <span className="font-mono font-bold">{pc.code}</span>
+                  <span className="ml-1.5 opacity-80">{pc.city}</span>
+                </button>
+              ))}
             </div>
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 flex-1 bg-white dark:bg-black/20 border border-amber-200 dark:border-amber-800 px-3 py-2">
-                <span className="font-mono text-sm font-bold tracking-widest text-amber-900 dark:text-amber-100">
-                  {loc.postalCode}
-                </span>
-                <span className="text-xs text-amber-600 dark:text-amber-400">— {loc.city}</span>
+
+            {/* Selected code + copy */}
+            <div className="flex items-center gap-2">
+              <div className="flex-1 bg-white dark:bg-black/20 border border-amber-200 dark:border-amber-800 px-3 py-2">
+                <span className="font-mono text-sm font-bold tracking-widest text-amber-900 dark:text-amber-100">{active.code}</span>
+                <span className="text-xs text-amber-600 dark:text-amber-400 ml-2">— {active.city}</span>
               </div>
               <button
                 type="button"
-                onClick={() => handleCopyPostal(loc.postalCode)}
-                className="shrink-0 px-3 py-2 bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold uppercase tracking-wider transition-colors"
+                onClick={() => handleCopyPostal(active.code)}
+                className="shrink-0 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold uppercase tracking-wider transition-colors"
               >
                 {copiedPostal ? "Copied!" : "Copy"}
               </button>
             </div>
+
             <p className="text-[11px] text-amber-600 dark:text-amber-400 leading-relaxed">
-              How: {loc.steps}
+              How to set it: {loc.steps}
             </p>
           </div>
         );
