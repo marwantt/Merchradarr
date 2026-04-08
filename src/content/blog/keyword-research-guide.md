@@ -7,6 +7,7 @@ category:
 publishedAt: "2024-12-10"
 readingTime: 12
 featured: false
+coverImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80&auto=format&fit=crop"
 ---
 
 # Complete Guide to Amazon Merch Keyword Research

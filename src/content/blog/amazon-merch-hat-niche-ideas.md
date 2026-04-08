@@ -7,6 +7,7 @@ publishedAt: "2026-01-20"
 readingTime: 8
 featured: false
 draft: false
+coverImage: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=1200&q=80&auto=format&fit=crop"
 ---
 
 Amazon Merch added **Printed Baseball Hats and Trucker Hats** to their product lineup in January 2026 — and the opportunity for early sellers is massive. Hat designs have much lower competition than t-shirts right now, and buyers who search for niche hats on Amazon are highly motivated to buy.

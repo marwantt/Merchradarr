@@ -7,6 +7,7 @@ publishedAt: "2026-04-08"
 readingTime: 9
 featured: true
 draft: false
+coverImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80&auto=format&fit=crop"
 ---
 
 Summer is one of the biggest seasons for Merch by Amazon sellers. Buyers are searching for beach themes, patriotic designs, vacation tees, and outdoor activity shirts. If you start designing now, your listings will be indexed and ranking before the peak hits.

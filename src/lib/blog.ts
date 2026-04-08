@@ -17,6 +17,7 @@ export interface BlogPost {
     title: string;
     color?: string;
   };
+  coverImage?: string;
   featured?: boolean;
   draft?: boolean;
 }
@@ -31,6 +32,7 @@ export interface BlogPostPreview {
     title: string;
     color?: string;
   };
+  coverImage?: string;
   featured?: boolean;
 }
 
@@ -86,6 +88,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
       publishedAt: data.publishedAt || '',
       readingTime: data.readingTime || 5,
       category: data.category || { title: 'General' },
+      coverImage: data.coverImage || null,
       featured: data.featured || false,
       draft: data.draft || false,
     };
@@ -112,6 +115,7 @@ export async function getAllPosts(): Promise<BlogPostPreview[]> {
         publishedAt: post.publishedAt,
         readingTime: post.readingTime,
         category: post.category,
+        coverImage: post.coverImage,
       };
 
       if (typeof post.featured !== 'undefined') {

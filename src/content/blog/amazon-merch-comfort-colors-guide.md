@@ -7,6 +7,7 @@ publishedAt: "2026-04-05"
 readingTime: 7
 featured: false
 draft: false
+coverImage: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=1200&q=80&auto=format&fit=crop"
 ---
 
 Comfort Colors has arrived on Merch by Amazon — and it's a big deal. Known for their garment-dyed, lived-in look, Comfort Colors tees are a favorite among lifestyle brands, vintage aesthetics, and premium streetwear. Here's everything you need to know to take advantage of this new product line.
