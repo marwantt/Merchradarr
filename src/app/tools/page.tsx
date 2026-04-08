@@ -156,9 +156,6 @@ function ToolIcon({ domain, name }: { domain: string; name: string }) {
         alt={`${name} logo`}
         width={28}
         height={28}
-        onError={(e) => {
-          (e.target as HTMLImageElement).style.display = "none";
-        }}
       />
     </div>
   );
