@@ -110,3 +110,13 @@ Baseball and trucker hats have a higher base cost than t-shirts. Check the curre
 | Week 4 | Expand to UK and EU marketplaces |
 
 The window for low-competition hat listings won't stay open forever. Use MerchRadar to find your niches and start uploading now.
+
+
+---
+
+## Watch & Learn
+
+Want to go deeper? These videos from top Amazon Merch creators cover exactly what we discussed:
+
+- **[TOP 5 NICHES 🔥 Print on Demand Niche Research # 306 — (4/6/2026)](https://www.youtube.com/watch?v=uPKftr-O_Sg)** — *Ryan Hogue Passive Income*
+- **[These 5 Niches Will Dominate 2026 (Print on Demand)](https://www.youtube.com/watch?v=MXiJoJQHlAg)** — *JAY'S WAY - Jay De Souza*

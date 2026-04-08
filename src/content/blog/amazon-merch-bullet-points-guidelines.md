@@ -104,3 +104,13 @@ Below is a template to guide your bullet creation process:
 **Bullet 2**: "Ideal for casual outings or relaxed weekends, this tee offers all-day comfort and a fun design, perfect for eco-conscious fashion enthusiasts."
 
 By following these guidelines and using the provided template, you can create effective, compliant bullet points that enhance your product's visibility and appeal on Amazon Merch. Remember, clarity, compliance, and customer focus are key to writing successful bullet points.
+
+
+---
+
+## Watch & Learn
+
+Want to go deeper? These videos from top Amazon Merch creators cover exactly what we discussed:
+
+- **[Amazon Merch TRENDING NICHES #88 (Print on Demand Trend Research)](https://www.youtube.com/watch?v=PKyaESTWMDI)** — *Philip Anders*
+- **[Amazon Merch & Etsy TRENDING NICHES #87 (Print on Demand Trend Research)](https://www.youtube.com/watch?v=8Iz-epwjd2s)** — *Philip Anders*

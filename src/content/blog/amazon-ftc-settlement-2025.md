@@ -150,3 +150,13 @@ For Merch by Amazon sellers, this represents an opportunity: as Amazon works to 
 ---
 
 *Stay updated on Amazon seller news and compliance updates at [MerchRadar](/).*
+
+
+---
+
+## Watch & Learn
+
+Want to go deeper? These videos from top Amazon Merch creators cover exactly what we discussed:
+
+- **[Running Amazon Ads for the First Time? Start Here](https://www.youtube.com/watch?v=Qufxz0T6UmU)** — *Ryan Hogue Passive Income*
+- **[Amazon Merch TRENDING NICHES #88 (Print on Demand Trend Research)](https://www.youtube.com/watch?v=PKyaESTWMDI)** — *Philip Anders*

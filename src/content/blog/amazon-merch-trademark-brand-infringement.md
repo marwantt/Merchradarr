@@ -80,3 +80,13 @@ To build a robust and compliant portfolio on Amazon Merch:
 - **Use legal resources**: If in doubt, consult with a legal professional specializing in IP law.
 
 By following these guidelines, you can protect your Merch business from infringement issues and focus on growing your brand. Keep creativity at the forefront while respecting the intellectual property rights of others, and you'll be well on your way to a successful selling experience on Amazon.
+
+
+---
+
+## Watch & Learn
+
+Want to go deeper? These videos from top Amazon Merch creators cover exactly what we discussed:
+
+- **[Amazon Merch TRENDING NICHES #88 (Print on Demand Trend Research)](https://www.youtube.com/watch?v=PKyaESTWMDI)** — *Philip Anders*
+- **[Amazon Merch & Etsy TRENDING NICHES #87 (Print on Demand Trend Research)](https://www.youtube.com/watch?v=8Iz-epwjd2s)** — *Philip Anders*

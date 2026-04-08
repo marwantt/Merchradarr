@@ -90,3 +90,13 @@ The new **Sport Sun Visors** are also a perfect fit for summer niches — golf, 
 - Upload consistently — 2–3 designs per day beats 20 in one go
 
 Start your summer niche research today with MerchRadar and get ahead of the competition before the season peaks.
+
+
+---
+
+## Watch & Learn
+
+Want to go deeper? These videos from top Amazon Merch creators cover exactly what we discussed:
+
+- **[TOP 5 NICHES 🔥 Print on Demand Niche Research # 306 — (4/6/2026)](https://www.youtube.com/watch?v=uPKftr-O_Sg)** — *Ryan Hogue Passive Income*
+- **[These Niches Will EXPLODE in 2026 (Get in Early!)](https://www.youtube.com/watch?v=aS-G9AGeKZM)** — *Brenon Dopp*

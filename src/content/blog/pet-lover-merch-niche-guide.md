@@ -97,3 +97,13 @@ By honing in on these specific niches, you can cater to dedicated sub-communitie
 ## Conclusion
 
 The pet lover merch niche is a dynamic and rewarding market for Amazon Merch sellers. By understanding the passionate nature of pet owners, exploring sub-niches, utilizing top keywords, and employing effective design styles, you can create merchandise that resonates with buyers. Don't forget to leverage seasonal opportunities to maximize your sales potential. With creativity and strategic planning, you can thrive in the pet niche for years to come.
+
+
+---
+
+## Watch & Learn
+
+Want to go deeper? These videos from top Amazon Merch creators cover exactly what we discussed:
+
+- **[TOP 5 NICHES 🔥 Print on Demand Niche Research # 306 — (4/6/2026)](https://www.youtube.com/watch?v=uPKftr-O_Sg)** — *Ryan Hogue Passive Income*
+- **[Amazon Merch TRENDING NICHES #88 (Print on Demand Trend Research)](https://www.youtube.com/watch?v=PKyaESTWMDI)** — *Philip Anders*

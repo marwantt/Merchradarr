@@ -120,3 +120,13 @@ cat t-shirt, cat lover gift, funny cat shirt, vintage graphic tee, women's cat t
 ```
 
 By following these guidelines, your Amazon Merch listings will be well-optimized for the A9 algorithm, appealing to both search engines and potential customers. Use this strategy consistently to improve your visibility and increase sales.
+
+
+---
+
+## Watch & Learn
+
+Want to go deeper? These videos from top Amazon Merch creators cover exactly what we discussed:
+
+- **[Amazon Merch TRENDING NICHES #88 (Print on Demand Trend Research)](https://www.youtube.com/watch?v=PKyaESTWMDI)** — *Philip Anders*
+- **[Amazon Merch & Etsy TRENDING NICHES #87 (Print on Demand Trend Research)](https://www.youtube.com/watch?v=8Iz-epwjd2s)** — *Philip Anders*

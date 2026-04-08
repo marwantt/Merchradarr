@@ -106,3 +106,12 @@ Like any skill, Merch design improves with consistency:
 The best way to learn Merch design is a mix of **creativity, technical skill, and compliance knowledge**. By mastering Amazon’s rules, sharpening your design abilities, and staying connected with the community, you’ll not only avoid rejections but also create products that **customers love and trust**.
 
 👉 Start small, learn from every upload, and let your Merch journey grow with time.
+
+---
+
+## Watch & Learn
+
+Want to go deeper? These videos from top Amazon Merch creators cover exactly what we discussed:
+
+- **[How To Make Better Designs Than 99% Of POD Sellers](https://www.youtube.com/watch?v=CR28xltb5O0)** — *Andreas*
+- **[The EXACT System To Make Bestselling Etsy Designs](https://www.youtube.com/watch?v=T-F9cuPc2t0)** — *Andreas*

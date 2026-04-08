@@ -158,3 +158,12 @@ Start with the basics, use the right tools, and always prioritize relevance over
 ---
 
 *Ready to put this into practice? Use our [MerchRadar tool](/) to generate optimized Amazon search URLs for your keyword research.*
+
+---
+
+## Watch & Learn
+
+Want to go deeper? These videos from top Amazon Merch creators cover exactly what we discussed:
+
+- **[Amazon Merch TRENDING NICHES #88 (Print on Demand Trend Research)](https://www.youtube.com/watch?v=PKyaESTWMDI)** — *Philip Anders*
+- **[Amazon Merch & Etsy TRENDING NICHES #87 (Print on Demand Trend Research)](https://www.youtube.com/watch?v=8Iz-epwjd2s)** — *Philip Anders*

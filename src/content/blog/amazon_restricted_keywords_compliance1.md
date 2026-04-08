@@ -98,3 +98,13 @@ Restricted keywords are not just a suggestion — they’re **strict rules that 
 At **Merch Radar**, we’ll keep sharing resources to help you stay ahead of Amazon’s rules while building profitable, long-term merch businesses.
 
 💡 **Pro Tip:** Always run your titles through a trademark and keyword check before uploading to Amazon. Tools like Merch Radar can help you spot risks before it’s too late.
+
+
+---
+
+## Watch & Learn
+
+Want to go deeper? These videos from top Amazon Merch creators cover exactly what we discussed:
+
+- **[Amazon Merch TRENDING NICHES #88 (Print on Demand Trend Research)](https://www.youtube.com/watch?v=PKyaESTWMDI)** — *Philip Anders*
+- **[Running Amazon Ads for the First Time? Start Here](https://www.youtube.com/watch?v=Qufxz0T6UmU)** — *Ryan Hogue Passive Income*

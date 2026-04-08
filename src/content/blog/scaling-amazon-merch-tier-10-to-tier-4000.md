@@ -94,3 +94,13 @@ Here’s a practical roadmap to kickstart your Amazon Merch journey:
 3. **Evaluate and Iterate**: Regularly review your strategies and adjust based on performance and market changes.
 
 By understanding the tier system and strategically planning your growth, you can effectively scale your Amazon Merch business from Tier 10 to Tier 4000 and beyond. Focus on quality, strategic marketing, and constant iteration to ensure continued success in this competitive space.
+
+
+---
+
+## Watch & Learn
+
+Want to go deeper? These videos from top Amazon Merch creators cover exactly what we discussed:
+
+- **[Amazon Merch TRENDING NICHES #88 (Print on Demand Trend Research)](https://www.youtube.com/watch?v=PKyaESTWMDI)** — *Philip Anders*
+- **[Amazon Merch & Etsy TRENDING NICHES #87 (Print on Demand Trend Research)](https://www.youtube.com/watch?v=8Iz-epwjd2s)** — *Philip Anders*

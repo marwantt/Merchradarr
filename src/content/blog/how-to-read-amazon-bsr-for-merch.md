@@ -100,3 +100,13 @@ Follow these steps to validate your Merch by Amazon niche using BSR research eff
 ## Conclusion
 
 Using BSR to validate your Amazon Merch niche is a powerful, data-driven approach that can save you time and effort. By understanding how BSR correlates with sales volume and competition, you can make more informed decisions about which niches to enter. Follow the outlined steps, and you'll be able to conduct efficient niche validation in under 15 minutes, setting a solid foundation for your Merch by Amazon success.
+
+
+---
+
+## Watch & Learn
+
+Want to go deeper? These videos from top Amazon Merch creators cover exactly what we discussed:
+
+- **[Amazon Merch TRENDING NICHES #88 (Print on Demand Trend Research)](https://www.youtube.com/watch?v=PKyaESTWMDI)** — *Philip Anders*
+- **[Amazon Merch & Etsy TRENDING NICHES #87 (Print on Demand Trend Research)](https://www.youtube.com/watch?v=8Iz-epwjd2s)** — *Philip Anders*

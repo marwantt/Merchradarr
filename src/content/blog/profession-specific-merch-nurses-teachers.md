@@ -76,3 +76,13 @@ To stand out in a crowded market, it’s essential to identify micro-niches with
 15. **Female Military Officers**: An underrepresented niche with potential for growth.
 
 By leveraging the identity and pride associated with professions, sellers can create meaningful merchandise that resonates deeply with professionals and their admirers. Using data-driven insights and a creative approach, you can carve out a successful niche in the Amazon Merch marketplace.
+
+
+---
+
+## Watch & Learn
+
+Want to go deeper? These videos from top Amazon Merch creators cover exactly what we discussed:
+
+- **[Amazon Merch TRENDING NICHES #88 (Print on Demand Trend Research)](https://www.youtube.com/watch?v=PKyaESTWMDI)** — *Philip Anders*
+- **[Amazon Merch & Etsy TRENDING NICHES #87 (Print on Demand Trend Research)](https://www.youtube.com/watch?v=8Iz-epwjd2s)** — *Philip Anders*

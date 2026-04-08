@@ -103,3 +103,13 @@ Avoid these pitfalls to ensure a smooth start:
 - **Inadequate Contrast**: Ensure your design stands out against the shirt color.
 
 By following these steps and using the tips provided, you'll be well on your way to creating captivating and compliant T-shirt designs for Amazon Merch. Remember, practice and experimentation are key to refining your skills and finding what resonates with your audience. Happy designing!
+
+
+---
+
+## Watch & Learn
+
+Want to go deeper? These videos from top Amazon Merch creators cover exactly what we discussed:
+
+- **[Running Amazon Ads for the First Time? Start Here](https://www.youtube.com/watch?v=Qufxz0T6UmU)** — *Ryan Hogue Passive Income*
+- **[How To Create A NEW Top Selling T-Shirt Design](https://www.youtube.com/watch?v=Ux1X2dPkiGg)** — *Andreas*
