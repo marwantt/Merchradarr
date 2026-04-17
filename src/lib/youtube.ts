@@ -69,6 +69,32 @@ async function getPlaylistVideos(playlistId: string, limit: number): Promise<You
   }
 }
 
+export async function fetchChannelAvatars(
+  handles: string[]
+): Promise<Record<string, string>> {
+  if (!API_KEY) return {};
+  const results: Record<string, string> = {};
+  await Promise.all(
+    handles.map(async (handle) => {
+      try {
+        const bare = handle.replace("@", "");
+        const res = await fetch(
+          `${BASE}/channels?part=snippet&forHandle=${bare}&key=${API_KEY}`,
+          { cache: "force-cache" }
+        );
+        if (!res.ok) return;
+        const data = await res.json();
+        const thumb = data.items?.[0]?.snippet?.thumbnails;
+        const url = thumb?.high?.url ?? thumb?.medium?.url ?? thumb?.default?.url;
+        if (url) results[handle] = url;
+      } catch {
+        // skip silently
+      }
+    })
+  );
+  return results;
+}
+
 export async function getChannelVideos(handle: string, limit = 4): Promise<YouTubeVideo[]> {
   if (!API_KEY) {
     console.warn("YOUTUBE_API_KEY not set — skipping YouTube fetch");

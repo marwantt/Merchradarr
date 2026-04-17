@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { designChannels, merchChannels, assetSites, communities } from "@/lib/resources-data";
 import type { YTChannel, AssetSite, Community } from "@/lib/resources-data";
+import { fetchChannelAvatars } from "@/lib/youtube";
 
 export const metadata: Metadata = {
   title: "Resources for Merch by Amazon Creators – MerchRadar",
@@ -17,7 +18,7 @@ function YTIcon({ className }: { className?: string }) {
   );
 }
 
-function ChannelCard({ ch }: { ch: YTChannel }) {
+function ChannelCard({ ch, avatarUrl }: { ch: YTChannel; avatarUrl?: string }) {
   return (
     <a
       href={ch.url}
@@ -39,25 +40,39 @@ function ChannelCard({ ch }: { ch: YTChannel }) {
             <YTIcon className="w-10 h-10 text-foreground/20" />
           </div>
         )}
-        {/* Overlay with YouTube icon */}
+
+        {/* Hover play overlay */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
           <div className="opacity-0 group-hover:opacity-100 transition-opacity w-10 h-10 bg-white/90 rounded-full flex items-center justify-center">
             <YTIcon className="w-5 h-5 text-red-600" />
           </div>
         </div>
-        {/* Handle pill */}
-        <div className="absolute bottom-2 left-2">
-          <span className="text-[10px] uppercase tracking-widest bg-black/70 text-white px-2 py-0.5 font-mono">
+
+        {/* Channel avatar circle */}
+        {avatarUrl && (
+          <div className="absolute bottom-0 translate-y-1/2 left-4">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={avatarUrl}
+              alt={`${ch.name} avatar`}
+              width={48}
+              height={48}
+              className="w-12 h-12 rounded-full border-2 border-background object-cover shadow-md"
+            />
+          </div>
+        )}
+      </div>
+
+      {/* Body — extra top padding when avatar is present to avoid overlap */}
+      <div className={`flex flex-col flex-1 p-5 gap-3 ${avatarUrl ? "pt-8" : ""}`}>
+        <div className="flex items-center justify-between gap-2">
+          <h3 className="text-sm font-semibold group-hover:text-foreground/70 transition-colors">
+            {ch.name}
+          </h3>
+          <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-mono shrink-0">
             {ch.handle}
           </span>
         </div>
-      </div>
-
-      {/* Body */}
-      <div className="flex flex-col flex-1 p-5 gap-3">
-        <h3 className="text-sm font-semibold group-hover:text-foreground/70 transition-colors">
-          {ch.name}
-        </h3>
         <p className="text-xs text-muted-foreground leading-relaxed flex-1">
           {ch.description}
         </p>
@@ -161,7 +176,10 @@ function SectionHeader({ title, count, description }: { title: string; count: nu
   );
 }
 
-export default function ResourcesPage() {
+export default async function ResourcesPage() {
+  const allChannels = [...designChannels, ...merchChannels];
+  const avatars = await fetchChannelAvatars(allChannels.map((c) => c.handle));
+
   const totalChannels = designChannels.length + merchChannels.length;
   const totalAssets = assetSites.length;
   const totalCommunities = communities.length;
@@ -235,7 +253,7 @@ export default function ResourcesPage() {
             description="Master Photoshop, textures, and visual effects that make merch designs stand out."
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {designChannels.map(ch => <ChannelCard key={ch.handle} ch={ch} />)}
+            {designChannels.map(ch => <ChannelCard key={ch.handle} ch={ch} avatarUrl={avatars[ch.handle]} />)}
           </div>
         </section>
 
@@ -247,7 +265,7 @@ export default function ResourcesPage() {
             description="Niche research, AI tools, listing strategy, and scaling from beginner to full-time seller."
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {merchChannels.map(ch => <ChannelCard key={ch.handle} ch={ch} />)}
+            {merchChannels.map(ch => <ChannelCard key={ch.handle} ch={ch} avatarUrl={avatars[ch.handle]} />)}
           </div>
         </section>
 
