@@ -7,7 +7,7 @@ category:
 publishedAt: "2026-04-17"
 readingTime: 10
 featured: true
-coverImage: "/blog/amazon-merch-royalty-tier-overhaul-2026.jpg"
+coverImage: "/blog/amazon-merch-royalty-tier-overhaul-2026.png"
 ---
 
 # Amazon Merch Just Cut Royalties in Half — Unless You Do This
