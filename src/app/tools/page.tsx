@@ -1,129 +1,236 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { tools } from "@/lib/tools-data";
+import type { ToolItem } from "@/lib/tools-data";
 
 export const metadata: Metadata = {
   title: "Best Tools for Merch by Amazon Creators – MerchRadar",
   description: "Curated list of the best AI tools, design software, and research tools for Merch by Amazon and Print on Demand creators.",
 };
 
-const badgeStyles: Record<string, string> = {
-  New: "bg-primary text-primary-foreground",
-  Popular: "border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300",
-  Free: "border border-green-200 dark:border-green-800 text-green-700 dark:text-green-300",
-};
+function BadgeChip({ badge, free }: { badge: string | null; free: boolean }) {
+  if (badge === "New")
+    return <span className="text-[10px] uppercase tracking-widest px-2 py-0.5 bg-foreground text-background font-semibold">New</span>;
+  if (badge === "Popular")
+    return <span className="text-[10px] uppercase tracking-widest px-2 py-0.5 border border-foreground/50 text-foreground font-semibold">Popular</span>;
+  if (badge === "Free" || free)
+    return <span className="text-[10px] uppercase tracking-widest px-2 py-0.5 border border-border text-muted-foreground">Free</span>;
+  return <span className="text-[10px] uppercase tracking-widest px-2 py-0.5 border border-border text-muted-foreground">Paid</span>;
+}
+
+function ToolCard({ tool }: { tool: ToolItem }) {
+  return (
+    <Link
+      href={`/tools/${tool.slug}`}
+      className="group flex flex-col border border-border hover:border-foreground/40 transition-all bg-background"
+    >
+      {/* Icon area */}
+      <div className="relative border-b border-border bg-muted/30 p-6 flex items-center justify-between">
+        <div className="w-14 h-14 border border-border bg-background flex items-center justify-center overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`https://www.google.com/s2/favicons?domain=${tool.domain}&sz=64`}
+            alt={`${tool.name} logo`}
+            width={36}
+            height={36}
+          />
+        </div>
+
+        {/* Tutorial badge */}
+        {tool.tutorials.length > 0 && (
+          <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-muted-foreground border border-border px-2 py-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-foreground" />
+            {tool.tutorials.length} video{tool.tutorials.length > 1 ? "s" : ""}
+          </div>
+        )}
+      </div>
+
+      {/* Content */}
+      <div className="flex flex-col flex-1 p-5 gap-3">
+        <div className="flex items-start justify-between gap-2">
+          <h3 className="text-sm font-semibold group-hover:text-foreground/70 transition-colors leading-tight">
+            {tool.name}
+          </h3>
+          <BadgeChip badge={tool.badge} free={tool.free} />
+        </div>
+
+        <p className="text-xs text-muted-foreground leading-relaxed flex-1 line-clamp-3">
+          {tool.description}
+        </p>
+
+        {/* Footer */}
+        <div className="flex items-center justify-between pt-3 border-t border-border mt-auto">
+          <span className="text-[10px] uppercase tracking-widest text-muted-foreground">{tool.domain}</span>
+          <span className="text-[10px] uppercase tracking-widest text-muted-foreground group-hover:text-foreground transition-colors">
+            Guide →
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+function FeaturedToolCard({ tool }: { tool: ToolItem }) {
+  return (
+    <Link
+      href={`/tools/${tool.slug}`}
+      className="group col-span-full border border-foreground/20 hover:border-foreground/50 transition-all bg-background"
+    >
+      <div className="grid md:grid-cols-[auto_1fr_auto] items-center divide-y md:divide-y-0 md:divide-x divide-border">
+        {/* Icon */}
+        <div className="p-8 flex items-center justify-center bg-muted/20">
+          <div className="w-16 h-16 border border-border bg-background flex items-center justify-center overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`https://www.google.com/s2/favicons?domain=${tool.domain}&sz=64`}
+              alt={`${tool.name} logo`}
+              width={40}
+              height={40}
+            />
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-8 space-y-2">
+          <div className="flex items-center gap-3">
+            <h3 className="text-lg font-semibold group-hover:text-foreground/70 transition-colors">{tool.name}</h3>
+            <BadgeChip badge={tool.badge} free={tool.free} />
+            <span className="text-[10px] uppercase tracking-widest text-muted-foreground border border-border px-2 py-0.5">
+              This Site
+            </span>
+          </div>
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-xl">{tool.description}</p>
+        </div>
+
+        {/* CTA */}
+        <div className="p-8 flex flex-col items-center justify-center gap-2">
+          {tool.tutorials.length > 0 && (
+            <span className="flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-muted-foreground border border-border px-3 py-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-foreground" />
+              {tool.tutorials.length} video{tool.tutorials.length > 1 ? "s" : ""}
+            </span>
+          )}
+          <span className="text-xs uppercase tracking-widest text-foreground group-hover:text-foreground/70 transition-colors">
+            View Guide →
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}
 
 export default function ToolsPage() {
   const totalTools = tools.reduce((n, c) => n + c.items.length, 0);
+  const totalVideos = tools.reduce((n, c) => n + c.items.reduce((m, t) => m + t.tutorials.length, 0), 0);
 
   return (
     <main className="min-h-screen bg-background">
 
       {/* Hero */}
-      <div className="border-b border-border">
-        <div className="max-w-4xl mx-auto px-6 py-16 space-y-5">
+      <div className="border-b border-border bg-muted/30">
+        <div className="max-w-5xl mx-auto px-6 py-16">
           <Link
             href="/"
-            className="inline-block text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+            className="inline-block text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors mb-6"
           >
             ← MerchRadar
           </Link>
-          <div className="space-y-1">
-            <p className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Curated</p>
-            <h1 className="text-5xl title-font tracking-wide">Creator Tools</h1>
+
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <div className="space-y-3">
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">Curated</p>
+              <h1 className="text-5xl title-font tracking-wide">Creator Tools</h1>
+              <p className="text-sm text-muted-foreground max-w-xl leading-relaxed">
+                The best AI tools, design software, and research platforms for Merch by Amazon creators.
+                Every tool includes a step-by-step guide and video tutorials.
+              </p>
+            </div>
+
+            {/* Stats */}
+            <div className="flex items-center gap-6 text-xs uppercase tracking-widest text-muted-foreground shrink-0">
+              <div className="text-center">
+                <p className="text-2xl font-medium text-foreground tabular-nums">{totalTools}</p>
+                <p>Tools</p>
+              </div>
+              <div className="w-px h-8 bg-border" />
+              <div className="text-center">
+                <p className="text-2xl font-medium text-foreground tabular-nums">{tools.length}</p>
+                <p>Categories</p>
+              </div>
+              <div className="w-px h-8 bg-border" />
+              <div className="text-center">
+                <p className="text-2xl font-medium text-foreground tabular-nums">{totalVideos}</p>
+                <p>Videos</p>
+              </div>
+            </div>
           </div>
-          <p className="text-base text-muted-foreground max-w-xl leading-relaxed">
-            The best AI tools, design software, and research platforms for Merch by Amazon creators.
-            Each tool includes a step-by-step guide and video tutorials.
-          </p>
-          <div className="flex items-center gap-6 text-xs text-muted-foreground uppercase tracking-widest pt-2">
-            <span>{totalTools} Tools</span>
-            <span>·</span>
-            <span>{tools.length} Categories</span>
-            <span>·</span>
-            <span>Tutorials Included</span>
+
+          {/* Category quick-jump */}
+          <div className="flex flex-wrap gap-2 mt-8 pt-8 border-t border-border">
+            {tools.map(cat => (
+              <a
+                key={cat.category}
+                href={`#${cat.category.toLowerCase().replace(/\s+/g, "-")}`}
+                className="text-xs uppercase tracking-widest border border-border px-3 py-1.5 text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors"
+              >
+                {cat.category} <span className="text-muted-foreground/50">({cat.items.length})</span>
+              </a>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Tools */}
-      <div className="max-w-4xl mx-auto px-6 py-12 space-y-14">
-        {tools.map((category) => (
-          <section key={category.category} className="space-y-4">
+      {/* Tool sections */}
+      <div className="max-w-5xl mx-auto px-6 py-12 space-y-16">
+        {tools.map((category) => {
+          // Pull featured tool (free, this site) out separately
+          const featured = category.items.find(t => t.domain === "merchradar.app");
+          const regular = category.items.filter(t => t.domain !== "merchradar.app");
 
-            <div className="border-b border-border pb-3">
-              <h2 className="text-xs uppercase tracking-[0.2em] font-semibold text-muted-foreground">
-                {category.category}
-              </h2>
-            </div>
+          return (
+            <section
+              key={category.category}
+              id={category.category.toLowerCase().replace(/\s+/g, "-")}
+              className="space-y-5"
+            >
+              {/* Category header */}
+              <div className="flex items-baseline justify-between border-b border-border pb-4">
+                <h2 className="text-xs uppercase tracking-[0.2em] font-semibold text-muted-foreground">
+                  {category.category}
+                </h2>
+                <span className="text-xs uppercase tracking-widest text-muted-foreground">
+                  {category.items.length} tool{category.items.length > 1 ? "s" : ""}
+                </span>
+              </div>
 
-            <div className="space-y-3">
-              {category.items.map((tool) => (
-                <Link
-                  key={tool.slug}
-                  href={`/tools/${tool.slug}`}
-                  className="group flex items-center justify-between gap-4 p-5 border border-border hover:border-primary transition-colors"
-                >
-                  <div className="flex items-center gap-4 flex-1 min-w-0">
-                    {/* Favicon icon */}
-                    <div className="w-9 h-9 border border-border flex items-center justify-center shrink-0 bg-muted overflow-hidden">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={`https://www.google.com/s2/favicons?domain=${tool.domain}&sz=64`}
-                        alt={`${tool.name} logo`}
-                        width={28}
-                        height={28}
-                      />
-                    </div>
-                    <div className="space-y-1 min-w-0">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-sm font-semibold group-hover:text-primary transition-colors">
-                          {tool.name}
-                        </span>
-                        {tool.badge ? (
-                          <span className={`text-xs px-2 py-0.5 font-medium ${badgeStyles[tool.badge]}`}>
-                            {tool.badge}
-                          </span>
-                        ) : (
-                          <span className="text-xs text-muted-foreground uppercase tracking-widest">
-                            {tool.free ? "Free" : "Paid"}
-                          </span>
-                        )}
-                        {/* Tutorial badge */}
-                        {tool.tutorials.length > 0 && (
-                          <span className="text-xs px-2 py-0.5 border border-red-200 dark:border-red-900 text-red-600 dark:text-red-400 font-medium flex items-center gap-1">
-                            <span className="inline-block w-1.5 h-1.5 rounded-full bg-red-500" />
-                            {tool.tutorials.length} video{tool.tutorials.length > 1 ? "s" : ""}
-                          </span>
-                        )}
-                      </div>
-                      <p className="text-xs text-muted-foreground leading-relaxed">{tool.description}</p>
-                    </div>
-                  </div>
-                  <div className="shrink-0 text-right">
-                    <span className="text-xs text-primary font-medium uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
-                      View guide →
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
+              {/* Featured card (MerchRadar if present) */}
+              {featured && (
+                <div className="grid grid-cols-1 gap-4 mb-2">
+                  <FeaturedToolCard tool={featured} />
+                </div>
+              )}
 
-          </section>
-        ))}
+              {/* Square grid */}
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {regular.map(tool => (
+                  <ToolCard key={tool.slug} tool={tool} />
+                ))}
+              </div>
+            </section>
+          );
+        })}
 
         {/* CTA */}
-        <div className="border border-primary p-8 text-center space-y-4">
-          <p className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Start Researching</p>
-          <h3 className="text-2xl font-medium">Find your next niche</h3>
-          <p className="text-sm text-muted-foreground">
-            Use MerchRadar to search Merch by Amazon niches across 6 marketplaces — free.
-          </p>
+        <div className="border border-dashed border-border p-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <p className="text-sm font-medium uppercase tracking-widest">Start Researching</p>
+            <p className="text-xs text-muted-foreground mt-1">Use MerchRadar to search niches across 7 marketplaces — free.</p>
+          </div>
           <Link
             href="/"
-            className="inline-block mt-2 px-8 py-3 bg-primary text-primary-foreground text-sm uppercase tracking-widest font-semibold hover:opacity-90 transition-opacity"
+            className="shrink-0 border border-foreground px-8 py-3 text-sm uppercase tracking-widest hover:bg-foreground hover:text-background transition-colors"
           >
-            Open MerchRadar
+            Open MerchRadar →
           </Link>
         </div>
       </div>
