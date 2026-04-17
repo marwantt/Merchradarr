@@ -11,6 +11,8 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   content: string;
+  rawContent: string;
+  isMdx: boolean;
   publishedAt: string;
   readingTime: number;
   category: {
@@ -49,42 +51,50 @@ export function getAllPostSlugs(): string[] {
   try {
     const fileNames = fs.readdirSync(postsDirectory);
     return fileNames
-      .filter(name => name.endsWith('.md'))
-      .map(name => name.replace(/\.md$/, ''));
+      .filter(name => name.endsWith('.md') || name.endsWith('.mdx'))
+      .map(name => name.replace(/\.(md|mdx)$/, ''));
   } catch {
     return [];
   }
+}
+
+function resolvePostPath(slug: string): { filePath: string; isMdx: boolean } | null {
+  const mdxPath = path.join(postsDirectory, `${slug}.mdx`);
+  const mdPath = path.join(postsDirectory, `${slug}.md`);
+  if (fs.existsSync(mdxPath)) return { filePath: mdxPath, isMdx: true };
+  if (fs.existsSync(mdPath)) return { filePath: mdPath, isMdx: false };
+  return null;
 }
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   ensurePostsDirectory();
 
   try {
-    const fullPath = path.join(postsDirectory, `${slug}.md`);
+    const resolved = resolvePostPath(slug);
+    if (!resolved) return null;
 
-    if (!fs.existsSync(fullPath)) {
-      return null;
-    }
-
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { filePath, isMdx } = resolved;
+    const fileContents = fs.readFileSync(filePath, 'utf8');
     const { data, content } = matter(fileContents);
 
-    // Skip draft posts in production
-    if (data.draft && process.env.NODE_ENV === 'production') {
-      return null;
-    }
+    if (data.draft && process.env.NODE_ENV === 'production') return null;
 
-    // Process markdown content to HTML
-    const processedContent = await remark()
-      .use(html, { sanitize: false })
-      .process(content);
-    const contentHtml = processedContent.toString();
+    // For MDX files, skip remark processing — rendered in the page component
+    let contentHtml = '';
+    if (!isMdx) {
+      const processedContent = await remark()
+        .use(html, { sanitize: false })
+        .process(content);
+      contentHtml = processedContent.toString();
+    }
 
     return {
       slug,
       title: data.title || '',
       excerpt: data.excerpt || '',
       content: contentHtml,
+      rawContent: content,
+      isMdx,
       publishedAt: data.publishedAt || '',
       readingTime: data.readingTime || 5,
       category: data.category || { title: 'General' },

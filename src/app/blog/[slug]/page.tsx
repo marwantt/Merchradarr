@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getAllPostSlugs, getPostBySlug } from '@/lib/blog';
 import type { Metadata } from 'next';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import * as BlogComponents from '@/components/blog';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -108,10 +110,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </header>
 
         {/* Article Content */}
-        <article
-          className="blog-content"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
+        <article className="blog-content">
+          {post.isMdx ? (
+            <MDXRemote
+              source={post.rawContent}
+              components={BlogComponents}
+            />
+          ) : (
+            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          )}
+        </article>
 
         {/* Footer Navigation */}
         <footer className="pt-12 mt-12 border-t border-border">
