@@ -117,6 +117,7 @@ export default async function Home() {
             <Link href="/academy" className="hover:text-foreground transition-colors">Academy</Link>
             <Link href="/blog" className="hover:text-foreground transition-colors">Blog</Link>
             <Link href="/tools" className="hover:text-foreground transition-colors">Tools</Link>
+            <Link href="/resources" className="hover:text-foreground transition-colors">Resources</Link>
             <Link href="/faq" className="hover:text-foreground transition-colors">FAQ</Link>
             <Link href="/about" className="hover:text-foreground transition-colors">About</Link>
             <Link href="/contact" className="hover:text-foreground transition-colors">Contact</Link>
