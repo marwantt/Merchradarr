@@ -5,6 +5,7 @@ export interface YTChannel {
   description: string;
   tags: string[];
   category: "design" | "merch";
+  previewVideoId?: string;
 }
 
 export interface AssetSite {
@@ -32,6 +33,7 @@ export const designChannels: YTChannel[] = [
     description: "Free textures, overlays, and Photoshop effects. A goldmine for adding depth and grunge to merch designs.",
     tags: ["Textures", "Photoshop", "Free Assets"],
     category: "design",
+    previewVideoId: "5GpRjkvVtZk",
   },
   {
     name: "Doron Studio",
@@ -40,6 +42,7 @@ export const designChannels: YTChannel[] = [
     description: "Motion design and visual effects tutorials. Great for learning advanced compositing and design aesthetics.",
     tags: ["Motion", "VFX", "Compositing"],
     category: "design",
+    previewVideoId: "GhFzJxGYro8",
   },
   {
     name: "Intuitive Designs",
@@ -48,6 +51,7 @@ export const designChannels: YTChannel[] = [
     description: "Graphic design tips and Photoshop workflows focused on practical, sellable design outcomes.",
     tags: ["Photoshop", "Design Tips", "Workflow"],
     category: "design",
+    previewVideoId: "TwakRB_PusA",
   },
   {
     name: "Charley Pangus Films",
@@ -56,6 +60,7 @@ export const designChannels: YTChannel[] = [
     description: "Visual effects and cinematic design techniques adapted for graphic art and print-ready visuals.",
     tags: ["VFX", "Effects", "Cinematic"],
     category: "design",
+    previewVideoId: "Am4XQaPoB48",
   },
   {
     name: "PANTERvision",
@@ -64,6 +69,7 @@ export const designChannels: YTChannel[] = [
     description: "Creative Photoshop effects and design manipulation. Unique visual styles that stand out on any product.",
     tags: ["Photoshop", "Effects", "Creative"],
     category: "design",
+    previewVideoId: "Hxl3Mf_qgXs",
   },
   {
     name: "PiXimperfect",
@@ -72,6 +78,7 @@ export const designChannels: YTChannel[] = [
     description: "One of the best Photoshop educators online. Masking, retouching, and compositing at a professional level.",
     tags: ["Photoshop", "Masking", "Compositing"],
     category: "design",
+    previewVideoId: "idO_9amTPLw",
   },
 ];
 
@@ -83,6 +90,7 @@ export const merchChannels: YTChannel[] = [
     description: "Deep dives into Merch by Amazon strategy, niche research, and scaling POD income streams.",
     tags: ["Merch Strategy", "Niche Research", "Scaling"],
     category: "merch",
+    previewVideoId: "YOoGbTz6WGY",
   },
   {
     name: "Philip Anders",
@@ -91,6 +99,7 @@ export const merchChannels: YTChannel[] = [
     description: "AI design tools and POD workflows. Among the first to cover AI-powered merch creation techniques.",
     tags: ["AI Tools", "POD", "Design"],
     category: "merch",
+    previewVideoId: "OiVW0hWY4p4",
   },
   {
     name: "Brenon Dopp",
@@ -99,6 +108,7 @@ export const merchChannels: YTChannel[] = [
     description: "Etsy and Merch by Amazon growth strategies. Practical niche finding and listing optimization tips.",
     tags: ["Etsy", "Merch", "Growth"],
     category: "merch",
+    previewVideoId: "aS-G9AGeKZM",
   },
   {
     name: "wtfamievendoing",
@@ -107,6 +117,7 @@ export const merchChannels: YTChannel[] = [
     description: "Honest, detailed breakdowns of what actually works in POD — design quality, niches, and sales tactics.",
     tags: ["POD", "Design", "Sales"],
     category: "merch",
+    previewVideoId: "CR28xltb5O0",
   },
   {
     name: "Jay's Way",
@@ -115,6 +126,7 @@ export const merchChannels: YTChannel[] = [
     description: "Merch by Amazon tips, niche ideas, and consistent upload strategies for long-term catalog growth.",
     tags: ["Merch", "Niches", "Upload Strategy"],
     category: "merch",
+    previewVideoId: "qI4kyCdnDN4",
   },
 ];
 

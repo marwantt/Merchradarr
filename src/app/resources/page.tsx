@@ -23,21 +23,38 @@ function ChannelCard({ ch }: { ch: YTChannel }) {
       href={ch.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex flex-col border border-border hover:border-foreground/40 transition-all bg-background"
+      className="group flex flex-col border border-border hover:border-foreground/40 transition-all bg-background overflow-hidden"
     >
-      {/* Top bar */}
-      <div className="border-b border-border bg-muted/20 px-5 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <YTIcon className="w-4 h-4 text-foreground/60 group-hover:text-foreground transition-colors shrink-0" />
-          <span className="text-xs text-muted-foreground uppercase tracking-widest font-mono">{ch.handle}</span>
+      {/* Cover / thumbnail */}
+      <div className="relative w-full overflow-hidden bg-muted" style={{ aspectRatio: "16/9" }}>
+        {ch.previewVideoId ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={`https://img.youtube.com/vi/${ch.previewVideoId}/mqdefault.jpg`}
+            alt={`${ch.name} preview`}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-muted/60">
+            <YTIcon className="w-10 h-10 text-foreground/20" />
+          </div>
+        )}
+        {/* Overlay with YouTube icon */}
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+          <div className="opacity-0 group-hover:opacity-100 transition-opacity w-10 h-10 bg-white/90 rounded-full flex items-center justify-center">
+            <YTIcon className="w-5 h-5 text-red-600" />
+          </div>
         </div>
-        <span className="text-[10px] uppercase tracking-widest text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
-          Visit →
-        </span>
+        {/* Handle pill */}
+        <div className="absolute bottom-2 left-2">
+          <span className="text-[10px] uppercase tracking-widest bg-black/70 text-white px-2 py-0.5 font-mono">
+            {ch.handle}
+          </span>
+        </div>
       </div>
 
       {/* Body */}
-      <div className="flex flex-col flex-1 p-5 gap-4">
+      <div className="flex flex-col flex-1 p-5 gap-3">
         <h3 className="text-sm font-semibold group-hover:text-foreground/70 transition-colors">
           {ch.name}
         </h3>
