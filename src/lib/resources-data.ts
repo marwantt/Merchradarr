@@ -33,7 +33,6 @@ export const designChannels: YTChannel[] = [
     description: "Free textures, overlays, and Photoshop effects. A goldmine for adding depth and grunge to merch designs.",
     tags: ["Textures", "Photoshop", "Free Assets"],
     category: "design",
-    previewVideoId: "5GpRjkvVtZk",
   },
   {
     name: "Doron Studio",
@@ -42,7 +41,6 @@ export const designChannels: YTChannel[] = [
     description: "Motion design and visual effects tutorials. Great for learning advanced compositing and design aesthetics.",
     tags: ["Motion", "VFX", "Compositing"],
     category: "design",
-    previewVideoId: "GhFzJxGYro8",
   },
   {
     name: "Intuitive Designs",
@@ -51,7 +49,6 @@ export const designChannels: YTChannel[] = [
     description: "Graphic design tips and Photoshop workflows focused on practical, sellable design outcomes.",
     tags: ["Photoshop", "Design Tips", "Workflow"],
     category: "design",
-    previewVideoId: "TwakRB_PusA",
   },
   {
     name: "Charley Pangus Films",
@@ -60,7 +57,6 @@ export const designChannels: YTChannel[] = [
     description: "Visual effects and cinematic design techniques adapted for graphic art and print-ready visuals.",
     tags: ["VFX", "Effects", "Cinematic"],
     category: "design",
-    previewVideoId: "Am4XQaPoB48",
   },
   {
     name: "PANTERvision",
@@ -69,7 +65,6 @@ export const designChannels: YTChannel[] = [
     description: "Creative Photoshop effects and design manipulation. Unique visual styles that stand out on any product.",
     tags: ["Photoshop", "Effects", "Creative"],
     category: "design",
-    previewVideoId: "Hxl3Mf_qgXs",
   },
   {
     name: "PiXimperfect",
@@ -78,7 +73,6 @@ export const designChannels: YTChannel[] = [
     description: "One of the best Photoshop educators online. Masking, retouching, and compositing at a professional level.",
     tags: ["Photoshop", "Masking", "Compositing"],
     category: "design",
-    previewVideoId: "idO_9amTPLw",
   },
 ];
 
