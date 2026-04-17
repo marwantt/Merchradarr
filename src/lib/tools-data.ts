@@ -229,7 +229,7 @@ export const tools: ToolCategory[] = [
         badge: "New",
         free: true,
         tutorials: [
-          { id: "YOoGbTz6WGY", title: "5 Ways I Find High-Demand POD Niches", channel: "Ryan Hogue" },
+          { id: "KA2AlulRMeM", title: "Everything You Need to Become a Top 1% POD Seller", channel: "wtfamievendoing" },
           { id: "idO_9amTPLw", title: "100% Free Etsy Trend Finder in 2026?! (MUST SEE!)", channel: "Philip Anders" },
         ],
       },
@@ -289,7 +289,7 @@ export const tools: ToolCategory[] = [
         badge: "New",
         free: true,
         tutorials: [
-          { id: "Am4XQaPoB48", title: "Easy T-Shirts w/ Gemini Prompt HACK", channel: "Philip Anders" },
+          { id: "idO_9amTPLw", title: "100% Free Etsy Trend Finder in 2026?! (MUST SEE!)", channel: "Philip Anders" },
         ],
       },
     ],
@@ -359,7 +359,7 @@ export const tools: ToolCategory[] = [
         free: false,
         tutorials: [
           { id: "GhFzJxGYro8", title: "We've all been Prompting WRONG! Make Background Removal Easy", channel: "Philip Anders" },
-          { id: "qHIhLIN8tWo", title: "How I Create Bestselling Designs (Step By Step)", channel: "wtfamievendoing" },
+          { id: "5GpRjkvVtZk", title: "I Can't Believe This Background Remover is Actually Free", channel: "Philip Anders" },
         ],
       },
       {
@@ -451,8 +451,8 @@ export const tools: ToolCategory[] = [
         badge: null,
         free: false,
         tutorials: [
-          { id: "CR28xltb5O0", title: "How To Make Better Designs Than 99% Of POD Sellers", channel: "wtfamievendoing" },
           { id: "49CZ0dk9L8U", title: "What I Learned After Posting 10,000 Etsy Listings", channel: "wtfamievendoing" },
+          { id: "CR28xltb5O0", title: "How To Make Better Designs Than 99% Of POD Sellers", channel: "wtfamievendoing" },
         ],
       },
     ],

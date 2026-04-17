@@ -12,7 +12,7 @@ export default function AnalyticsPage() {
     today: 0,
     thisWeek: 0,
     thisMonth: 0,
-    uniqueKeywords: 0
+    uniqueKeywords: 0,
   });
   const [mounted, setMounted] = useState(false);
 
@@ -32,154 +32,149 @@ export default function AnalyticsPage() {
   };
 
   const handleClearData = () => {
-    if (confirm('Are you sure you want to clear all analytics data? This action cannot be undone.')) {
+    if (confirm("Clear all analytics data? This cannot be undone.")) {
       SearchAnalytics.clearData();
       loadAnalytics();
     }
   };
 
-  const formatDate = (timestamp: number) => {
-    return new Date(timestamp).toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
+  const formatDate = (timestamp: number) =>
+    new Date(timestamp).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
     });
-  };
 
   if (!mounted) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">Loading analytics...</div>
+        <span className="text-xs uppercase tracking-widest text-muted-foreground animate-pulse">Loading…</span>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen p-4 sm:p-8">
-      <div className="max-w-6xl mx-auto space-y-8">
-
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl sm:text-3xl font-bold">Search Analytics</h1>
-            <p className="text-black/60 dark:text-white/60 mt-1">
-              Track your research patterns and discover trending niches
-            </p>
-          </div>
+    <main className="min-h-screen bg-background">
+      {/* Header */}
+      <div className="border-b border-border bg-muted/30">
+        <div className="max-w-5xl mx-auto px-6 py-10">
           <Link
             href="/"
-            className="px-4 py-2 bg-foreground text-background rounded-md hover:bg-foreground/90 transition-colors"
+            className="inline-block text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors mb-6"
           >
             ← Back to Search
           </Link>
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div className="space-y-1">
+              <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-medium">MerchRadar</p>
+              <h1 className="text-4xl font-medium tracking-tight">Search Analytics</h1>
+              <p className="text-sm text-muted-foreground">Your personal niche research history — stored locally.</p>
+            </div>
+            <div className="flex gap-3">
+              <button
+                onClick={handleExport}
+                disabled={stats.total === 0}
+                className="border border-border px-4 py-2 text-xs uppercase tracking-widest hover:border-foreground hover:text-foreground transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                Export CSV
+              </button>
+              <button
+                onClick={handleClearData}
+                disabled={stats.total === 0}
+                className="border border-border px-4 py-2 text-xs uppercase tracking-widest text-muted-foreground hover:border-foreground hover:text-foreground transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                Clear Data
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
-          <div className="bg-black/5 dark:bg-white/5 rounded-lg p-4">
-            <div className="text-2xl font-bold">{stats.total}</div>
-            <div className="text-sm text-black/60 dark:text-white/60">Total Searches</div>
-          </div>
-          <div className="bg-black/5 dark:bg-white/5 rounded-lg p-4">
-            <div className="text-2xl font-bold">{stats.today}</div>
-            <div className="text-sm text-black/60 dark:text-white/60">Today</div>
-          </div>
-          <div className="bg-black/5 dark:bg-white/5 rounded-lg p-4">
-            <div className="text-2xl font-bold">{stats.thisWeek}</div>
-            <div className="text-sm text-black/60 dark:text-white/60">This Week</div>
-          </div>
-          <div className="bg-black/5 dark:bg-white/5 rounded-lg p-4">
-            <div className="text-2xl font-bold">{stats.thisMonth}</div>
-            <div className="text-sm text-black/60 dark:text-white/60">This Month</div>
-          </div>
-          <div className="bg-black/5 dark:bg-white/5 rounded-lg p-4">
-            <div className="text-2xl font-bold">{stats.uniqueKeywords}</div>
-            <div className="text-sm text-black/60 dark:text-white/60">Unique Keywords</div>
-          </div>
-        </div>
+      <div className="max-w-5xl mx-auto px-6 py-10 space-y-10">
 
-        {/* Action Buttons */}
-        <div className="flex gap-4">
-          <button
-            onClick={handleExport}
-            disabled={stats.total === 0}
-            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
-          >
-            Export CSV
-          </button>
-          <button
-            onClick={handleClearData}
-            disabled={stats.total === 0}
-            className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
-          >
-            Clear Data
-          </button>
+        {/* Stats row */}
+        <div className="grid grid-cols-2 sm:grid-cols-5 border border-border divide-y sm:divide-y-0 sm:divide-x divide-border">
+          {[
+            { label: "Total Searches", value: stats.total },
+            { label: "Today", value: stats.today },
+            { label: "This Week", value: stats.thisWeek },
+            { label: "This Month", value: stats.thisMonth },
+            { label: "Unique Keywords", value: stats.uniqueKeywords },
+          ].map((s) => (
+            <div key={s.label} className="px-6 py-5 space-y-1">
+              <p className="text-2xl font-semibold tabular-nums">{s.value}</p>
+              <p className="text-[10px] uppercase tracking-widest text-muted-foreground">{s.label}</p>
+            </div>
+          ))}
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
 
           {/* Popular Keywords */}
-          <div className="bg-black/5 dark:bg-white/5 rounded-lg p-6">
-            <h2 className="text-xl font-semibold mb-4">Popular Keywords</h2>
+          <div className="border border-border">
+            <div className="border-b border-border px-6 py-4 bg-muted/30">
+              <p className="text-xs uppercase tracking-[0.2em] font-medium">Popular Keywords</p>
+            </div>
             {popularKeywords.length > 0 ? (
-              <div className="space-y-3">
-                {popularKeywords.map((item, index) => (
-                  <div key={item.keyword} className="flex items-center justify-between p-3 bg-white dark:bg-black/20 rounded-md">
-                    <div className="flex items-center gap-3">
-                      <span className="text-lg font-bold text-black/40 dark:text-white/40 w-6">
-                        #{index + 1}
-                      </span>
+              <div className="divide-y divide-border">
+                {popularKeywords.map((item, i) => (
+                  <div key={item.keyword} className="flex items-center justify-between px-6 py-4">
+                    <div className="flex items-center gap-4">
+                      <span className="text-xs font-mono text-muted-foreground w-5 shrink-0">#{i + 1}</span>
                       <div>
-                        <div className="font-medium">{item.keyword}</div>
-                        <div className="text-xs text-black/60 dark:text-white/60">
-                          {item.marketplaces.join(', ')} • {item.productTypes.join(', ')}
-                        </div>
+                        <p className="text-sm font-medium">{item.keyword}</p>
+                        <p className="text-[10px] text-muted-foreground uppercase tracking-widest mt-0.5">
+                          {item.marketplaces.join(" · ")} · {item.productTypes.join(", ")}
+                        </p>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <div className="font-bold">{item.count}</div>
-                      <div className="text-xs text-black/60 dark:text-white/60">
-                        {formatDate(item.lastSearched)}
-                      </div>
+                    <div className="text-right shrink-0">
+                      <p className="text-sm font-semibold tabular-nums">{item.count}</p>
+                      <p className="text-[10px] text-muted-foreground uppercase tracking-widest">{formatDate(item.lastSearched)}</p>
                     </div>
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8 text-black/60 dark:text-white/60">
-                No search data yet. Start searching to see popular keywords!
+              <div className="px-6 py-12 text-center">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">No search data yet</p>
+                <p className="text-xs text-muted-foreground mt-1">Start searching to see popular keywords</p>
               </div>
             )}
           </div>
 
           {/* Recent Searches */}
-          <div className="bg-black/5 dark:bg-white/5 rounded-lg p-6">
-            <h2 className="text-xl font-semibold mb-4">Recent Searches</h2>
+          <div className="border border-border">
+            <div className="border-b border-border px-6 py-4 bg-muted/30">
+              <p className="text-xs uppercase tracking-[0.2em] font-medium">Recent Searches</p>
+            </div>
             {searchHistory.length > 0 ? (
-              <div className="space-y-2 max-h-96 overflow-y-auto">
-                {searchHistory.map((search) => (
-                  <div key={search.id} className="p-3 bg-white dark:bg-black/20 rounded-md">
+              <div className="divide-y divide-border max-h-[480px] overflow-y-auto">
+                {searchHistory.map((search: SearchRecord) => (
+                  <div key={search.id} className="px-6 py-4">
                     <div className="flex items-center justify-between">
-                      <div className="font-medium">{search.keyword}</div>
-                      <div className="text-xs text-black/60 dark:text-white/60">
+                      <p className="text-sm font-medium">{search.keyword}</p>
+                      <p className="text-[10px] text-muted-foreground uppercase tracking-widest shrink-0 ml-4">
                         {formatDate(search.timestamp)}
-                      </div>
+                      </p>
                     </div>
-                    <div className="text-xs text-black/60 dark:text-white/60 mt-1">
-                      {search.marketplace.toUpperCase()} • {search.productType} • {search.sortOption}
-                    </div>
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest mt-1">
+                      {search.marketplace.toUpperCase()} · {search.productType} · {search.sortOption}
+                    </p>
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8 text-black/60 dark:text-white/60">
-                No search history yet. Your searches will appear here!
+              <div className="px-6 py-12 text-center">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">No search history yet</p>
+                <p className="text-xs text-muted-foreground mt-1">Your searches will appear here</p>
               </div>
             )}
           </div>
+
         </div>
       </div>
-    </div>
+    </main>
   );
 }

@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Search Amazon – MerchRadar",
+  description: "Search Amazon directly for Merch by Amazon products and niche research.",
+};
+
 export default function AmazonSearchPage() {
   return (
     <div className="min-h-screen flex items-center justify-center p-6">
