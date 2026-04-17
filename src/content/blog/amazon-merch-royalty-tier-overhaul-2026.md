@@ -41,7 +41,7 @@ You also need a minimum of **10 unit sales per month** in the US store to qualif
 |---|---|
 | $4.88 | **$2.44** |
 
-If you do nothing between now and June 1, this is where you land. That's the default. Half your current per-shirt royalty, with no minimum traffic requirement to qualify — because there's nothing to qualify for. You're just in the lowest tier.
+If you do nothing between now and June 1, this is where you land. Half your current per-shirt royalty.
 
 ---
 
@@ -49,14 +49,14 @@ If you do nothing between now and June 1, this is where you land. That's the def
 
 **Requirement:** At least **15% of your unit sales** must come from non-organic traffic. Minimum 10 unit sales/month in the US store.
 
-**Royalty impact:** Exactly the same as the current standard structure (calculated as 2× the Creator rate).
+**Royalty impact:** Exactly the same as today (2× the Creator rate).
 
 **Example — $19.99 standard t-shirt:**
 | Before (current) | After (Plus group) |
 |---|---|
 | $4.88 | **$4.88** |
 
-This is the break-even tier. Drive 15% of your sales through ads or social media, maintain at least 10 monthly sales, and your royalties stay where they are today.
+This is the break-even tier. Drive 15% of your sales through ads or social media and your royalties stay where they are.
 
 ---
 
@@ -64,109 +64,123 @@ This is the break-even tier. Drive 15% of your sales through ads or social media
 
 **Requirement:** At least **35% of your unit sales** must come from non-organic traffic. Minimum 10 unit sales/month in the US store.
 
-**Royalty impact:** 8% higher than current rates (calculated as 2.16× the Creator rate).
+**Royalty impact:** 8% higher than current rates (2.16× the Creator rate).
 
 **Example — $19.99 standard t-shirt:**
 | Before (current) | After (Premium group) |
 |---|---|
 | $4.88 | **$5.27** |
 
-Premium rewards the sellers who build real traffic pipelines. At 35% non-organic, you're running ads or a meaningful social media presence consistently. The 8% bump is the reward — modest, but real at volume.
-
 ---
 
 ## The Timeline: Your Window Is Now
 
-The group assignment that goes live on June 1 is based on **April and May performance**. That's the 60-day trailing window that will determine your starting tier.
+The group assignment that goes live on June 1 is based on **April and May performance**. That 60-day window is already running.
 
-Which means the clock is already running.
+**Check your email.** Amazon has been sending projections showing sellers which group they're currently on track for. If you're projected for Creator, that email is your warning.
 
-If you start driving traffic in late May, it won't be enough to move the needle. The sellers who will land in Plus or Premium on day one are the ones who start building that traffic now — this month.
-
-**Check your email.** Amazon has reportedly been sending projections showing sellers which group they're currently on track for. If you're projected for Creator, that email is your warning.
+International stores — UK, Germany, France, Italy, Spain, Japan — remain unchanged. This is a US-only restructure.
 
 ---
 
-## International Stores: No Change
+## What Creators Are Saying
 
-The new three-tier structure applies to the **US store only**.
+### Philip Anders — "This Changes Everything, But Not How You Think"
 
-Royalty rates for the UK, Germany, France, Italy, Spain, and Japan remain unchanged under the existing structure. If your business is primarily international, this announcement affects you less — but the US market is by far the largest, so the impact is still significant for most sellers.
+Philip Anders broke down the update immediately after it landed. His take: the new rules actually reward sellers who were already doing this right.
 
----
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1.5rem 0;">
+  <iframe src="https://www.youtube.com/embed/dAUOWO3unj8" title="Amazon Merch Just Changed Everything – Philip Anders" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe>
+</div>
 
-## What the Creator Community Is Actually Saying
+His argument: the 80% sell-through requirement and the new traffic thresholds force intentionality. Sellers who validate niches before uploading and already link listings from social media are barely affected. The sellers who upload in bulk and wait are the ones who lose.
 
-### The Tracking Problem Nobody Has Answered
-
-The single biggest source of confusion: **how is Amazon measuring non-organic traffic?**
-
-Amazon says that social media shares and external links count toward your non-organic percentage. But there's no dedicated dashboard. No tracking links required. No Amazon Associates integration specified.
-
-Sellers are asking: if someone finds your listing from a Pinterest pin and buys, how does Amazon know that came from you? The attribution methodology hasn't been explained clearly. Without a transparent metric to watch, sellers can't reliably know whether they're hitting 15% or falling short.
-
-This isn't a minor complaint — it's a fundamental problem with managing your business toward a threshold you can't directly see.
+His recommendation: start Amazon Sponsored Products ads on your 3–5 best designs at $1–3/day. The goal isn't ad ROI — it's hitting 15% non-organic attribution to lock in Plus before June 1.
 
 ---
 
-### Small Accounts Get Squeezed the Hardest
+### Keyur Vadher — "Is Merch Still Worth It for Low Tiers?"
 
-The @merchprofessor Instagram post framing this as a "smart move for Amazon" to save money while "unfairly punishing smaller accounts" has resonated widely.
+Keyur's video asks the harder question: at $2.44 per shirt, is the Creator tier worth the effort at all for new or low-tier sellers?
 
-Here's why: Amazon Ads — the most reliable way to drive non-organic traffic — isn't accessible to everyone. At Tier 10 or Tier 25, you don't have the catalog volume or the sales history to make paid ads viable. Your profit margin on a $2.44 royalty doesn't cover CPC costs.
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1.5rem 0;">
+  <iframe src="https://www.youtube.com/embed/c-ITOnIpSVI" title="Amazon Merch NEW Royalties Tier Just Changed Everything – Keyur Vadher" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe>
+</div>
 
-So lower-tier sellers face a bind: they can't easily run ads, they can't reliably build 15% non-organic traffic through social media alone, and their royalties are getting cut in half unless they find a way to.
-
-This is the change that's generating the most frustrated responses from newer sellers.
-
----
-
-### Philip Anders: Find the Opportunity in the New Rules
-
-Philip Anders covered the update in his video **"Amazon Merch Just Changed Everything"** with his characteristic analytical approach. His argument: this change accelerates the separation between passive uploaders and active business builders.
-
-Sellers who have been building a social media presence, running occasional ads, or linking their listings from a blog or YouTube channel are already driving non-organic traffic — they just haven't been rewarded for it. Under the new system, they will be.
-
-His recommendation: start with Amazon Ads even at a small budget ($1–3/day per listing) on your best-performing designs. The goal isn't massive ad ROI — it's hitting the 15% threshold to stay in Plus. Once you're there, optimize from that position.
+His honest analysis: at Tier 10 or 25, you don't have the catalog volume to make paid ads viable. You can't easily build 15% non-organic traffic through social media alone in time. And at $2.44 per sale, untested uploads are no longer acceptable. His tool recommendation for niche validation: **FlyingResearch** — because every slot has to earn its place.
 
 ---
 
-### Keyur Vadher: Is Merch Worth It for Low Tiers?
+### Shimmy Morris — "Amazon Is Blackmailing Sellers"
 
-Keyur's video **"Amazon Merch NEW Royalties Tier Just Changed Everything"** asks the blunter question: at $2.44 per shirt, is the Creator tier worth the effort at all?
+Shimmy Morris's reaction was the most pointed in the community. His argument: the structure of this change is designed to extract ad spend from sellers, not benefit them.
 
-His honest take: for sellers at low tiers who can't drive the traffic required for Plus, the math gets very difficult. The volume needed to generate meaningful income at half-royalties is enormous. His recommendation is to treat this as a serious business decision — either commit to building traffic and targeting Plus, or redirect your energy toward platforms with better baseline margins.
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1.5rem 0;">
+  <iframe src="https://www.youtube.com/embed/Yy6oZ8zySdA" title="Amazon Merch on Demand Just Changed Big Time – Shimmy Morris" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe>
+</div>
 
-His key tool recommendation for niche validation before any upload: **FlyingResearch** — because at $2.44 per sale, uploading untested designs is no longer acceptable.
+His specific critique: Amazon cuts royalties to $2.44, then offers to restore them to $4.88 if you pay for Amazon Ads — which go straight to Amazon. The ads cost money. The royalty "increase" barely covers it. Meanwhile, on Shopify + Printify, margins of $22+ per shirt are achievable without giving Amazon a cut of your traffic spend.
+
+His advice: use June 1 as the moment to get serious about diversification. Keep your Merch catalog, but build a second revenue stream Amazon doesn't control.
 
 ---
 
-### Shimmy Morris: "Amazon Is Blackmailing Sellers"
+## The Community Is Reacting — And @MerchProfessor Nailed It
 
-Shimmy Morris's video — titled with barely-censored fury — made the most pointed argument: the structure of this change is designed to extract ad spend from sellers, not to benefit them.
+One of the most shared takes on this update came from **@merchprofessor** — a well-known and successful Merch by Amazon seller with a large following. Their Instagram post captured exactly what a lot of sellers felt when they read the announcement:
 
-His specific critique: Amazon is cutting royalties to ~$2.44, then offering to restore them to $4.88 if you pay for Amazon Ads. The ads go to Amazon. The royalty increase barely covers the ad cost. You're paying Amazon to access your own customers to earn back the royalties Amazon just took away.
+<div style="display:flex;justify-content:center;margin:2rem 0;">
+  <blockquote
+    class="instagram-media"
+    data-instgrm-permalink="https://www.instagram.com/p/DXKPMZliPwH/?utm_source=ig_embed"
+    data-instgrm-version="14"
+    style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);max-width:540px;width:100%;padding:0;"
+  >
+    <a href="https://www.instagram.com/p/DXKPMZliPwH/" target="_blank" rel="noopener noreferrer">
+      View this post on Instagram
+    </a>
+  </blockquote>
+</div>
+<script async src="https://www.instagram.com/embed.js"></script>
 
-His comparison: on an independent Shopify + Printify setup, margins of $22+ per shirt are achievable. Even at the Premium Merch tier ($5.27), the gap is enormous. His argument isn't that Merch is dead — it's that the new structure accelerates the case for building something Amazon doesn't control.
+The core point @merchprofessor makes: while this is a smart business move for Amazon to reduce payouts and push more sellers toward Amazon Ads revenue, it **unfairly punishes smaller accounts** who don't yet have the ad budget or social media following to meet the traffic thresholds.
 
-His advice: use the June 1 deadline as the moment to get serious about diversification. Keep your Merch catalog, but build a second revenue stream that isn't subject to Amazon's next announcement.
+---
+
+## The Two Big Problems Nobody's Solved
+
+### 1. The Tracking Problem
+
+Amazon says social media shares count toward non-organic traffic. But there's no dedicated dashboard. No tracking links required. No Amazon Associates integration specified.
+
+If someone finds your listing from a Pinterest pin and buys — how does Amazon know it came from you? The attribution methodology isn't explained. Sellers can't reliably see whether they're hitting 15% or falling short without digging manually through their Amazon Ads data.
+
+This isn't a minor complaint — it's a fundamental problem with managing toward a threshold you can't directly see.
+
+### 2. Small Accounts Get Squeezed
+
+At Tier 10 or Tier 25, running profitable Amazon Ads is nearly impossible. You don't have catalog volume, sales history, or enough margin at $2.44/shirt to cover CPC costs. Social media growth takes time you don't have before June 1.
+
+Lower-tier sellers face a bind: can't run ads, can't build 15% traffic through social alone in time, royalties getting cut in half unless they do.
+
+This is the change generating the most frustrated responses from newer sellers.
 
 ---
 
 ## What to Do Before June 1
 
 **If you're projected for Creator:**
-- Start Amazon Sponsored Products ads on your 3–5 best-performing designs. Budget $1–2/day each. The goal is hitting 15% non-organic attribution, not ad profitability — yet.
-- Begin building a social media presence around your niche. Pinterest is particularly effective for evergreen POD niches and requires no ad spend.
-- Run a catalog audit now. Delete your slowest designs and replace them with research-backed uploads. At $2.44/sale, every slot needs to work.
+- Start Amazon Sponsored Products on your 3–5 best designs. $1–2/day each. Goal: hit 15% non-organic attribution.
+- Start building Pinterest boards around your niches — evergreen POD content and no ad spend required.
+- Audit your catalog. Delete slowest designs. At $2.44/sale, every slot needs to work.
 
-**If you're already close to Plus:**
-- Don't stop. April and May are your qualifying months. Consistent ad activity through both months locks in your starting position.
-- Check your Amazon Ads attribution data. Your non-organic sales percentage is in there — even without a dedicated dashboard, the data exists.
+**If you're close to Plus:**
+- April and May are your qualifying months. Don't let ad campaigns lapse.
+- Check your Amazon Ads attribution data — your non-organic percentage is in there even without a dedicated dashboard.
 
-**If you run a larger catalog:**
-- The 60-day window means your May performance matters as much as April. Maintain ad activity through the end of May, not just the beginning.
-- Consider concentrating ad spend on your top 10–20 designs rather than spreading thin across your full catalog. Hit the threshold with your best work.
+**If you run a large catalog:**
+- Concentrate ad spend on your top 10–20 designs rather than spreading thin.
+- Hit the 15% threshold with your best work first, then expand.
 
 ---
 
@@ -174,21 +188,11 @@ His advice: use the June 1 deadline as the moment to get serious about diversifi
 
 This is the most significant structural change Amazon Merch has made in years.
 
-The royalty cut for passive sellers is real — $4.88 to $2.44 on a standard shirt is not a rounding error. But the program isn't ending. It's bifurcating: a lower tier for passive catalogs, and a higher tier for active marketers.
+$4.88 to $2.44 on a standard shirt is not a rounding error. But the program isn't ending — it's bifurcating. A lower tier for passive catalogs. A higher tier for active marketers.
 
-The sellers who will be fine are the ones who treat Merch like a business — validating niches before uploading, actively marketing their listings, and building audiences outside of Amazon's algorithm.
+The sellers who will be fine are the ones who treat Merch like a business. The sellers who will feel this most are the ones who've been uploading and waiting.
 
-The sellers who will feel this most are the ones who've been uploading and waiting. That strategy still works, but at half the royalty.
-
-June 1 is the line. The window between now and then is real and short.
-
----
-
-## Watch the Reactions
-
-- **[Amazon Merch Just Changed Everything](https://www.youtube.com/watch?v=dAUOWO3unj8)** — *Philip Anders* — how to adapt and find the opportunity
-- **[Amazon Merch NEW Royalties Tier Just Changed Everything](https://www.youtube.com/watch?v=c-ITOnIpSVI)** — *Keyur Vadher* — honest breakdown of the low-tier math
-- **[Amazon Merch on Demand Just Changed Big Time](https://www.youtube.com/watch?v=Yy6oZ8zySdA)** — *Shimmy Morris* — the case for platform diversification
+June 1 is the line. The window is short.
 
 ---
 
