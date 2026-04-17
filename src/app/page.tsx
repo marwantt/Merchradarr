@@ -2,6 +2,9 @@ import Link from "next/link";
 import SearchTool from "@/components/SearchTool";
 import WhatsNew from "@/components/WhatsNew";
 import { getChannelVideos } from "@/lib/youtube";
+import { getAllTools } from "@/lib/tools-data";
+import { designChannels, merchChannels } from "@/lib/resources-data";
+import { getAllPostSlugs } from "@/lib/blog";
 
 const YOUTUBE_CHANNELS = [
   "@RyanHoguePassiveIncome",
@@ -12,11 +15,14 @@ const YOUTUBE_CHANNELS = [
 ];
 
 export default async function Home() {
-  // Fetch latest videos from fav channels at build time
   const videoResults = await Promise.allSettled(
     YOUTUBE_CHANNELS.map(handle => getChannelVideos(handle, 3))
   );
   const youtubeVideos = videoResults.flatMap(r => r.status === "fulfilled" ? r.value : []);
+
+  const toolCount = getAllTools().length;
+  const channelCount = designChannels.length + merchChannels.length;
+  const postCount = getAllPostSlugs().length;
 
   return (
     <>
@@ -27,6 +33,21 @@ export default async function Home() {
       <main className="w-full max-w-xl flex flex-col gap-10 items-stretch">
 
         <SearchTool />
+
+        {/* Stats strip */}
+        <div className="border border-border divide-x divide-border grid grid-cols-4 text-center">
+          {[
+            { value: "Free", label: "Always" },
+            { value: `${postCount}`, label: "Articles" },
+            { value: `${toolCount}+`, label: "Tools" },
+            { value: `${channelCount}`, label: "Channels" },
+          ].map(s => (
+            <div key={s.label} className="py-3 px-2">
+              <p className="text-sm font-semibold tabular-nums">{s.value}</p>
+              <p className="text-[10px] uppercase tracking-widest text-muted-foreground mt-0.5">{s.label}</p>
+            </div>
+          ))}
+        </div>
 
         {/* Academy Section */}
         <div className="border border-border">

@@ -9,12 +9,12 @@ import type { YouTubeVideo } from "@/lib/youtube";
 const STORAGE_KEY = "merchradar_seen_updates";
 
 const typeConfig: Record<UpdateType, { label: string; className: string }> = {
-  blog:     { label: "Blog",     className: "bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300" },
-  tool:     { label: "Tool",     className: "bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300" },
-  tutorial: { label: "Tutorial", className: "bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300" },
-  news:     { label: "News",     className: "bg-red-100 dark:bg-red-950 text-red-700 dark:text-red-300" },
-  product:  { label: "Product",  className: "bg-green-100 dark:bg-green-950 text-green-700 dark:text-green-300" },
-  video:    { label: "Video",    className: "bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300" },
+  blog:     { label: "Blog",     className: "border border-border text-muted-foreground" },
+  tool:     { label: "Tool",     className: "border border-border text-muted-foreground" },
+  tutorial: { label: "Tutorial", className: "border border-border text-muted-foreground" },
+  news:     { label: "News",     className: "border border-foreground/40 text-foreground" },
+  product:  { label: "Product",  className: "border border-border text-muted-foreground" },
+  video:    { label: "Video",    className: "border border-border text-muted-foreground" },
 };
 
 function formatDate(dateStr: string) {

@@ -196,11 +196,11 @@ export default function SearchTool() {
         const loc = marketplaceLocations[selectedMarketplace];
         const active = selectedPostal ?? loc.codes[0];
         return (
-          <div className="border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950 px-4 py-3 space-y-3">
-            <p className="text-xs font-semibold text-amber-800 dark:text-amber-200 uppercase tracking-wider">
+          <div className="border border-border bg-muted/30 px-4 py-3 space-y-3">
+            <p className="text-xs font-semibold uppercase tracking-wider">
               {loc.flag} Set your Amazon location for accurate results
             </p>
-            <p className="text-xs text-amber-700 dark:text-amber-300 leading-relaxed">
+            <p className="text-xs text-muted-foreground leading-relaxed">
               Without a local address, Amazon may show wrong results on {marketplace.domain}.
               Pick a city and copy the postal code:
             </p>
@@ -214,32 +214,32 @@ export default function SearchTool() {
                   onClick={() => setSelectedPostal(pc)}
                   className={`text-left px-2.5 py-1.5 text-xs border transition-colors ${
                     active.code === pc.code
-                      ? "border-amber-500 bg-amber-500 text-white font-semibold"
-                      : "border-amber-200 dark:border-amber-700 text-amber-700 dark:text-amber-300 hover:border-amber-400"
+                      ? "border-foreground bg-foreground text-background font-semibold"
+                      : "border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground"
                   }`}
                 >
                   <span className="font-mono font-bold">{pc.code}</span>
-                  <span className="ml-1.5 opacity-80">{pc.city}</span>
+                  <span className="ml-1.5 opacity-70">{pc.city}</span>
                 </button>
               ))}
             </div>
 
             {/* Selected code + copy */}
             <div className="flex items-center gap-2">
-              <div className="flex-1 bg-white dark:bg-black/20 border border-amber-200 dark:border-amber-800 px-3 py-2">
-                <span className="font-mono text-sm font-bold tracking-widest text-amber-900 dark:text-amber-100">{active.code}</span>
-                <span className="text-xs text-amber-600 dark:text-amber-400 ml-2">— {active.city}</span>
+              <div className="flex-1 bg-background border border-border px-3 py-2">
+                <span className="font-mono text-sm font-bold tracking-widest">{active.code}</span>
+                <span className="text-xs text-muted-foreground ml-2">— {active.city}</span>
               </div>
               <button
                 type="button"
                 onClick={() => handleCopyPostal(active.code)}
-                className="shrink-0 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold uppercase tracking-wider transition-colors"
+                className="shrink-0 px-4 py-2 border border-foreground bg-foreground text-background text-xs font-semibold uppercase tracking-wider hover:opacity-80 transition-opacity"
               >
                 {copiedPostal ? "Copied!" : "Copy"}
               </button>
             </div>
 
-            <p className="text-[11px] text-amber-600 dark:text-amber-400 leading-relaxed">
+            <p className="text-[11px] text-muted-foreground leading-relaxed">
               How to set it: {loc.steps}
             </p>
           </div>
