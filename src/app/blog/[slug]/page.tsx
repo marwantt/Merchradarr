@@ -4,6 +4,7 @@ import { getAllPostSlugs, getPostBySlug } from '@/lib/blog';
 import type { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import * as BlogComponents from '@/components/blog';
+import { DynamicBlogCover } from '@/components/blog';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -64,17 +65,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* Article Container */}
       <div className="max-w-4xl mx-auto px-6 py-12">
-        {/* Hero Image */}
-        {post.coverImage && (
-          <div className="w-full overflow-hidden mb-12 border border-border" style={{ height: "400px" }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={post.coverImage}
-              alt={post.title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        )}
+        {/* Dynamic Blog Cover */}
+        <DynamicBlogCover slug={slug} post={post} />
 
         {/* Article Header */}
         <header className="space-y-6 pb-12 border-b border-border mb-12">
