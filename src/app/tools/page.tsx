@@ -29,7 +29,7 @@ function ToolCard({ tool }: { tool: ToolItem }) {
         <div className="w-14 h-14 border border-border bg-background flex items-center justify-center overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={`https://www.google.com/s2/favicons?domain=${tool.domain}&sz=64`}
+            src={tool.iconUrl ?? `https://www.google.com/s2/favicons?domain=${tool.domain}&sz=64`}
             alt={`${tool.name} logo`}
             width={36}
             height={36}
@@ -82,7 +82,7 @@ function FeaturedToolCard({ tool }: { tool: ToolItem }) {
           <div className="w-16 h-16 border border-border bg-background flex items-center justify-center overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`https://www.google.com/s2/favicons?domain=${tool.domain}&sz=64`}
+              src={tool.iconUrl ?? `https://www.google.com/s2/favicons?domain=${tool.domain}&sz=64`}
               alt={`${tool.name} logo`}
               width={40}
               height={40}

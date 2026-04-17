@@ -58,7 +58,7 @@ export default async function ToolTutorialPage({ params }: Props) {
             <div className="w-12 h-12 border border-border flex items-center justify-center bg-muted overflow-hidden shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={`https://www.google.com/s2/favicons?domain=${tool.domain}&sz=64`}
+                src={tool.iconUrl ?? `https://www.google.com/s2/favicons?domain=${tool.domain}&sz=64`}
                 alt={`${tool.name} logo`}
                 width={32}
                 height={32}

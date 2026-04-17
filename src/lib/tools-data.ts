@@ -12,6 +12,7 @@ export interface ToolItem {
   tips: string[];
   url: string;
   domain: string;
+  iconUrl?: string;
   badge: string | null;
   free: boolean;
   tutorials: Tutorial[];
@@ -331,6 +332,7 @@ export const tools: ToolCategory[] = [
         ],
         url: "https://adobe.com/products/illustrator",
         domain: "adobe.com",
+        iconUrl: "https://www.adobe.com/content/dam/cc/icons/ai.svg",
         badge: null,
         free: false,
         tutorials: [
@@ -352,6 +354,7 @@ export const tools: ToolCategory[] = [
         ],
         url: "https://adobe.com/products/photoshop",
         domain: "adobe.com",
+        iconUrl: "https://www.adobe.com/content/dam/cc/icons/ps.svg",
         badge: null,
         free: false,
         tutorials: [
