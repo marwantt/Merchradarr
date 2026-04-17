@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Analytics } from '@vercel/analytics/react'
 import { monoFont, titleFont } from "./fonts"
+import Footer from "@/components/Footer"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -70,7 +71,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${monoFont.variable} ${titleFont.variable}`}>
       <head>
-        <meta name="google-adsense-account" content="ca-pub-9018209717885254" />
         <style>{`
 html {
   font-family: var(--font-mono), monospace;
@@ -105,8 +105,11 @@ h1, h2, h3, h4, h5, h6 {
 }
         `}</style>
       </head>
-      <body className={monoFont.className}>
-        {children}
+      <body className={`${monoFont.className} flex flex-col min-h-screen`}>
+        <div className="flex-1">
+          {children}
+        </div>
+        <Footer />
         <Analytics />
 
         {/* JSON-LD Structured Data for SEO */}

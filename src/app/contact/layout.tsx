@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact MerchRadar – Get in Touch with Our Team",
-  description: "Contact the MerchRadar team for support, questions, or feedback about our Amazon Merch research tool.",
+  title: "Contact – MerchRadar",
+  description: "Get in touch with the MerchRadar team for support, feature requests, or partnership inquiries.",
 };
 
 export default function ContactLayout({

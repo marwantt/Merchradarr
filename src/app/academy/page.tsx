@@ -1,242 +1,114 @@
 import Link from "next/link";
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "MerchRadar Academy – Learn Merch by Amazon From Scratch",
-  description: "Free tutorials and guides to master Merch by Amazon. Learn niche research, design, keyword strategy, and compliance — step by step.",
+export const metadata = {
+  title: "MerchRadar Academy – Learn Merch by Amazon from Scratch",
+  description: "Free learning resources for Merch by Amazon sellers. Step-by-step guides, niche research tutorials, keyword strategies, and design tips for Print on Demand success.",
 };
 
-const tracks = [
+const modules = [
   {
-    id: "01",
+    number: "01",
     title: "Getting Started",
-    level: "Beginner",
-    description: "Everything you need to launch your Merch by Amazon journey.",
+    description: "Everything you need to know before uploading your first design.",
     lessons: [
-      {
-        title: "What is Merch by Amazon?",
-        description: "Understand the platform, how royalties work, and what makes a profitable listing.",
-        duration: "5 min",
-        href: "/guide",
-        available: true,
-      },
-      {
-        title: "How to Use MerchRadar",
-        description: "Find profitable niches in seconds using the MerchRadar search tool.",
-        duration: "4 min",
-        href: "/guide",
-        available: true,
-      },
-      {
-        title: "Setting Up Your Merch Account",
-        description: "Step-by-step walkthrough of applying and getting accepted into Merch by Amazon.",
-        duration: "8 min",
-        href: null,
-        available: false,
-      },
+      { title: "What is Merch by Amazon?", href: "/guide" },
+      { title: "How to Use MerchRadar", href: "/guide" },
+      { title: "Understanding Amazon Merch Products", href: "/guide" },
     ],
   },
   {
-    id: "02",
+    number: "02",
     title: "Niche Research",
-    level: "Intermediate",
-    description: "Find low-competition, high-demand niches before anyone else.",
+    description: "Find profitable niches before spending time on designs.",
     lessons: [
-      {
-        title: "Complete Keyword Research Guide",
-        description: "Master the art of finding profitable keywords for your Amazon Merch designs.",
-        duration: "12 min",
-        href: "/blog/keyword-research-guide",
-        available: true,
-      },
-      {
-        title: "Top Merch Trends to Watch",
-        description: "Discover the hottest design trends and profitable niches dominating Amazon Merch.",
-        duration: "8 min",
-        href: "/blog/amazon-merch-trends-2024",
-        available: true,
-      },
-      {
-        title: "How to Validate a Niche",
-        description: "Use data signals to confirm demand before investing time in a design.",
-        duration: "10 min",
-        href: null,
-        available: false,
-      },
+      { title: "Keyword Research Basics", href: "/blog/keyword-research-guide" },
+      { title: "Reading Amazon Search Results", href: "/guide" },
+      { title: "Spotting Trends Early", href: "/blog/amazon-merch-trends-2024" },
     ],
   },
   {
-    id: "03",
-    title: "Design & Compliance",
-    level: "Intermediate",
-    description: "Create designs that sell and stay within Amazon's policies.",
+    number: "03",
+    title: "Compliance & Rules",
+    description: "Stay on the right side of Amazon's content policies.",
     lessons: [
-      {
-        title: "Best Ways to Learn Merch Design",
-        description: "Master quality standards, content policies, and essential design skills for POD.",
-        duration: "8 min",
-        href: "/blog/best-ways-learn-merch-amazon-design",
-        available: true,
-      },
-      {
-        title: "Amazon Restricted Keywords",
-        description: "Avoid account strikes by understanding what words are banned and why.",
-        duration: "6 min",
-        href: "/blog/amazon-restricted-keywords-merch",
-        available: true,
-      },
-      {
-        title: "FTC & Seller Compliance 2025",
-        description: "What the latest Amazon FTC settlement means for Merch sellers.",
-        duration: "5 min",
-        href: "/blog/amazon-ftc-settlement-2025",
-        available: true,
-      },
+      { title: "Restricted Keywords Guide", href: "/blog/amazon-restricted-keywords-merch" },
+      { title: "Amazon FTC & Policy Updates", href: "/blog/amazon-ftc-settlement-2025" },
     ],
   },
   {
-    id: "04",
-    title: "Scaling Your Business",
-    level: "Advanced",
-    description: "Go from a few designs to a full catalog with repeatable systems.",
+    number: "04",
+    title: "Design & Growth",
+    description: "Design principles and scaling strategies for serious sellers.",
     lessons: [
-      {
-        title: "Building a Niche Portfolio",
-        description: "How to diversify across niches to create stable, growing royalty income.",
-        duration: "15 min",
-        href: null,
-        available: false,
-      },
-      {
-        title: "Multi-Marketplace Strategy",
-        description: "Expand to UK, DE, FR, IT, and ES — how to adapt niches per region.",
-        duration: "10 min",
-        href: null,
-        available: false,
-      },
-      {
-        title: "Automating Your Research Workflow",
-        description: "Tools and systems to find 10x more niches in the same amount of time.",
-        duration: "12 min",
-        href: null,
-        available: false,
-      },
+      { title: "Best Ways to Learn Merch Design", href: "/blog/best-ways-learn-merch-amazon-design" },
+      { title: "Scaling Your Merch Catalog", href: "/blog" },
     ],
   },
 ];
 
-const levelColors: Record<string, string> = {
-  Beginner: "text-green-700 dark:text-green-400 border-green-300 dark:border-green-700 bg-green-50 dark:bg-green-950",
-  Intermediate: "text-blue-700 dark:text-blue-400 border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-950",
-  Advanced: "text-purple-700 dark:text-purple-400 border-purple-300 dark:border-purple-700 bg-purple-50 dark:bg-purple-950",
-};
-
 export default function AcademyPage() {
   return (
     <main className="min-h-screen bg-background">
-
       {/* Hero */}
-      <div className="border-b border-border">
-        <div className="max-w-4xl mx-auto px-6 py-16 space-y-5">
+      <div className="border-b border-border bg-muted/30">
+        <div className="max-w-4xl mx-auto px-6 py-16 space-y-4">
           <Link
             href="/"
-            className="inline-block text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+            className="inline-block text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors mb-4"
           >
-            ← MerchRadar
+            ← Back to Home
           </Link>
-          <div className="space-y-1">
-            <p className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Free Learning Hub</p>
-            <h1 className="text-5xl title-font tracking-wide">MerchRadar Academy</h1>
-          </div>
-          <p className="text-base text-muted-foreground max-w-xl leading-relaxed">
-            Learn Merch by Amazon from scratch — niche research, design, compliance, and scaling.
-            Structured tracks. No fluff.
+          <h1 className="text-5xl title-font tracking-wide">Academy</h1>
+          <p className="text-lg text-muted-foreground max-w-2xl">
+            Free structured learning for Merch by Amazon sellers. From your first upload to scaling a full catalog.
           </p>
-          <div className="flex items-center gap-6 text-xs text-muted-foreground uppercase tracking-widest pt-2">
-            <span>{tracks.reduce((n, t) => n + t.lessons.length, 0)} Lessons</span>
-            <span>·</span>
-            <span>{tracks.length} Tracks</span>
-            <span>·</span>
-            <span>100% Free</span>
-          </div>
         </div>
       </div>
 
-      {/* Tracks */}
-      <div className="max-w-4xl mx-auto px-6 py-12 space-y-16">
-        {tracks.map((track) => (
-          <section key={track.id} className="space-y-6">
-
-            {/* Track Header */}
-            <div className="flex items-start justify-between gap-4 border-b border-border pb-4">
-              <div className="space-y-1">
-                <div className="flex items-center gap-3">
-                  <span className="text-xs font-mono text-muted-foreground">TRACK {track.id}</span>
-                  <span className={`text-xs px-2 py-0.5 border font-medium ${levelColors[track.level]}`}>
-                    {track.level}
-                  </span>
-                </div>
-                <h2 className="text-2xl font-medium">{track.title}</h2>
-                <p className="text-sm text-muted-foreground">{track.description}</p>
+      {/* Modules */}
+      <div className="max-w-4xl mx-auto px-6 py-12 space-y-6">
+        {modules.map((module) => (
+          <div key={module.number} className="border border-border">
+            {/* Module header */}
+            <div className="border-b border-border px-8 py-6 flex items-start gap-6">
+              <span className="text-3xl font-medium text-muted-foreground/40 tabular-nums leading-none mt-1">
+                {module.number}
+              </span>
+              <div>
+                <h2 className="text-xl font-medium uppercase tracking-wider">{module.title}</h2>
+                <p className="text-sm text-muted-foreground mt-1">{module.description}</p>
               </div>
             </div>
 
             {/* Lessons */}
-            <div className="space-y-3">
-              {track.lessons.map((lesson, index) => (
-                <div key={index}>
-                  {lesson.available && lesson.href ? (
-                    <Link
-                      href={lesson.href}
-                      className="group flex items-start justify-between gap-4 p-5 border border-border hover:border-primary transition-colors"
-                    >
-                      <div className="flex items-start gap-4">
-                        <span className="text-xs font-mono text-muted-foreground mt-0.5 shrink-0">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <div className="space-y-1">
-                          <p className="text-sm font-medium group-hover:text-primary transition-colors">{lesson.title}</p>
-                          <p className="text-xs text-muted-foreground leading-relaxed">{lesson.description}</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3 shrink-0 pt-0.5">
-                        <span className="text-xs text-muted-foreground">{lesson.duration}</span>
-                        <span className="text-xs text-primary">→</span>
-                      </div>
-                    </Link>
-                  ) : (
-                    <div className="flex items-start justify-between gap-4 p-5 border border-border border-dashed opacity-50">
-                      <div className="flex items-start gap-4">
-                        <span className="text-xs font-mono text-muted-foreground mt-0.5 shrink-0">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <div className="space-y-1">
-                          <p className="text-sm font-medium">{lesson.title}</p>
-                          <p className="text-xs text-muted-foreground leading-relaxed">{lesson.description}</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3 shrink-0 pt-0.5">
-                        <span className="text-xs text-muted-foreground">{lesson.duration}</span>
-                        <span className="text-xs uppercase tracking-widest text-muted-foreground">Soon</span>
-                      </div>
-                    </div>
-                  )}
-                </div>
+            <ul>
+              {module.lessons.map((lesson, i) => (
+                <li key={i} className="border-b border-border last:border-b-0">
+                  <Link
+                    href={lesson.href}
+                    className="flex items-center justify-between px-8 py-4 hover:bg-muted/30 transition-colors group"
+                  >
+                    <span className="text-sm uppercase tracking-wider">{lesson.title}</span>
+                    <span className="text-xs text-muted-foreground uppercase tracking-wider group-hover:text-foreground transition-colors">
+                      Read →
+                    </span>
+                  </Link>
+                </li>
               ))}
-            </div>
-          </section>
+            </ul>
+          </div>
         ))}
+      </div>
 
-        {/* CTA */}
-        <div className="border border-primary p-8 space-y-4 text-center">
-          <p className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Start Researching</p>
-          <h3 className="text-2xl font-medium">Ready to find your next niche?</h3>
-          <p className="text-sm text-muted-foreground">Use MerchRadar to search Amazon Merch niches across 6 marketplaces — free.</p>
+      {/* CTA */}
+      <div className="max-w-4xl mx-auto px-6 pb-12">
+        <div className="border border-dashed border-border p-10 text-center space-y-4">
+          <p className="text-sm uppercase tracking-widest text-muted-foreground">Ready to research?</p>
           <Link
             href="/"
-            className="inline-block mt-2 px-8 py-3 bg-primary text-primary-foreground text-sm uppercase tracking-widest font-semibold hover:opacity-90 transition-opacity"
+            className="inline-block border border-foreground px-8 py-3 text-sm uppercase tracking-widest hover:bg-foreground hover:text-background transition-colors"
           >
-            Open MerchRadar
+            Open Niche Finder →
           </Link>
         </div>
       </div>

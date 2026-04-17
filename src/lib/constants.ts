@@ -30,6 +30,7 @@ export const marketplaces: Marketplace[] = [
     { id: "fr", name: "Amazon FR", domain: "amazon.fr", sellerId: "A13V1IB3VIYZZH" },
     { id: "it", name: "Amazon IT", domain: "amazon.it", sellerId: "APJ6JRA9NG5V4" },
     { id: "es", name: "Amazon ES", domain: "amazon.es", sellerId: "A1RKKUPIHCS9HS" },
+    { id: "jp", name: "Amazon JP", domain: "amazon.co.jp", sellerId: "AN1VRQENFRJN5" },
 ];
 
 export interface PostalCode {
@@ -121,35 +122,87 @@ export const marketplaceLocations: Record<string, MarketplaceLocation> = {
 export const productTypes: ProductType[] = [
     {
         id: "tshirts",
-        name: "T-shirts",
+        name: "T-Shirts",
         keyword: "t-shirt",
         filters: {
             us: { category: "fashion-novelty", node: "12035955011" },
         },
     },
     {
-        id: "sweatshirts",
-        name: "Sweatshirts",
-        keyword: "sweatshirt",
+        id: "longsleeve",
+        name: "Long Sleeve",
+        keyword: "long sleeve t-shirt",
+        filters: {
+            us: { category: "fashion-novelty", node: "12035955011" },
+        },
+    },
+    {
+        id: "vneck",
+        name: "V-Neck",
+        keyword: "v-neck t-shirt",
+        filters: {
+            us: { category: "fashion-novelty", node: "12035955011" },
+        },
+    },
+    {
+        id: "tanktop",
+        name: "Tank Top",
+        keyword: "tank top",
         filters: {
             us: { category: "fashion-novelty", node: "12035955011" },
         },
     },
     {
         id: "hoodies",
-        name: "Hoodies",
-        keyword: "hoodie",
+        name: "Pullover Hoodie",
+        keyword: "pullover hoodie",
+        filters: {
+            us: { category: "fashion-novelty", node: "12035955011" },
+        },
+    },
+    {
+        id: "ziphoodie",
+        name: "Zip Hoodie",
+        keyword: "zip up hoodie",
+        filters: {
+            us: { category: "fashion-novelty", node: "12035955011" },
+        },
+    },
+    {
+        id: "sweatshirts",
+        name: "Sweatshirt",
+        keyword: "sweatshirt",
         filters: {
             us: { category: "fashion-novelty", node: "12035955011" },
         },
     },
     {
         id: "mugs",
-        name: "Mugs",
+        name: "Mug",
         keyword: "mug",
         filters: {
             us: { category: "kitchen", node: "284507" },
         },
+    },
+    {
+        id: "popsocket",
+        name: "PopSocket",
+        keyword: "popsocket",
+    },
+    {
+        id: "totebag",
+        name: "Tote Bag",
+        keyword: "tote bag",
+    },
+    {
+        id: "throwpillow",
+        name: "Throw Pillow",
+        keyword: "throw pillow",
+    },
+    {
+        id: "phonecase",
+        name: "Phone Case",
+        keyword: "phone case",
     },
 ];
 
