@@ -127,7 +127,10 @@ export default function SearchTool() {
           type="button"
           aria-label="Reset search"
         >
-          <h1 className="text-6xl title-font tracking-wide">Merch Radar</h1>
+          <h1>
+            <img src="/merchradar2.png" alt="MerchRadar" className="h-14 w-auto dark:hidden" />
+            <img src="/merchradar1.png" alt="MerchRadar" className="h-14 w-auto hidden dark:block" />
+          </h1>
         </button>
         <p className="text-xs text-muted-foreground uppercase tracking-[0.2em]">Amazon Merch Niche Finder</p>
       </div>
