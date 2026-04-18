@@ -1,35 +1,20 @@
 import Link from "next/link";
 import SearchTool from "@/components/SearchTool";
-import WhatsNew from "@/components/WhatsNew";
-import { getChannelVideos } from "@/lib/youtube";
+import Ticker from "@/components/Ticker";
 import { getAllTools } from "@/lib/tools-data";
 import { designChannels, merchChannels } from "@/lib/resources-data";
 import { getAllPostSlugs } from "@/lib/blog";
 
-const YOUTUBE_CHANNELS = [
-  "@RyanHoguePassiveIncome",
-  "@PhilipAnders",
-  "@brenondopp",
-  "@wtfamievendoing",
-  "@jayswayworks",
-];
-
 export default async function Home() {
-  const videoResults = await Promise.allSettled(
-    YOUTUBE_CHANNELS.map(handle => getChannelVideos(handle, 3))
-  );
-  const youtubeVideos = videoResults.flatMap(r => r.status === "fulfilled" ? r.value : []);
-
   const toolCount = getAllTools().length;
   const channelCount = designChannels.length + merchChannels.length;
   const postCount = getAllPostSlugs().length;
 
   return (
     <>
-      {/* Fixed top-right notification bell */}
-      <WhatsNew youtubeVideos={youtubeVideos} />
+      <Ticker />
 
-    <div className="min-h-screen flex items-center justify-center p-4 py-16">
+    <div className="min-h-screen flex items-center justify-center p-4 pt-20 pb-16">
       <main className="w-full max-w-xl flex flex-col gap-10 items-stretch">
 
         <SearchTool />
