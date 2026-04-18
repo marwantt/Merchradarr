@@ -11,7 +11,7 @@ const typeLabels: Record<string, string> = {
 }
 
 export default function Ticker() {
-  const items = updates.slice(0, 10)
+  const items = [...updates].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 h-8 flex items-center border-b border-border bg-background overflow-hidden">

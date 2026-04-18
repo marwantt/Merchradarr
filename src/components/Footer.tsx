@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -10,8 +11,9 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1 space-y-3">
-            <Link href="/" className="text-xl title-font tracking-wide hover:opacity-70 transition-opacity">
-              Merch Radar
+            <Link href="/" className="inline-block hover:opacity-70 transition-opacity">
+              <Image src="/merchradar2.png" alt="MerchRadar" width={120} height={17} unoptimized className="dark:hidden" />
+              <Image src="/merchradar1.png" alt="MerchRadar" width={120} height={17} unoptimized className="hidden dark:block" />
             </Link>
             <p className="text-xs text-muted-foreground uppercase tracking-wider leading-relaxed">
               Free niche research tool for Amazon Merch on Demand sellers.
